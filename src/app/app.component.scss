@@ -1,27 +1,29 @@
 .container {
-  height: 100vh;
-  padding-top: 150px;
-  background-color: #eeeae6;
+  position: relative;
+  height: 100%;
 }
 
 .login-box {
-  margin: 0 auto;
   max-width: 400px;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.icon-list {
-  max-width: 200px;
+.user-avatar-list {
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(4, 25%);
+}
 
-  > * {
-    padding: 6.5px 0;
-    height: 45px;
-    text-align: center;
+.user-info {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
 
-    > * {
-      width: 32px;
-      height: 32px;
-    }
+  input {
+    width: 120px;
+    background-color: transparent;
   }
 }

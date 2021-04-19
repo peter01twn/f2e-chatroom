@@ -1,30 +1,24 @@
 <div class="container">
     <div class="login-box">
-        <div class="icon-list">
-            <div class="icon">
-                <mat-icon svgIcon="avatar:cat"></mat-icon>
-            </div>
-            <div class="icon">
-                <mat-icon svgIcon="avatar:dog"></mat-icon>
-            </div>
-            <div class="icon">
-                <mat-icon svgIcon="avatar:fish"></mat-icon>
-            </div>
-            <div class="icon">
-                <mat-icon svgIcon="avatar:fish-fill"></mat-icon>
-            </div>
-            <div class="icon">
-                <mat-icon svgIcon="avatar:monkey"></mat-icon>
-            </div>
-            <div class="icon">
-                <mat-icon svgIcon="avatar:monkey-fill"></mat-icon>
-            </div>
-            <div class="icon">
-                <mat-icon svgIcon="avatar:parrot"></mat-icon>
-            </div>
-            <div class="icon">
-                <mat-icon svgIcon="avatar:parrot-fill"></mat-icon>
-            </div>
+        <div class="user-info">
+            <app-user-avatar
+                icon="cat"
+                size="lg"
+            ></app-user-avatar>
+            <input
+                type="text"
+                placeholder="user name"
+            >
+        </div>
+        <div class="user-avatar-list">
+            <app-user-avatar icon="cat"></app-user-avatar>
+            <app-user-avatar icon="dog"></app-user-avatar>
+            <app-user-avatar icon="fish"></app-user-avatar>
+            <app-user-avatar icon="fish-fill"></app-user-avatar>
+            <app-user-avatar icon="monkey"></app-user-avatar>
+            <app-user-avatar icon="monkey-fill"></app-user-avatar>
+            <app-user-avatar icon="parrot"></app-user-avatar>
+            <app-user-avatar icon="parrot-fill"></app-user-avatar>
         </div>
     </div>
 </div>

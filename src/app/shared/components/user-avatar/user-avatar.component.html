@@ -1,0 +1,8 @@
+<div
+    class="user-avatar {{ size }}"
+    [ngClass]="{'select': select}"
+    [ngStyle]="{'color': color}"
+    (click)="onClick.emit($event)"
+>
+    <mat-icon svgIcon="avatar:{{ icon }}"></mat-icon>
+</div>

@@ -1,0 +1,41 @@
+$user-avatar-sm: 36px;
+$user-avatar-padding-sm: 4px;
+
+$user-avatar-md: 45px;
+$user-avatar-padding-md: 6px;
+
+$user-avatar-lg: 60px;
+$user-avatar-padding-lg: 10px;
+
+@mixin user-avatar-sizing($size: $user-avatar-md, $padding: $user-avatar-padding-md) {
+  height: $size;
+  width: $size;
+  padding: $padding;
+}
+
+.user-avatar {
+  text-align: center;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+
+  @include user-avatar-sizing();
+
+  &.sm {
+    @include user-avatar-sizing($user-avatar-sm, $user-avatar-padding-sm);
+  }
+
+  &.lg {
+    @include user-avatar-sizing($user-avatar-lg, $user-avatar-padding-lg);
+  }
+
+  &.select {
+    border-color: #706b68;
+    cursor: default;
+  }
+
+  > mat-icon {
+    width: 100%;
+    height: 100%;
+  }
+}
