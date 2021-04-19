@@ -1,0 +1,25 @@
+.container {
+  min-height: 100vh;
+  background-color: #eeeae6;
+}
+
+.login-box {
+  width: 100%;
+}
+
+.icon-list {
+  max-width: 200px;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+
+  > * {
+    padding: 6.5px 0;
+    height: 45px;
+    text-align: center;
+
+    > * {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
