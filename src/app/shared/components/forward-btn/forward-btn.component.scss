@@ -1,0 +1,49 @@
+.forward-btn {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 6px 12px;
+  border: 1px solid #5e5a57;
+  border-radius: 7px 16px 16px 7px;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: bold;
+  color: #44403c;
+  overflow: hidden;
+  transition: opacity .2s;
+  cursor: pointer;
+
+  &-arrow {
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 12px;
+  }
+
+  &-disabled {
+    border: 1px solid #9b958b;
+    opacity: .65;
+    cursor: default;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    transition: right .2s ease-in-out;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 100%;
+    background-color: rgba(0, 0, 0, 0.466);
+    z-index: -1;
+  }
+
+  &:not(#{forward-btn}-disabled):hover {
+    color: white;
+    border-color: rgba(0, 0, 0, 0.466);
+
+    &::before {
+      right: 0;
+    }
+  }
+}

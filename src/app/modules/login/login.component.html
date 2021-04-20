@@ -1,0 +1,35 @@
+<div class="login-container">
+    <div class="login-box">
+        <div class="user-info gap">
+            <div class="user-info-avatar">
+                <app-user-avatar
+                    [icon]="userAvatar"
+                    size="lg"
+                ></app-user-avatar>
+            </div>
+            <input
+                type="text"
+                placeholder="user name"
+                [formControl]="userName"
+            >
+        </div>
+        <button
+            class="enter gap"
+            [ngClass]="{'enter-disabled': !userName.value}"
+        >
+            <span>enter</span>
+            <span class="enter-arrow">
+                <mat-icon inline="true">east</mat-icon>
+            </span>
+        </button>
+        <div class="user-avatar-list">
+            <div *ngFor="let avatar of userAvatars">
+                <app-user-avatar
+                    [icon]="avatar"
+                    [select]="avatar === userAvatar"
+                    (click)="selectAvatar(avatar)"
+                ></app-user-avatar>
+            </div>
+        </div>
+    </div>
+</div>

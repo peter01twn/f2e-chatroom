@@ -1,10 +1,7 @@
-$user-avatar-sm: 36px;
-$user-avatar-padding-sm: 4px;
-
-$user-avatar-md: 45px;
+$user-avatar-md: 48px;
 $user-avatar-padding-md: 6px;
 
-$user-avatar-lg: 60px;
+$user-avatar-lg: 64px;
 $user-avatar-padding-lg: 10px;
 
 @mixin user-avatar-sizing($size: $user-avatar-md, $padding: $user-avatar-padding-md) {
@@ -14,22 +11,24 @@ $user-avatar-padding-lg: 10px;
 }
 
 .user-avatar {
-  text-align: center;
+  display: inline-block;
   border: 2px solid transparent;
   border-radius: 10px;
+  text-align: center;
   cursor: pointer;
+  transition: border .2s;
+
+  &:hover {
+    border-color: #a89e99;
+  }
 
   @include user-avatar-sizing();
 
-  &.sm {
-    @include user-avatar-sizing($user-avatar-sm, $user-avatar-padding-sm);
-  }
-
-  &.lg {
+  &.user-avatar-lg {
     @include user-avatar-sizing($user-avatar-lg, $user-avatar-padding-lg);
   }
 
-  &.select {
+  &.user-avatar-selected {
     border-color: #706b68;
     cursor: default;
   }

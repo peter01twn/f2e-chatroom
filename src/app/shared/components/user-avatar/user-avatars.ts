@@ -1,4 +1,4 @@
-export const Avatars: { [key: string]: string } = {
+export const UserAvatars: { [key: string]: string } = {
   cat: 'assets/images/avatars/cat.svg',
   dog: 'assets/images/avatars/dog.svg',
   'fish-fill': 'assets/images/avatars/fish-fill.svg',

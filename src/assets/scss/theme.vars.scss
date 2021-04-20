@@ -1,0 +1,44 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+
+// Define a custom typography config that overrides the font-family
+$typography: mat-typography-config(
+  $font-family: '"Source Sans Pro", sans-serif',
+  $body-1: mat-typography-level(16px, 1.5, 500)
+);
+
+$gray: (
+  100: #eeeae6,
+  500: #7e7874,
+  600: #5e5a57,
+  700: #383737,
+  text: #383737,
+  button: #44403c,
+  contrast: (
+    100: #383737,
+    500: #383737,
+    700: #eeeae6,
+  )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$primary-palette: mat-palette($gray);
+$accent-palette: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$warn-palette: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$f2e-chatroom-theme: mat-light-theme(
+  (
+    color: (
+      primary: $primary-palette,
+      accent: $accent-palette,
+      warn: $warn-palette,
+    ),
+  )
+);

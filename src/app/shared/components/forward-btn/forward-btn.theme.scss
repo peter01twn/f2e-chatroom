@@ -1,0 +1,40 @@
+@import 'theme.vars';
+
+@mixin forward-btn-color($config-or-theme: $f2e-chatroom-theme) {
+  $config: mat-get-color-config($config-or-theme);
+  $primary: map-get($config, primary);
+  $accent: map-get($config, accent);
+
+  .forward-btn {
+    background-color: mat-color($primary, 100);
+    border-color: mat-color($primary, 600);
+    color: mat-color($primary, button);
+  }
+}
+
+@mixin forward-btn-typography($config-or-theme: $f2e-chatroom-theme) {
+  $config: mat-get-typography-config($config-or-theme);
+
+  .forward-btn {
+    font: {
+      family: mat-font-family($config, body-1);
+      size: mat-font-size($config, body-1);
+      weight: mat-font-weight($config, body-1);
+    }
+  }
+}
+
+@mixin forward-btn-theme($theme: $f2e-chatroom-theme) {
+  // Extracts the color and typography configurations from the theme.
+  $color: mat-get-color-config($theme);
+  $typography: mat-get-typography-config($theme);
+
+  // Do not generate styles if configurations for individual theming
+  // systems have been explicitly set to `null`.
+  @if $color != null {
+    @include forward-btn-color($color);
+  }
+  @if $typography != null {
+    @include forward-btn-typography($typography);
+  }
+}
