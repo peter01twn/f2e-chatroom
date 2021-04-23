@@ -1,5 +1,4 @@
-@import 'theme.vars';
-@import '../../shared/components/forward-btn/forward-btn.theme.scss';
+@import "variables";
 
 .login-container {
   position: relative;
@@ -43,20 +42,18 @@
   }
 }
 
-@include forward-btn-theme();
-
 .enter {
   position: relative;
   width: 100%;
   padding: 6px 12px;
-  border: 1px solid #5e5a57;
+  border: 1px solid #7e7874;
   border-radius: 7px 16px 16px 7px;
   background-color: transparent;
   font-size: 16px;
   font-weight: bold;
   color: #44403c;
   overflow: hidden;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
   cursor: pointer;
 
   &-arrow {
@@ -66,31 +63,12 @@
   }
 
   &-disabled {
-    border: 1px solid #9b958b;
-    opacity: .65;
+    border: 1px solid #7e7874;
+    opacity: 0.65;
     cursor: default;
   }
 
-  &::before {
-    content: '';
-    position: absolute;
-    display: block;
-    transition: right .2s ease-in-out;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    right: 100%;
-    background-color: rgba(0, 0, 0, 0.466);
-    z-index: -1;
-  }
-
   &:not(#{&}-disabled):hover {
-    color: white;
-    border-color: rgba(0, 0, 0, 0.466);
-
-    &::before {
-      right: 0;
-    }
   }
 }
 

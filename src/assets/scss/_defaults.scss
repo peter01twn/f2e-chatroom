@@ -1,12 +1,11 @@
-@import './theme.vars.scss';
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   height: 100%;
 }
@@ -17,6 +16,8 @@ html, body {
   background-color: #eeeae6;
 }
 
-input, button, textarea {
-  font-family: mat-font-family($typography);
+input,
+button,
+textarea {
+  font-family: $font-family;
 }

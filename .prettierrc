@@ -8,10 +8,7 @@
   "arrowParens": "avoid",
   "overrides": [
     {
-      "files": [
-        "*.scss",
-        "*.css"
-      ],
+      "files": ["*.scss", ".*.css"],
       "options": {
         "singleQuote": false
       }
