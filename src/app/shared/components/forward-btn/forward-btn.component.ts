@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-forward-btn',
+  selector: 'app-forward-btn, [app-forward-btn]',
   templateUrl: './forward-btn.component.html',
   styleUrls: ['./forward-btn.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

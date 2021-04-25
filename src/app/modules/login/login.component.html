@@ -14,15 +14,12 @@
             >
         </div>
         <button
-            class="enter gap"
-            [ngClass]="{'enter-disabled': !userName.value}"
+            app-forward-btn
+            class="gap"
+            style="width: 100%;"
         >
-            <span>enter</span>
-            <span class="enter-arrow">
-                <mat-icon inline="true">east</mat-icon>
-            </span>
+            enter
         </button>
-        <app-forward-btn>enter</app-forward-btn>
         <div class="user-avatar-list">
             <div *ngFor="let avatar of userAvatars">
                 <app-user-avatar
