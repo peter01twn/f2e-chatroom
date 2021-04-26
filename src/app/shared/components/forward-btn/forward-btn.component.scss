@@ -1,34 +1,36 @@
+@use 'theme';
+@import "~@angular/material/theming";
+
+$font-size: 16px;
+
 .forward-btn {
   position: relative;
   display: inline-block;
-  padding: 6px 28px 6px 12px;
-  border: 1px solid #7e7874;
+  padding: 6px 34px 6px 12px;
+  border: 1px solid mat-color(theme.$gray, 500);
   border-radius: 7px 18px 18px 7px;
   background-color: transparent;
-  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  font-size: $font-size;
   font-weight: bold;
-  color: #44403c;
+  color: mat-color(theme.$gray, 700);
   transition: opacity 0.2s;
   cursor: pointer;
-  line-height: 1.25;
 
   &:focus {
     outline: none;
   }
 
-  &-block {
-    display: block;
-  }
-
   &-arrow {
     position: absolute;
-    top: calc(50% - 8px);
+    top: 50%;
     right: 12px;
-    line-height: 1;
+    height: 1em;
+    transform: translateY(-50%);
   }
 
   &-disabled {
-    border: 1px solid #7e7874;
     opacity: 0.65;
     cursor: default;
   }

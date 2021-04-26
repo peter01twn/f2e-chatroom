@@ -1,0 +1,40 @@
+<div
+    class="container"
+    style="height: 100%;"
+>
+    <mat-grid-list
+        cols="4"
+        rowHeight="100%"
+    >
+        <mat-grid-tile colspan="1">
+            <div class="side-bar-wrap">
+                <div class="side-bar">
+                    <div class="user-card-list">
+                        <app-user-info-card
+                            icon="fish"
+                            name="user name"
+                            description="user description"
+                        ></app-user-info-card>
+                        <div class="divider"></div>
+                        <app-user-info-card
+                            icon="parrot-fill"
+                            name="user name"
+                            description="user description"
+                        ></app-user-info-card>
+                        <div class="divider"></div>
+                    </div>
+                </div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="3">
+            <div class="chat-box">
+                <div class="chat-box-screen">
+                    <div class="msg-screen"></div>
+                </div>
+                <div class="chat-box-msg-input">
+                    <app-msg-input-box></app-msg-input-box>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

@@ -18,7 +18,9 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
-      "@assets": ["src/assets"]
+      "@core": ["src/core"],
+      "@assets": ["src/assets"],
+      "@shared": ["src/app/shared"]
     }
   },
   "angularCompilerOptions": {

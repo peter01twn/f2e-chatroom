@@ -1,0 +1,23 @@
+@use "theme";
+@import "~@angular/material/theming";
+
+.user-info-card {
+  display: flex;
+  padding: 16px 20px;
+  // border: 1px solid mat-color($gray, 400);
+  border-radius: 10px;
+
+  &-avatar {
+    margin-right: 16px;
+    width: 44px;
+    height: 44px;
+  }
+
+  &-title {
+    font-size: 20px;
+  }
+
+  &-desc {
+    margin-top: 6px;
+  }
+}

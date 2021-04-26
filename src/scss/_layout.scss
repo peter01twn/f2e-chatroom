@@ -1,0 +1,20 @@
+@use "theme";
+@import "~@angular/material/theming";
+
+.app {
+  min-height: 100vh;
+  height: 100%;
+  background-color: #eeeae6;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1200px;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: mat-color(theme.$gray, 300);
+}

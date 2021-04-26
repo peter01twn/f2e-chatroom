@@ -1,0 +1,65 @@
+@use "theme";
+@import "~@angular/material/theming";
+
+.msg-input-box {
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid mat-color(theme.$gray, 300);
+  border-radius: 6px;
+  overflow: hidden;
+
+  &-textarea {
+    padding: 10px 0;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid mat-color(theme.$gray, 300);
+    background-color: transparent;
+    font-size: 16px;
+    line-height: 1.25;
+    overflow-y: auto;
+    resize: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &-tool-bar {
+    display: flex;
+    padding: 10px 0;
+    font-size: 16px;
+    line-height: 1;
+  }
+}
+
+.msg-tool-list {
+  display: flex;
+  margin: 0 -4px;
+}
+
+.msg-tool-item {
+  padding: 0 4px;
+}
+
+.msg-tool {
+  position: relative;
+  padding: 0;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background-color: transparent;
+  font-size: 22px;
+  cursor: pointer;
+  user-select: none;
+
+  input {
+    position: absolute;
+    visibility: hidden;
+  }
+}
+
+.msg-submit {
+  margin: 0 0 0 auto;
+}

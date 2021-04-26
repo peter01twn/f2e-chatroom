@@ -1,0 +1,1045 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "UserInfo",
+            "id": "interface-UserInfo-e31acd7b738c76ef3d2fd81f8fe6f2e5",
+            "file": "src/app/services/user-info.service.ts",
+            "type": "interface",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { BehaviorSubject } from 'rxjs';\n\ninterface UserInfo {\n  name: string;\n  avatar: string;\n}\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class UserInfoService {\n  private userInfo: UserInfo = {\n    name: '',\n    avatar: '',\n  };\n\n  private userInfo$ = new BehaviorSubject<UserInfo>(this.userInfo);\n\n  get$ = this.userInfo$.asObservable();\n\n  set(info: UserInfo): void {\n    this.userInfo = info;\n  }\n\n  update(info: Partial<UserInfo>): void {\n    this.userInfo = { ...(this.userInfo as UserInfo), ...info };\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "avatar",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "UserInfoService",
+            "id": "injectable-UserInfoService-e31acd7b738c76ef3d2fd81f8fe6f2e5",
+            "file": "src/app/services/user-info.service.ts",
+            "properties": [
+                {
+                    "name": "get$",
+                    "defaultValue": "this.userInfo$.asObservable()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "userInfo",
+                    "defaultValue": "{\n    name: '',\n    avatar: '',\n  }",
+                    "type": "UserInfo",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "userInfo$",
+                    "defaultValue": "new BehaviorSubject<UserInfo>(this.userInfo)",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "set",
+                    "args": [
+                        {
+                            "name": "info",
+                            "type": "UserInfo"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "jsdoctags": [
+                        {
+                            "name": "info",
+                            "type": "UserInfo",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "update",
+                    "args": [
+                        {
+                            "name": "info",
+                            "type": "Partial<UserInfo>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "jsdoctags": [
+                        {
+                            "name": "info",
+                            "type": "Partial<UserInfo>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { BehaviorSubject } from 'rxjs';\n\ninterface UserInfo {\n  name: string;\n  avatar: string;\n}\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class UserInfoService {\n  private userInfo: UserInfo = {\n    name: '',\n    avatar: '',\n  };\n\n  private userInfo$ = new BehaviorSubject<UserInfo>(this.userInfo);\n\n  get$ = this.userInfo$.asObservable();\n\n  set(info: UserInfo): void {\n    this.userInfo = info;\n  }\n\n  update(info: Partial<UserInfo>): void {\n    this.userInfo = { ...(this.userInfo as UserInfo), ...info };\n  }\n}\n",
+            "type": "injectable"
+        }
+    ],
+    "classes": [
+        {
+            "name": "AppPage",
+            "id": "class-AppPage-ee2067dfb1c303f41003aea7d82d51e0",
+            "file": "e2e/src/app.po.ts",
+            "type": "class",
+            "sourceCode": "import { browser, by, element } from 'protractor';\n\nexport class AppPage {\n  async navigateTo(): Promise<unknown> {\n    return browser.get(browser.baseUrl);\n  }\n\n  async getTitleText(): Promise<string> {\n    return element(by.css('app-root .content span')).getText();\n  }\n}\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getTitleText",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<string>",
+                    "typeParameters": [],
+                    "line": 8,
+                    "modifierKind": [
+                        120
+                    ]
+                },
+                {
+                    "name": "navigateTo",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<unknown>",
+                    "typeParameters": [],
+                    "line": 4,
+                    "modifierKind": [
+                        120
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-1e4d379814e998ba784513d6a2cf232e",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<router-outlet></router-outlet>\r\n"
+        },
+        {
+            "name": "ForwardBtnComponent",
+            "id": "component-ForwardBtnComponent-9df07c760a39f812756507ec4ae14830",
+            "file": "src/app/shared/components/forward-btn/forward-btn.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-forward-btn, [app-forward-btn]",
+            "styleUrls": [
+                "./forward-btn.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./forward-btn.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "line": 27
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {\r\n  Component,\r\n  ChangeDetectionStrategy,\r\n  ViewEncapsulation,\r\n  Input,\r\n  HostBinding,\r\n  Output,\r\n  EventEmitter,\r\n  HostListener,\r\n} from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-forward-btn, [app-forward-btn]',\r\n  templateUrl: './forward-btn.component.html',\r\n  styleUrls: ['./forward-btn.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  encapsulation: ViewEncapsulation.None,\r\n  // tslint:disable-next-line: no-host-metadata-property\r\n  host: {\r\n    class: 'forward-btn',\r\n  },\r\n})\r\nexport class ForwardBtnComponent {\r\n  @HostBinding('class.forward-btn-disabled')\r\n  @HostBinding('attr.disabled')\r\n  @Input()\r\n  disabled = false;\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@use 'theme';\r\n@import \"~@angular/material/theming\";\r\n\r\n$font-size: 16px;\r\n\r\n.forward-btn {\r\n  position: relative;\r\n  display: inline-block;\r\n  padding: 6px 34px 6px 12px;\r\n  border: 1px solid mat-color(theme.$gray, 500);\r\n  border-radius: 7px 18px 18px 7px;\r\n  background-color: transparent;\r\n  font-size: $font-size;\r\n  font-weight: bold;\r\n  color: mat-color(theme.$gray, 700);\r\n  transition: opacity 0.2s;\r\n  cursor: pointer;\r\n\r\n  &:focus {\r\n    outline: none;\r\n  }\r\n\r\n  &-arrow {\r\n    position: absolute;\r\n    top: 50%;\r\n    right: 12px;\r\n    height: 1em;\r\n    transform: translateY(-50%);\r\n  }\r\n\r\n  &-disabled {\r\n    opacity: 0.65;\r\n    cursor: default;\r\n  }\r\n\r\n  &:not(#{&}-disabled):hover {\r\n  }\r\n}\r\n",
+                    "styleUrl": "./forward-btn.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<span>\r\n    <ng-content></ng-content>\r\n</span>\r\n<div class=\"forward-btn-arrow\">\r\n    <mat-icon inline=\"true\">east</mat-icon>\r\n</div>\r\n"
+        },
+        {
+            "name": "LoginComponent",
+            "id": "component-LoginComponent-57adbc7152967051fc9965a3ad8f9f51",
+            "file": "src/app/modules/login/login.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-login",
+            "styleUrls": [
+                "./login.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./login.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "userAvatar",
+                    "defaultValue": "this.userAvatars[0]",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "userAvatars",
+                    "defaultValue": "Object.keys(UserAvatars)",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "userName",
+                    "defaultValue": "this.fb.control('')",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "selectAvatar",
+                    "args": [
+                        {
+                            "name": "avatar",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "jsdoctags": [
+                        {
+                            "name": "avatar",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormBuilder } from '@angular/forms';\nimport { UserAvatars } from 'src/app/shared/components/user-avatar/user-avatars';\n\n@Component({\n  selector: 'app-login',\n  templateUrl: './login.component.html',\n  styleUrls: ['./login.component.scss'],\n})\nexport class LoginComponent {\n  userAvatars = Object.keys(UserAvatars);\n\n  userAvatar = this.userAvatars[0];\n\n  userName = this.fb.control('');\n\n  constructor(private fb: FormBuilder) {}\n\n  selectAvatar(avatar: string): void {\n    this.userAvatar = avatar;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@use \"theme\";\r\n\r\n.login-container {\r\n  position: relative;\r\n  height: 100%;\r\n}\r\n\r\n.login-box {\r\n  max-width: 400px;\r\n  position: absolute;\r\n  top: 35%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.user-avatar-list {\r\n  display: grid;\r\n  grid-template-columns: repeat(4, 25%);\r\n\r\n  > * {\r\n    padding: 4px;\r\n  }\r\n}\r\n\r\n.user-info {\r\n  display: flex;\r\n  align-items: center;\r\n\r\n  &-avatar {\r\n    margin-right: 10px;\r\n  }\r\n\r\n  input {\r\n    width: 150px;\r\n    background-color: transparent;\r\n    border: none;\r\n    font-size: 24px;\r\n\r\n    &:focus {\r\n      outline: none;\r\n    }\r\n  }\r\n}\r\n\r\n.gap {\r\n  margin-bottom: 1rem;\r\n}\r\n",
+                    "styleUrl": "./login.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder"
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<div class=\"login-container\">\r\n    <div class=\"login-box\">\r\n        <div class=\"user-info gap\">\r\n            <div class=\"user-info-avatar\">\r\n                <app-user-avatar\r\n                    [icon]=\"userAvatar\"\r\n                    size=\"lg\"\r\n                ></app-user-avatar>\r\n            </div>\r\n            <input\r\n                type=\"text\"\r\n                placeholder=\"user name\"\r\n                [formControl]=\"userName\"\r\n            >\r\n        </div>\r\n        <button\r\n            app-forward-btn\r\n            class=\"gap\"\r\n            style=\"width: 100%;\"\r\n            [disabled]=\"!userName.value\"\r\n        >\r\n            enter\r\n        </button>\r\n        <div class=\"user-avatar-list\">\r\n            <div *ngFor=\"let avatar of userAvatars\">\r\n                <app-user-avatar\r\n                    [icon]=\"avatar\"\r\n                    [select]=\"avatar === userAvatar\"\r\n                    (click)=\"selectAvatar(avatar)\"\r\n                ></app-user-avatar>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "UserAvatarComponent",
+            "id": "component-UserAvatarComponent-9f30ddc9b1904305b3df1e873adc3281",
+            "file": "src/app/shared/components/user-avatar/user-avatar.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-user-avatar",
+            "styleUrls": [
+                "./user-avatar.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./user-avatar.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'currentColor'",
+                    "line": 26
+                },
+                {
+                    "name": "icon",
+                    "line": 24,
+                    "type": "string"
+                },
+                {
+                    "name": "select",
+                    "line": 29,
+                    "type": "any"
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'md'",
+                    "line": 22,
+                    "type": "\"md\" | \"lg\""
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_select",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';\r\nimport { coerceBooleanProperty } from '@angular/cdk/coercion';\r\nimport { DomSanitizer } from '@angular/platform-browser';\r\nimport { MatIconRegistry } from '@angular/material/icon';\r\nimport { UserAvatars } from './user-avatars';\r\n\r\n@Component({\r\n  selector: 'app-user-avatar',\r\n  templateUrl: './user-avatar.component.html',\r\n  styleUrls: ['./user-avatar.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  encapsulation: ViewEncapsulation.None,\r\n  // tslint:disable-next-line: no-host-metadata-property\r\n  host: {\r\n    class: 'user-avatar',\r\n    '[class.user-avatar-lg]': 'size === \"lg\"',\r\n    '[class.user-avatar-selected]': 'select',\r\n    '[style.color]': 'color',\r\n  },\r\n})\r\nexport class UserAvatarComponent {\r\n  @Input() size: 'md' | 'lg' = 'md';\r\n\r\n  @Input() icon?: string;\r\n\r\n  @Input() color = 'currentColor';\r\n\r\n  @Input()\r\n  get select(): any {\r\n    return this._select;\r\n  }\r\n\r\n  set select(v: any) {\r\n    this._select = coerceBooleanProperty(v);\r\n  }\r\n\r\n  // tslint:disable-next-line: variable-name\r\n  private _select = false;\r\n\r\n  constructor(domSanitizer: DomSanitizer, icon: MatIconRegistry) {\r\n    for (const iconName in UserAvatars) {\r\n      if (Object.prototype.hasOwnProperty.call(UserAvatars, iconName)) {\r\n        const iconPath = UserAvatars[iconName];\r\n        icon.addSvgIconInNamespace('avatar', iconName, domSanitizer.bypassSecurityTrustResourceUrl(iconPath));\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "$user-avatar-md: 48px;\r\n$user-avatar-padding-md: 6px;\r\n\r\n$user-avatar-lg: 64px;\r\n$user-avatar-padding-lg: 10px;\r\n\r\n@mixin user-avatar-sizing($size: $user-avatar-md, $padding: $user-avatar-padding-md) {\r\n  height: $size;\r\n  width: $size;\r\n  padding: $padding;\r\n}\r\n\r\n.user-avatar {\r\n  display: inline-block;\r\n  border: 2px solid transparent;\r\n  border-radius: 10px;\r\n  text-align: center;\r\n  cursor: pointer;\r\n  transition: border .2s;\r\n\r\n  &:hover {\r\n    border-color: #a89e99;\r\n  }\r\n\r\n  @include user-avatar-sizing();\r\n\r\n  &.user-avatar-lg {\r\n    @include user-avatar-sizing($user-avatar-lg, $user-avatar-padding-lg);\r\n  }\r\n\r\n  &.user-avatar-selected {\r\n    border-color: #706b68;\r\n    cursor: default;\r\n  }\r\n\r\n  > mat-icon {\r\n    width: 100%;\r\n    height: 100%;\r\n  }\r\n}\r\n",
+                    "styleUrl": "./user-avatar.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "domSanitizer",
+                        "type": "DomSanitizer"
+                    },
+                    {
+                        "name": "icon",
+                        "type": "MatIconRegistry"
+                    }
+                ],
+                "line": 38,
+                "jsdoctags": [
+                    {
+                        "name": "domSanitizer",
+                        "type": "DomSanitizer",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "icon",
+                        "type": "MatIconRegistry",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "select": {
+                    "name": "select",
+                    "setSignature": {
+                        "name": "select",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "any"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 33,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "any",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "<mat-icon svgIcon=\"avatar:{{ icon }}\"></mat-icon>\r\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppRoutingModule"
+                        },
+                        {
+                            "name": "ChatRoomModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ChatRoomModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "LoginModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "LoginComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "LoginRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "LoginRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SharedModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ForwardBtnComponent"
+                        },
+                        {
+                            "name": "UserAvatarComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ForwardBtnComponent"
+                        },
+                        {
+                            "name": "UserAvatarComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
+            },
+            {
+                "name": "normal",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "literal type"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                "type": "ForwardBtnStory",
+                "defaultValue": "args => ({\r\n  props: args,\r\n  template: `\r\n      <button app-forward-btn>${args.content}</button>\r\n    `,\r\n})"
+            },
+            {
+                "name": "UserAvatars",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/user-avatar/user-avatars.ts",
+                "type": "literal type",
+                "defaultValue": "{\r\n  cat: 'assets/images/avatars/cat.svg',\r\n  dog: 'assets/images/avatars/dog.svg',\r\n  'fish-fill': 'assets/images/avatars/fish-fill.svg',\r\n  fish: 'assets/images/avatars/fish.svg',\r\n  'monkey-fill': 'assets/images/avatars/monkey-fill.svg',\r\n  monkey: 'assets/images/avatars/monkey.svg',\r\n  'parrot-fill': 'assets/images/avatars/parrot-fill.svg',\r\n  parrot: 'assets/images/avatars/parrot.svg',\r\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "ForwardBtnStory",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "Story<>",
+                "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                "description": "",
+                "kind": 161
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "literal type"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "src/app/shared/components/forward-btn/forward-btn.stories.ts": [
+                {
+                    "name": "normal",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                    "type": "ForwardBtnStory",
+                    "defaultValue": "args => ({\r\n  props: args,\r\n  template: `\r\n      <button app-forward-btn>${args.content}</button>\r\n    `,\r\n})"
+                }
+            ],
+            "src/app/shared/components/user-avatar/user-avatars.ts": [
+                {
+                    "name": "UserAvatars",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/user-avatar/user-avatars.ts",
+                    "type": "literal type",
+                    "defaultValue": "{\r\n  cat: 'assets/images/avatars/cat.svg',\r\n  dog: 'assets/images/avatars/dog.svg',\r\n  'fish-fill': 'assets/images/avatars/fish-fill.svg',\r\n  fish: 'assets/images/avatars/fish.svg',\r\n  'monkey-fill': 'assets/images/avatars/monkey-fill.svg',\r\n  monkey: 'assets/images/avatars/monkey.svg',\r\n  'parrot-fill': 'assets/images/avatars/parrot-fill.svg',\r\n  parrot: 'assets/images/avatars/parrot.svg',\r\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "src/app/shared/components/forward-btn/forward-btn.stories.ts": [
+                {
+                    "name": "ForwardBtnStory",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "Story<>",
+                    "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                    "description": "",
+                    "kind": 161
+                }
+            ]
+        }
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [
+                    {
+                        "path": "login",
+                        "loadChildren": "./modules/login/login.module#LoginModule",
+                        "children": [
+                            {
+                                "kind": "module",
+                                "children": [
+                                    {
+                                        "name": "routes",
+                                        "filename": "src/app/modules/login/login-routing.module.ts",
+                                        "module": "LoginRoutingModule",
+                                        "children": [
+                                            {
+                                                "path": "",
+                                                "component": "LoginComponent"
+                                            }
+                                        ],
+                                        "kind": "module"
+                                    }
+                                ],
+                                "module": "LoginModule"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "**",
+                        "redirectTo": "login"
+                    }
+                ],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "e2e/src/app.po.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AppPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/login/login.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoginComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/user-info.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "UserInfoService",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/user-info.service.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "UserInfo",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/forward-btn/forward-btn.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ForwardBtnComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "normal",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/user-avatar/user-avatar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UserAvatarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/user-avatar/user-avatars.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "UserAvatars",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

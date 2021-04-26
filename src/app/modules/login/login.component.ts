@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { UserAvatars } from 'src/app/shared/components/user-avatar/user-avatars';
+import { UserAvatars } from 'src/app/core/user-avatars';
 
 @Component({
   selector: 'app-login',
