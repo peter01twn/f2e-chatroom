@@ -4,10 +4,14 @@
 >
     <mat-grid-list
         cols="4"
-        rowHeight="100%"
+        rowHeight="20%"
+        gutterSize="0"
     >
-        <mat-grid-tile colspan="1">
-            <div class="side-bar-wrap">
+        <mat-grid-tile
+            colspan="1"
+            rowspan="5"
+        >
+            <div class="grid-block">
                 <div class="side-bar">
                     <div class="user-card-list">
                         <app-user-info-card
@@ -26,15 +30,57 @@
                 </div>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile colspan="3">
-            <div class="chat-box">
-                <div class="chat-box-screen">
-                    <div class="msg-screen"></div>
+        <mat-grid-tile
+            colspan="3"
+            rowspan="4"
+        >
+            <div class="grid-block">
+                <div class="msg-screen">
+                    <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.'};"></div>
+                    <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true};"></div>
+                    <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
                 </div>
-                <div class="chat-box-msg-input">
-                    <app-msg-input-box></app-msg-input-box>
-                </div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile
+            colspan="3"
+            rowspan="1"
+        >
+            <div class="grid-block">
+                <app-msg-input-box
+                    style="height: 100%;"
+                    maxHeight="100%"
+                ></app-msg-input-box>
             </div>
         </mat-grid-tile>
     </mat-grid-list>
 </div>
+
+<ng-template
+    #chatMsg
+    let-content="content"
+    let-right="right"
+>
+    <div
+        class="chat-msg"
+        [ngClass]="{'chat-msg-right': right}"
+    >
+        <div class="chat-msg-content">{{ content }}</div>
+        <div>
+            <button
+                [matMenuTriggerFor]="menu"
+                class="chat-msg-menu-trigger"
+            >
+                <mat-icon inline="true">more_vert</mat-icon>
+            </button>
+            <mat-menu
+                #menu="matMenu"
+                [xPosition]="right ? 'before' : 'after'"
+            >
+                <button mat-menu-item>
+                    <span>留言</span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+</ng-template>

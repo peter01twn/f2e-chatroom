@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'app-msg-input-box',
@@ -9,8 +9,9 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/
   // tslint:disable-next-line: no-host-metadata-property
   host: {
     class: 'msg-input-box',
+    '[style.max-height]': 'maxHeight',
   },
 })
 export class MsgInputBoxComponent {
-  constructor() {}
+  @Input() maxHeight: number | string = 'none';
 }

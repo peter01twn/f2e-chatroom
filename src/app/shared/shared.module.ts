@@ -9,6 +9,7 @@ import { ForwardBtnComponent } from './components/forward-btn/forward-btn.compon
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { UserInfoCardComponent } from './components/user-info-card/user-info-card.component';
 import { MsgInputBoxComponent } from './components/msg-input-box/msg-input-box.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [ForwardBtnComponent, UserAvatarComponent, UserInfoCardComponent, MsgInputBoxComponent],
@@ -20,6 +21,7 @@ import { MsgInputBoxComponent } from './components/msg-input-box/msg-input-box.c
     MatIconModule,
     MatGridListModule,
     MatButtonModule,
+    MatMenuModule,
   ],
   exports: [
     FormsModule,
@@ -32,6 +34,7 @@ import { MsgInputBoxComponent } from './components/msg-input-box/msg-input-box.c
     UserInfoCardComponent,
     MatButtonModule,
     MsgInputBoxComponent,
+    MatMenuModule,
   ],
 })
 export class SharedModule {}

@@ -12,6 +12,7 @@
   &-textarea {
     padding: 10px 0;
     width: 100%;
+    flex: 1 1;
     border: none;
     border-bottom: 1px solid mat-color(theme.$gray, 300);
     background-color: transparent;
