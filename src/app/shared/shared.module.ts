@@ -5,11 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 import { ForwardBtnComponent } from './components/forward-btn/forward-btn.component';
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { UserInfoCardComponent } from './components/user-info-card/user-info-card.component';
 import { MsgInputBoxComponent } from './components/msg-input-box/msg-input-box.component';
-import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [ForwardBtnComponent, UserAvatarComponent, UserInfoCardComponent, MsgInputBoxComponent],
@@ -22,6 +23,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatGridListModule,
     MatButtonModule,
     MatMenuModule,
+    MatTabsModule,
   ],
   exports: [
     FormsModule,
@@ -35,6 +37,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatButtonModule,
     MsgInputBoxComponent,
     MatMenuModule,
+    MatTabsModule,
   ],
 })
 export class SharedModule {}

@@ -35,11 +35,31 @@
             rowspan="4"
         >
             <div class="grid-block">
-                <div class="msg-screen">
+                <mat-tab-group animationDuration="0ms">
+                    <mat-tab label="First">
+                        <!-- <div class="msg-screen">
+                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.'};"></div>
+                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true};"></div>
+                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
+                        </div> -->
+                    </mat-tab>
+                    <mat-tab label="Second">
+                        <div class="msg-screen">
+                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.'};"></div>
+                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true};"></div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Third">
+                        <div class="msg-screen">
+                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+                <!-- <div class="msg-screen">
                     <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.'};"></div>
                     <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true};"></div>
                     <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
-                </div>
+                </div> -->
             </div>
         </mat-grid-tile>
         <mat-grid-tile

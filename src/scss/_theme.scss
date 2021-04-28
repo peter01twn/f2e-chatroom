@@ -1,3 +1,4 @@
+@import "variables";
 @import "~@angular/material/theming";
 // Plus imports for other components in your app.
 
@@ -5,25 +6,6 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat-core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$gray: (
-  100: #eeeae6,
-  200: #ddd5d0,
-  300: #bbb2ad,
-  400: #9e9691,
-  500: #7e7874,
-  600: #5e5a57,
-  700: #383737,
-  contrast: (
-    100: #383737,
-    500: #383737,
-    600: #383737,
-    700: #eeeae6,
-  ),
-);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as `color` or `typography`.
@@ -37,9 +19,6 @@ $app-theme: mat-light-theme(
 );
 
 $app-primary: mat-palette($gray);
-
-// typography
-$font-family: "Source Sans Pro", sans-serif;
 
 $custom-typography: mat-typography-config(
   $font-family: $font-family,
