@@ -1,11 +1,10 @@
-@use "theme";
-@import "~@angular/material/theming";
+@import "theme";
 
 .msg-input-box {
   padding: 0 12px;
   display: flex;
   flex-direction: column;
-  border: 1px solid mat-color(theme.$gray, 300);
+  border: 1px solid mat-color($gray, 300);
   border-radius: 6px;
   overflow: hidden;
 
@@ -14,7 +13,7 @@
     width: 100%;
     flex: 1 1;
     border: none;
-    border-bottom: 1px solid mat-color(theme.$gray, 300);
+    border-bottom: 1px solid mat-color($gray, 300);
     background-color: transparent;
     font-size: 16px;
     line-height: 1.25;

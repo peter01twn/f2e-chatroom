@@ -1,5 +1,4 @@
-@use "theme";
-@import "~@angular/material/theming";
+@import "theme";
 
 .grid-block {
   padding: 5px;
@@ -12,7 +11,7 @@
   flex-direction: column;
   padding: 0 10px;
   height: 100%;
-  border: 1px solid mat-color(theme.$gray, 300);
+  border: 1px solid mat-color($gray, 300);
   border-radius: 6px;
 
   &-content {

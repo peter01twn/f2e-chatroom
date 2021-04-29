@@ -1,5 +1,3 @@
-@use "theme";
-
 .app {
   min-height: 100vh;
   height: 100%;
@@ -15,5 +13,5 @@
 .divider {
   height: 1px;
   width: 100%;
-  background-color: mat-color(theme.$gray, 300);
+  background-color: mat-color($gray, 300);
 }

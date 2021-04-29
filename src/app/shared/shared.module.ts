@@ -14,7 +14,13 @@ import { MsgInputBoxComponent } from './components/msg-input-box/msg-input-box.c
 import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
 
 @NgModule({
-  declarations: [ForwardBtnComponent, UserAvatarComponent, UserInfoCardComponent, MsgInputBoxComponent, ChatMsgComponent],
+  declarations: [
+    ForwardBtnComponent,
+    UserAvatarComponent,
+    UserInfoCardComponent,
+    MsgInputBoxComponent,
+    ChatMsgComponent,
+  ],
   imports: [
     CommonModule,
     HttpClientModule,

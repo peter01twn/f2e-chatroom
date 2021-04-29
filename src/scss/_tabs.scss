@@ -1,6 +1,4 @@
-@use 'theme';
-
-$border-color: mat-color(theme.$gray, 300);
+$border-color: mat-color($gray, 300);
 
 .mat-tab-list.mat-tab-list {
   .mat-ink-bar {
@@ -22,7 +20,7 @@ $border-color: mat-color(theme.$gray, 300);
 }
 
 .mat-tab-label.mat-tab-label {
-  $color: mat-color(theme.$gray, 700);
+  $color: mat-color($gray, 700);
 
   height: 40px;
   padding: 0px 20px;

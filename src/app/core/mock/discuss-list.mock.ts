@@ -1,4 +1,4 @@
-import { Discussion } from '../core/entities/discussion';
+import { Discussion } from '../entities/discussion';
 
 export const DiscussList: Discussion[] = [
   {

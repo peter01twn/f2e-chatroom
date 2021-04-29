@@ -34,7 +34,7 @@
                     <mat-tab label="All">
                         <div class="msg-screen">
                             <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', discussCount: 3};"></div>
-                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true};"></div>
+                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true, discussCount: 3};"></div>
                             <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
                         </div>
                     </mat-tab>

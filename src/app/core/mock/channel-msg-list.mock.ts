@@ -1,4 +1,4 @@
-import { Message } from '../core/entities/message';
+import { Message } from '../entities/message';
 
 export const ChannelMsgList: Message[] = [
   {
