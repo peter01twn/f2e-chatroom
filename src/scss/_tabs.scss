@@ -1,10 +1,51 @@
-@use "theme";
-@import "~@angular/material/theming";
+@use 'theme';
 
-.mat-tab-label {
+$border-color: mat-color(theme.$gray, 300);
+
+.mat-tab-list.mat-tab-list {
+  .mat-ink-bar {
+    display: none;
+  }
+}
+
+.mat-tab-header.mat-tab-header {
+  border: none;
+}
+
+.mat-tab-labels.mat-tab-labels {
+  &::after {
+    content: "";
+    display: block;
+    flex: 1 1 0;
+    border-bottom: 1px solid $border-color;
+  }
+}
+
+.mat-tab-label.mat-tab-label {
+  $color: mat-color(theme.$gray, 700);
+
+  height: 40px;
+  padding: 0px 20px;
+  min-width: 100px;
+  border-bottom: 1px solid $border-color;
+  opacity: 1;
+  color: lighten($color, 35%);
+
   &-active {
-    border: 1px solid mat-color(theme.$gray, 400);
+    border: 1px solid $border-color;
     border-bottom: none;
     border-radius: 6px 6px 0 0;
+    color: $color;
   }
+}
+
+.mat-tab-group.mat-tab-group {
+  height: 100%;
+}
+
+.mat-tab-body-wrapper.mat-tab-body-wrapper {
+  height: 100%;
+  border: 1px solid $border-color;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
 }

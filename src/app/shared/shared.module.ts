@@ -11,9 +11,10 @@ import { ForwardBtnComponent } from './components/forward-btn/forward-btn.compon
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { UserInfoCardComponent } from './components/user-info-card/user-info-card.component';
 import { MsgInputBoxComponent } from './components/msg-input-box/msg-input-box.component';
+import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
 
 @NgModule({
-  declarations: [ForwardBtnComponent, UserAvatarComponent, UserInfoCardComponent, MsgInputBoxComponent],
+  declarations: [ForwardBtnComponent, UserAvatarComponent, UserInfoCardComponent, MsgInputBoxComponent, ChatMsgComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -38,6 +39,7 @@ import { MsgInputBoxComponent } from './components/msg-input-box/msg-input-box.c
     MsgInputBoxComponent,
     MatMenuModule,
     MatTabsModule,
+    ChatMsgComponent,
   ],
 })
 export class SharedModule {}

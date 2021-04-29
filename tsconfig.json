@@ -20,7 +20,9 @@
     "paths": {
       "@core": ["src/core"],
       "@assets": ["src/assets"],
-      "@shared": ["src/app/shared"]
+      "@shared": ["src/app/shared"],
+      "@mock": ["src/mock"],
+      "@entities": ["src/core/entities"]
     }
   },
   "angularCompilerOptions": {

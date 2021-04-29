@@ -1,0 +1,30 @@
+<div class="chat-msg-content">
+    <div>
+        <ng-content></ng-content>
+    </div>
+    <ng-container *ngIf="discussionCount > 0">
+        <div class="divider"></div>
+        <div class="chat-msg-tips">
+            <button
+                class="chat-msg-tip chat-msg-tip-link"
+                *ngIf="discussionCount > 0"
+            >
+                discuss({{ discussionCount }})
+            </button>
+        </div>
+    </ng-container>
+</div>
+<mat-menu
+    #menu="matMenu"
+    [xPosition]="direction === 'ltr' ? 'after' : 'before'"
+>
+    <button mat-menu-item>
+        <span>留言</span>
+    </button>
+</mat-menu>
+<button
+    [matMenuTriggerFor]="menu"
+    class="chat-msg-menu-trigger"
+>
+    <mat-icon inline="true">more_vert</mat-icon>
+</button>

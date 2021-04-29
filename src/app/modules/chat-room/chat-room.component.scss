@@ -8,28 +8,35 @@
 }
 
 .side-bar {
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
   height: 100%;
   border: 1px solid mat-color(theme.$gray, 300);
   border-radius: 6px;
-}
 
-.user-card-list {
-  > * + * {
-    margin-top: 12px;
+  &-content {
+    padding: 10px;
+    flex: 1 1;
+  }
+
+  &-footer {
+    margin-top: auto;
+  }
+
+  &-list {
+  }
+
+  &-item {
   }
 }
 
 .msg-screen {
   padding: 10px;
   height: 100%;
-  border: 1px solid mat-color(theme.$gray, 300);
-  border-radius: 6px;
 }
 
-.chat-msg {
-  display: flex;
-  align-items: center;
+.msg-wrapper {
   max-width: 60%;
   width: fit-content;
 
@@ -38,28 +45,6 @@
   }
 
   &-right {
-    margin-left: auto;
-    flex-direction: row-reverse;
-  }
-
-  &-content {
-    margin-bottom: 6px;
-    padding: 6px 10px;
-    flex: 1 1;
-    border: 1px solid mat-color(theme.$gray, 400);
-    border-radius: 6px;
-    word-wrap: break-word;
-  }
-
-  &-menu-trigger {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-
-    mat-icon {
-      width: 20px;
-      height: 20px;
-      font-size: 20px;
-    }
+    margin: 0 0 0 auto;
   }
 }

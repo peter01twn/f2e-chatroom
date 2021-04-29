@@ -13,62 +13,47 @@
         >
             <div class="grid-block">
                 <div class="side-bar">
-                    <div class="user-card-list">
+                    <div class="side-bar-content"></div>
+                    <div class="divider"></div>
+                    <div class="side-bar-footer">
                         <app-user-info-card
                             icon="fish"
                             name="user name"
                             description="user description"
                         ></app-user-info-card>
-                        <div class="divider"></div>
-                        <app-user-info-card
-                            icon="parrot-fill"
-                            name="user name"
-                            description="user description"
-                        ></app-user-info-card>
-                        <div class="divider"></div>
                     </div>
                 </div>
             </div>
         </mat-grid-tile>
         <mat-grid-tile
             colspan="3"
-            rowspan="4"
+            rowspan="3"
         >
             <div class="grid-block">
                 <mat-tab-group animationDuration="0ms">
-                    <mat-tab label="First">
-                        <!-- <div class="msg-screen">
-                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.'};"></div>
+                    <mat-tab label="All">
+                        <div class="msg-screen">
+                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', discussCount: 3};"></div>
                             <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true};"></div>
                             <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
-                        </div> -->
-                    </mat-tab>
-                    <mat-tab label="Second">
-                        <div class="msg-screen">
-                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.'};"></div>
-                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true};"></div>
                         </div>
                     </mat-tab>
-                    <mat-tab label="Third">
+                    <mat-tab label="Discussions">
                         <div class="msg-screen">
-                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
+                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.'};"></div>
+                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true};"></div>
                         </div>
                     </mat-tab>
                 </mat-tab-group>
-                <!-- <div class="msg-screen">
-                    <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.'};"></div>
-                    <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true};"></div>
-                    <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
-                </div> -->
             </div>
         </mat-grid-tile>
         <mat-grid-tile
             colspan="3"
-            rowspan="1"
+            rowspan="2"
         >
             <div class="grid-block">
                 <app-msg-input-box
-                    style="height: 100%;"
+                    style="min-height: 150px;"
                     maxHeight="100%"
                 ></app-msg-input-box>
             </div>
@@ -80,27 +65,17 @@
     #chatMsg
     let-content="content"
     let-right="right"
+    let-discussCount="discussCount"
 >
     <div
-        class="chat-msg"
-        [ngClass]="{'chat-msg-right': right}"
+        class="msg-wrapper"
+        [ngClass]="{'msg-wrapper-right': right}"
     >
-        <div class="chat-msg-content">{{ content }}</div>
-        <div>
-            <button
-                [matMenuTriggerFor]="menu"
-                class="chat-msg-menu-trigger"
-            >
-                <mat-icon inline="true">more_vert</mat-icon>
-            </button>
-            <mat-menu
-                #menu="matMenu"
-                [xPosition]="right ? 'before' : 'after'"
-            >
-                <button mat-menu-item>
-                    <span>留言</span>
-                </button>
-            </mat-menu>
-        </div>
+        <app-chat-msg
+            [discussionCount]="discussCount"
+            [direction]="right ? 'rtl' : 'ltr'"
+        >
+            {{ content }}
+        </app-chat-msg>
     </div>
 </ng-template>

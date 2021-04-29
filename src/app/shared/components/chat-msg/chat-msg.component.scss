@@ -1,0 +1,56 @@
+@import "theme";
+
+.chat-msg {
+  display: inline-flex;
+  align-items: flex-start;
+
+  .divider {
+    margin: 4px 0;
+  }
+
+  &-rtl {
+    flex-direction: row-reverse;
+  }
+
+  &-content {
+    padding: 6px 10px;
+    flex: 1 1;
+    border: 1px solid mat-color($gray, 400);
+    border-radius: 6px;
+    word-wrap: break-word;
+  }
+
+  &-tips {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &-tip {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+
+    &-link {
+      color: #2177b9;
+      opacity: 0.7;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-menu-trigger {
+    padding: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
