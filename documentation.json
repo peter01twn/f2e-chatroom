@@ -1,1015 +1,1699 @@
 {
-  "pipes": [],
-  "interfaces": [
-    {
-      "name": "UserInfo",
-      "id": "interface-UserInfo-e31acd7b738c76ef3d2fd81f8fe6f2e5",
-      "file": "src/app/services/user-info.service.ts",
-      "type": "interface",
-      "sourceCode": "import { Injectable } from '@angular/core';\nimport { BehaviorSubject } from 'rxjs';\n\ninterface UserInfo {\n  name: string;\n  avatar: string;\n}\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class UserInfoService {\n  private userInfo: UserInfo = {\n    name: '',\n    avatar: '',\n  };\n\n  private userInfo$ = new BehaviorSubject<UserInfo>(this.userInfo);\n\n  get$ = this.userInfo$.asObservable();\n\n  set(info: UserInfo): void {\n    this.userInfo = info;\n  }\n\n  update(info: Partial<UserInfo>): void {\n    this.userInfo = { ...(this.userInfo as UserInfo), ...info };\n  }\n}\n",
-      "properties": [
+    "pipes": [],
+    "interfaces": [
         {
-          "name": "avatar",
-          "type": "string",
-          "optional": false,
-          "description": "",
-          "line": 6
-        },
-        {
-          "name": "name",
-          "type": "string",
-          "optional": false,
-          "description": "",
-          "line": 5
-        }
-      ],
-      "indexSignatures": [],
-      "kind": 150,
-      "methods": []
-    }
-  ],
-  "injectables": [
-    {
-      "name": "UserInfoService",
-      "id": "injectable-UserInfoService-e31acd7b738c76ef3d2fd81f8fe6f2e5",
-      "file": "src/app/services/user-info.service.ts",
-      "properties": [
-        {
-          "name": "get$",
-          "defaultValue": "this.userInfo$.asObservable()",
-          "type": "",
-          "optional": false,
-          "description": "",
-          "line": 20
-        },
-        {
-          "name": "userInfo",
-          "defaultValue": "{\n    name: '',\n    avatar: '',\n  }",
-          "type": "UserInfo",
-          "optional": false,
-          "description": "",
-          "line": 13,
-          "modifierKind": [112]
-        },
-        {
-          "name": "userInfo$",
-          "defaultValue": "new BehaviorSubject<UserInfo>(this.userInfo)",
-          "type": "",
-          "optional": false,
-          "description": "",
-          "line": 18,
-          "modifierKind": [112]
-        }
-      ],
-      "methods": [
-        {
-          "name": "set",
-          "args": [
-            {
-              "name": "info",
-              "type": "UserInfo"
-            }
-          ],
-          "optional": false,
-          "returnType": "void",
-          "typeParameters": [],
-          "line": 22,
-          "jsdoctags": [
-            {
-              "name": "info",
-              "type": "UserInfo",
-              "tagName": {
-                "text": "param"
-              }
-            }
-          ]
-        },
-        {
-          "name": "update",
-          "args": [
-            {
-              "name": "info",
-              "type": "Partial<UserInfo>"
-            }
-          ],
-          "optional": false,
-          "returnType": "void",
-          "typeParameters": [],
-          "line": 26,
-          "jsdoctags": [
-            {
-              "name": "info",
-              "type": "Partial<UserInfo>",
-              "tagName": {
-                "text": "param"
-              }
-            }
-          ]
-        }
-      ],
-      "description": "",
-      "sourceCode": "import { Injectable } from '@angular/core';\nimport { BehaviorSubject } from 'rxjs';\n\ninterface UserInfo {\n  name: string;\n  avatar: string;\n}\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class UserInfoService {\n  private userInfo: UserInfo = {\n    name: '',\n    avatar: '',\n  };\n\n  private userInfo$ = new BehaviorSubject<UserInfo>(this.userInfo);\n\n  get$ = this.userInfo$.asObservable();\n\n  set(info: UserInfo): void {\n    this.userInfo = info;\n  }\n\n  update(info: Partial<UserInfo>): void {\n    this.userInfo = { ...(this.userInfo as UserInfo), ...info };\n  }\n}\n",
-      "type": "injectable"
-    }
-  ],
-  "classes": [
-    {
-      "name": "AppPage",
-      "id": "class-AppPage-ee2067dfb1c303f41003aea7d82d51e0",
-      "file": "e2e/src/app.po.ts",
-      "type": "class",
-      "sourceCode": "import { browser, by, element } from 'protractor';\n\nexport class AppPage {\n  async navigateTo(): Promise<unknown> {\n    return browser.get(browser.baseUrl);\n  }\n\n  async getTitleText(): Promise<string> {\n    return element(by.css('app-root .content span')).getText();\n  }\n}\n",
-      "properties": [],
-      "methods": [
-        {
-          "name": "getTitleText",
-          "args": [],
-          "optional": false,
-          "returnType": "Promise<string>",
-          "typeParameters": [],
-          "line": 8,
-          "modifierKind": [120]
-        },
-        {
-          "name": "navigateTo",
-          "args": [],
-          "optional": false,
-          "returnType": "Promise<unknown>",
-          "typeParameters": [],
-          "line": 4,
-          "modifierKind": [120]
-        }
-      ],
-      "indexSignatures": [],
-      "inputsClass": [],
-      "outputsClass": [],
-      "hostBindings": [],
-      "hostListeners": []
-    }
-  ],
-  "directives": [],
-  "components": [
-    {
-      "name": "AppComponent",
-      "id": "component-AppComponent-1e4d379814e998ba784513d6a2cf232e",
-      "file": "src/app/app.component.ts",
-      "encapsulation": [],
-      "entryComponents": [],
-      "inputs": [],
-      "outputs": [],
-      "providers": [],
-      "selector": "app-root",
-      "styleUrls": ["./app.component.scss"],
-      "styles": [],
-      "templateUrl": ["./app.component.html"],
-      "viewProviders": [],
-      "inputsClass": [],
-      "outputsClass": [],
-      "propertiesClass": [],
-      "methodsClass": [],
-      "hostBindings": [],
-      "hostListeners": [],
-      "description": "",
-      "rawdescription": "",
-      "type": "component",
-      "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {}\n",
-      "assetsDirs": [],
-      "styleUrlsData": [
-        {
-          "data": "",
-          "styleUrl": "./app.component.scss"
-        }
-      ],
-      "stylesData": "",
-      "templateData": "<router-outlet></router-outlet>\r\n"
-    },
-    {
-      "name": "ForwardBtnComponent",
-      "id": "component-ForwardBtnComponent-9df07c760a39f812756507ec4ae14830",
-      "file": "src/app/shared/components/forward-btn/forward-btn.component.ts",
-      "changeDetection": "ChangeDetectionStrategy.OnPush",
-      "encapsulation": ["ViewEncapsulation.None"],
-      "entryComponents": [],
-      "host": {},
-      "inputs": [],
-      "outputs": [],
-      "providers": [],
-      "selector": "app-forward-btn, [app-forward-btn]",
-      "styleUrls": ["./forward-btn.component.scss"],
-      "styles": [],
-      "templateUrl": ["./forward-btn.component.html"],
-      "viewProviders": [],
-      "inputsClass": [
-        {
-          "name": "disabled",
-          "defaultValue": "false",
-          "line": 27
-        }
-      ],
-      "outputsClass": [],
-      "propertiesClass": [],
-      "methodsClass": [],
-      "hostBindings": [],
-      "hostListeners": [],
-      "description": "",
-      "rawdescription": "",
-      "type": "component",
-      "sourceCode": "import {\r\n  Component,\r\n  ChangeDetectionStrategy,\r\n  ViewEncapsulation,\r\n  Input,\r\n  HostBinding,\r\n  Output,\r\n  EventEmitter,\r\n  HostListener,\r\n} from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-forward-btn, [app-forward-btn]',\r\n  templateUrl: './forward-btn.component.html',\r\n  styleUrls: ['./forward-btn.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  encapsulation: ViewEncapsulation.None,\r\n  // tslint:disable-next-line: no-host-metadata-property\r\n  host: {\r\n    class: 'forward-btn',\r\n  },\r\n})\r\nexport class ForwardBtnComponent {\r\n  @HostBinding('class.forward-btn-disabled')\r\n  @HostBinding('attr.disabled')\r\n  @Input()\r\n  disabled = false;\r\n}\r\n",
-      "assetsDirs": [],
-      "styleUrlsData": [
-        {
-          "data": "@import 'theme';\r\n@import \"~@angular/material/theming\";\r\n\r\n$font-size: 16px;\r\n\r\n.forward-btn {\r\n  position: relative;\r\n  display: inline-block;\r\n  padding: 6px 34px 6px 12px;\r\n  border: 1px solid mat-color(theme.$gray, 500);\r\n  border-radius: 7px 18px 18px 7px;\r\n  background-color: transparent;\r\n  font-size: $font-size;\r\n  font-weight: bold;\r\n  color: mat-color(theme.$gray, 700);\r\n  transition: opacity 0.2s;\r\n  cursor: pointer;\r\n\r\n  &:focus {\r\n    outline: none;\r\n  }\r\n\r\n  &-arrow {\r\n    position: absolute;\r\n    top: 50%;\r\n    right: 12px;\r\n    height: 1em;\r\n    transform: translateY(-50%);\r\n  }\r\n\r\n  &-disabled {\r\n    opacity: 0.65;\r\n    cursor: default;\r\n  }\r\n\r\n  &:not(#{&}-disabled):hover {\r\n  }\r\n}\r\n",
-          "styleUrl": "./forward-btn.component.scss"
-        }
-      ],
-      "stylesData": "",
-      "templateData": "<span>\r\n    <ng-content></ng-content>\r\n</span>\r\n<div class=\"forward-btn-arrow\">\r\n    <mat-icon inline=\"true\">east</mat-icon>\r\n</div>\r\n"
-    },
-    {
-      "name": "LoginComponent",
-      "id": "component-LoginComponent-57adbc7152967051fc9965a3ad8f9f51",
-      "file": "src/app/modules/login/login.component.ts",
-      "encapsulation": [],
-      "entryComponents": [],
-      "inputs": [],
-      "outputs": [],
-      "providers": [],
-      "selector": "app-login",
-      "styleUrls": ["./login.component.scss"],
-      "styles": [],
-      "templateUrl": ["./login.component.html"],
-      "viewProviders": [],
-      "inputsClass": [],
-      "outputsClass": [],
-      "propertiesClass": [
-        {
-          "name": "userAvatar",
-          "defaultValue": "this.userAvatars[0]",
-          "type": "",
-          "optional": false,
-          "description": "",
-          "line": 13
-        },
-        {
-          "name": "userAvatars",
-          "defaultValue": "Object.keys(UserAvatars)",
-          "type": "",
-          "optional": false,
-          "description": "",
-          "line": 11
-        },
-        {
-          "name": "userName",
-          "defaultValue": "this.fb.control('')",
-          "type": "",
-          "optional": false,
-          "description": "",
-          "line": 15
-        }
-      ],
-      "methodsClass": [
-        {
-          "name": "selectAvatar",
-          "args": [
-            {
-              "name": "avatar",
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "returnType": "void",
-          "typeParameters": [],
-          "line": 19,
-          "jsdoctags": [
-            {
-              "name": "avatar",
-              "type": "string",
-              "tagName": {
-                "text": "param"
-              }
-            }
-          ]
-        }
-      ],
-      "hostBindings": [],
-      "hostListeners": [],
-      "description": "",
-      "rawdescription": "",
-      "type": "component",
-      "sourceCode": "import { Component } from '@angular/core';\nimport { FormBuilder } from '@angular/forms';\nimport { UserAvatars } from 'src/app/shared/components/user-avatar/user-avatars';\n\n@Component({\n  selector: 'app-login',\n  templateUrl: './login.component.html',\n  styleUrls: ['./login.component.scss'],\n})\nexport class LoginComponent {\n  userAvatars = Object.keys(UserAvatars);\n\n  userAvatar = this.userAvatars[0];\n\n  userName = this.fb.control('');\n\n  constructor(private fb: FormBuilder) {}\n\n  selectAvatar(avatar: string): void {\n    this.userAvatar = avatar;\n  }\n}\n",
-      "assetsDirs": [],
-      "styleUrlsData": [
-        {
-          "data": "@use \"theme\";\r\n\r\n.login-container {\r\n  position: relative;\r\n  height: 100%;\r\n}\r\n\r\n.login-box {\r\n  max-width: 400px;\r\n  position: absolute;\r\n  top: 35%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.user-avatar-list {\r\n  display: grid;\r\n  grid-template-columns: repeat(4, 25%);\r\n\r\n  > * {\r\n    padding: 4px;\r\n  }\r\n}\r\n\r\n.user-info {\r\n  display: flex;\r\n  align-items: center;\r\n\r\n  &-avatar {\r\n    margin-right: 10px;\r\n  }\r\n\r\n  input {\r\n    width: 150px;\r\n    background-color: transparent;\r\n    border: none;\r\n    font-size: 24px;\r\n\r\n    &:focus {\r\n      outline: none;\r\n    }\r\n  }\r\n}\r\n\r\n.gap {\r\n  margin-bottom: 1rem;\r\n}\r\n",
-          "styleUrl": "./login.component.scss"
-        }
-      ],
-      "stylesData": "",
-      "constructorObj": {
-        "name": "constructor",
-        "description": "",
-        "args": [
-          {
-            "name": "fb",
-            "type": "FormBuilder"
-          }
-        ],
-        "line": 15,
-        "jsdoctags": [
-          {
-            "name": "fb",
-            "type": "FormBuilder",
-            "tagName": {
-              "text": "param"
-            }
-          }
-        ]
-      },
-      "templateData": "<div class=\"login-container\">\r\n    <div class=\"login-box\">\r\n        <div class=\"user-info gap\">\r\n            <div class=\"user-info-avatar\">\r\n                <app-user-avatar\r\n                    [icon]=\"userAvatar\"\r\n                    size=\"lg\"\r\n                ></app-user-avatar>\r\n            </div>\r\n            <input\r\n                type=\"text\"\r\n                placeholder=\"user name\"\r\n                [formControl]=\"userName\"\r\n            >\r\n        </div>\r\n        <button\r\n            app-forward-btn\r\n            class=\"gap\"\r\n            style=\"width: 100%;\"\r\n            [disabled]=\"!userName.value\"\r\n        >\r\n            enter\r\n        </button>\r\n        <div class=\"user-avatar-list\">\r\n            <div *ngFor=\"let avatar of userAvatars\">\r\n                <app-user-avatar\r\n                    [icon]=\"avatar\"\r\n                    [select]=\"avatar === userAvatar\"\r\n                    (click)=\"selectAvatar(avatar)\"\r\n                ></app-user-avatar>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
-    },
-    {
-      "name": "UserAvatarComponent",
-      "id": "component-UserAvatarComponent-9f30ddc9b1904305b3df1e873adc3281",
-      "file": "src/app/shared/components/user-avatar/user-avatar.component.ts",
-      "changeDetection": "ChangeDetectionStrategy.OnPush",
-      "encapsulation": ["ViewEncapsulation.None"],
-      "entryComponents": [],
-      "host": {},
-      "inputs": [],
-      "outputs": [],
-      "providers": [],
-      "selector": "app-user-avatar",
-      "styleUrls": ["./user-avatar.component.scss"],
-      "styles": [],
-      "templateUrl": ["./user-avatar.component.html"],
-      "viewProviders": [],
-      "inputsClass": [
-        {
-          "name": "color",
-          "defaultValue": "'currentColor'",
-          "line": 26
-        },
-        {
-          "name": "icon",
-          "line": 24,
-          "type": "string"
-        },
-        {
-          "name": "select",
-          "line": 29,
-          "type": "any"
-        },
-        {
-          "name": "size",
-          "defaultValue": "'md'",
-          "line": 22,
-          "type": "\"md\" | \"lg\""
-        }
-      ],
-      "outputsClass": [],
-      "propertiesClass": [
-        {
-          "name": "_select",
-          "defaultValue": "false",
-          "type": "",
-          "optional": false,
-          "description": "",
-          "line": 38,
-          "modifierKind": [112]
-        }
-      ],
-      "methodsClass": [],
-      "hostBindings": [],
-      "hostListeners": [],
-      "description": "",
-      "rawdescription": "",
-      "type": "component",
-      "sourceCode": "import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';\r\nimport { coerceBooleanProperty } from '@angular/cdk/coercion';\r\nimport { DomSanitizer } from '@angular/platform-browser';\r\nimport { MatIconRegistry } from '@angular/material/icon';\r\nimport { UserAvatars } from './user-avatars';\r\n\r\n@Component({\r\n  selector: 'app-user-avatar',\r\n  templateUrl: './user-avatar.component.html',\r\n  styleUrls: ['./user-avatar.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  encapsulation: ViewEncapsulation.None,\r\n  // tslint:disable-next-line: no-host-metadata-property\r\n  host: {\r\n    class: 'user-avatar',\r\n    '[class.user-avatar-lg]': 'size === \"lg\"',\r\n    '[class.user-avatar-selected]': 'select',\r\n    '[style.color]': 'color',\r\n  },\r\n})\r\nexport class UserAvatarComponent {\r\n  @Input() size: 'md' | 'lg' = 'md';\r\n\r\n  @Input() icon?: string;\r\n\r\n  @Input() color = 'currentColor';\r\n\r\n  @Input()\r\n  get select(): any {\r\n    return this._select;\r\n  }\r\n\r\n  set select(v: any) {\r\n    this._select = coerceBooleanProperty(v);\r\n  }\r\n\r\n  // tslint:disable-next-line: variable-name\r\n  private _select = false;\r\n\r\n  constructor(domSanitizer: DomSanitizer, icon: MatIconRegistry) {\r\n    for (const iconName in UserAvatars) {\r\n      if (Object.prototype.hasOwnProperty.call(UserAvatars, iconName)) {\r\n        const iconPath = UserAvatars[iconName];\r\n        icon.addSvgIconInNamespace('avatar', iconName, domSanitizer.bypassSecurityTrustResourceUrl(iconPath));\r\n      }\r\n    }\r\n  }\r\n}\r\n",
-      "assetsDirs": [],
-      "styleUrlsData": [
-        {
-          "data": "$user-avatar-md: 48px;\r\n$user-avatar-padding-md: 6px;\r\n\r\n$user-avatar-lg: 64px;\r\n$user-avatar-padding-lg: 10px;\r\n\r\n@mixin user-avatar-sizing($size: $user-avatar-md, $padding: $user-avatar-padding-md) {\r\n  height: $size;\r\n  width: $size;\r\n  padding: $padding;\r\n}\r\n\r\n.user-avatar {\r\n  display: inline-block;\r\n  border: 2px solid transparent;\r\n  border-radius: 10px;\r\n  text-align: center;\r\n  cursor: pointer;\r\n  transition: border .2s;\r\n\r\n  &:hover {\r\n    border-color: #a89e99;\r\n  }\r\n\r\n  @include user-avatar-sizing();\r\n\r\n  &.user-avatar-lg {\r\n    @include user-avatar-sizing($user-avatar-lg, $user-avatar-padding-lg);\r\n  }\r\n\r\n  &.user-avatar-selected {\r\n    border-color: #706b68;\r\n    cursor: default;\r\n  }\r\n\r\n  > mat-icon {\r\n    width: 100%;\r\n    height: 100%;\r\n  }\r\n}\r\n",
-          "styleUrl": "./user-avatar.component.scss"
-        }
-      ],
-      "stylesData": "",
-      "constructorObj": {
-        "name": "constructor",
-        "description": "",
-        "args": [
-          {
-            "name": "domSanitizer",
-            "type": "DomSanitizer"
-          },
-          {
-            "name": "icon",
-            "type": "MatIconRegistry"
-          }
-        ],
-        "line": 38,
-        "jsdoctags": [
-          {
-            "name": "domSanitizer",
-            "type": "DomSanitizer",
-            "tagName": {
-              "text": "param"
-            }
-          },
-          {
-            "name": "icon",
-            "type": "MatIconRegistry",
-            "tagName": {
-              "text": "param"
-            }
-          }
-        ]
-      },
-      "accessors": {
-        "select": {
-          "name": "select",
-          "setSignature": {
-            "name": "select",
-            "type": "void",
-            "args": [
-              {
-                "name": "v",
-                "type": "any"
-              }
-            ],
-            "returnType": "void",
-            "line": 33,
-            "jsdoctags": [
-              {
-                "name": "v",
-                "type": "any",
-                "tagName": {
-                  "text": "param"
+            "name": "Discussion",
+            "id": "interface-Discussion-3afd3ceda502cc9074b88d77f69f2573",
+            "file": "src/app/core/entities/discussion.ts",
+            "type": "interface",
+            "sourceCode": "export interface Discussion {\r\n  id: string;\r\n  owner: string;\r\n  messageId: string;\r\n  content: string;\r\n  createTime: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "content",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "createTime",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "messageId",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "owner",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
                 }
-              }
-            ]
-          }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "Message",
+            "id": "interface-Message-c986c09f1e1add9c90c9929f2d3d6bcf",
+            "file": "src/app/core/entities/message.ts",
+            "type": "interface",
+            "sourceCode": "export interface Message {\r\n  id: string;\r\n  owner: string;\r\n  channel: string;\r\n  discussCount: number;\r\n  content: string;\r\n  createTime: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "channel",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "content",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "createTime",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "discussCount",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "owner",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "UserInfo",
+            "id": "interface-UserInfo-e31acd7b738c76ef3d2fd81f8fe6f2e5",
+            "file": "src/app/services/user-info/user-info.service.ts",
+            "type": "interface",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { BehaviorSubject } from 'rxjs';\n\ninterface UserInfo {\n  name: string;\n  avatar: string;\n}\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class UserInfoService {\n  private userInfo: UserInfo = {\n    name: '',\n    avatar: '',\n  };\n\n  private userInfo$ = new BehaviorSubject<UserInfo>(this.userInfo);\n\n  get$ = this.userInfo$.asObservable();\n\n  set(info: UserInfo): void {\n    this.userInfo = info;\n  }\n\n  update(info: Partial<UserInfo>): void {\n    this.userInfo = { ...(this.userInfo as UserInfo), ...info };\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "avatar",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
         }
-      },
-      "templateData": "<mat-icon svgIcon=\"avatar:{{ icon }}\"></mat-icon>\r\n"
-    }
-  ],
-  "modules": [
-    {
-      "name": "AppModule",
-      "children": [
-        {
-          "type": "providers",
-          "elements": []
-        },
-        {
-          "type": "declarations",
-          "elements": [
-            {
-              "name": "AppComponent"
-            }
-          ]
-        },
-        {
-          "type": "imports",
-          "elements": [
-            {
-              "name": "AppRoutingModule"
-            },
-            {
-              "name": "ChatRoomModule"
-            },
-            {
-              "name": "SharedModule"
-            }
-          ]
-        },
-        {
-          "type": "exports",
-          "elements": []
-        },
-        {
-          "type": "bootstrap",
-          "elements": [
-            {
-              "name": "AppComponent"
-            }
-          ]
-        },
-        {
-          "type": "classes",
-          "elements": []
-        }
-      ]
-    },
-    {
-      "name": "AppRoutingModule",
-      "children": [
-        {
-          "type": "providers",
-          "elements": []
-        },
-        {
-          "type": "declarations",
-          "elements": []
-        },
-        {
-          "type": "imports",
-          "elements": []
-        },
-        {
-          "type": "exports",
-          "elements": []
-        },
-        {
-          "type": "bootstrap",
-          "elements": []
-        },
-        {
-          "type": "classes",
-          "elements": []
-        }
-      ]
-    },
-    {
-      "name": "ChatRoomModule",
-      "children": [
-        {
-          "type": "providers",
-          "elements": []
-        },
-        {
-          "type": "declarations",
-          "elements": []
-        },
-        {
-          "type": "imports",
-          "elements": [
-            {
-              "name": "SharedModule"
-            }
-          ]
-        },
-        {
-          "type": "exports",
-          "elements": []
-        },
-        {
-          "type": "bootstrap",
-          "elements": []
-        },
-        {
-          "type": "classes",
-          "elements": []
-        }
-      ]
-    },
-    {
-      "name": "LoginModule",
-      "children": [
-        {
-          "type": "providers",
-          "elements": []
-        },
-        {
-          "type": "declarations",
-          "elements": [
-            {
-              "name": "LoginComponent"
-            }
-          ]
-        },
-        {
-          "type": "imports",
-          "elements": [
-            {
-              "name": "LoginRoutingModule"
-            },
-            {
-              "name": "SharedModule"
-            }
-          ]
-        },
-        {
-          "type": "exports",
-          "elements": []
-        },
-        {
-          "type": "bootstrap",
-          "elements": []
-        },
-        {
-          "type": "classes",
-          "elements": []
-        }
-      ]
-    },
-    {
-      "name": "LoginRoutingModule",
-      "children": [
-        {
-          "type": "providers",
-          "elements": []
-        },
-        {
-          "type": "declarations",
-          "elements": []
-        },
-        {
-          "type": "imports",
-          "elements": []
-        },
-        {
-          "type": "exports",
-          "elements": []
-        },
-        {
-          "type": "bootstrap",
-          "elements": []
-        },
-        {
-          "type": "classes",
-          "elements": []
-        }
-      ]
-    },
-    {
-      "name": "SharedModule",
-      "children": [
-        {
-          "type": "providers",
-          "elements": []
-        },
-        {
-          "type": "declarations",
-          "elements": [
-            {
-              "name": "ForwardBtnComponent"
-            },
-            {
-              "name": "UserAvatarComponent"
-            }
-          ]
-        },
-        {
-          "type": "imports",
-          "elements": []
-        },
-        {
-          "type": "exports",
-          "elements": [
-            {
-              "name": "ForwardBtnComponent"
-            },
-            {
-              "name": "UserAvatarComponent"
-            }
-          ]
-        },
-        {
-          "type": "bootstrap",
-          "elements": []
-        },
-        {
-          "type": "classes",
-          "elements": []
-        }
-      ]
-    }
-  ],
-  "miscellaneous": {
-    "variables": [
-      {
-        "name": "context",
-        "ctype": "miscellaneous",
-        "subtype": "variable",
-        "file": "src/test.ts",
-        "type": "",
-        "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
-      },
-      {
-        "name": "environment",
-        "ctype": "miscellaneous",
-        "subtype": "variable",
-        "file": "src/environments/environment.prod.ts",
-        "type": "object",
-        "defaultValue": "{\n  production: true\n}"
-      },
-      {
-        "name": "environment",
-        "ctype": "miscellaneous",
-        "subtype": "variable",
-        "file": "src/environments/environment.ts",
-        "type": "object",
-        "defaultValue": "{\n  production: false\n}"
-      },
-      {
-        "name": "normal",
-        "ctype": "miscellaneous",
-        "subtype": "variable",
-        "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
-        "type": "",
-        "defaultValue": "Template.bind({})"
-      },
-      {
-        "name": "require",
-        "ctype": "miscellaneous",
-        "subtype": "variable",
-        "file": "src/test.ts",
-        "type": "literal type"
-      },
-      {
-        "name": "Template",
-        "ctype": "miscellaneous",
-        "subtype": "variable",
-        "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
-        "type": "ForwardBtnStory",
-        "defaultValue": "args => ({\r\n  props: args,\r\n  template: `\r\n      <button app-forward-btn>${args.content}</button>\r\n    `,\r\n})"
-      },
-      {
-        "name": "UserAvatars",
-        "ctype": "miscellaneous",
-        "subtype": "variable",
-        "file": "src/app/shared/components/user-avatar/user-avatars.ts",
-        "type": "literal type",
-        "defaultValue": "{\r\n  cat: 'assets/images/avatars/cat.svg',\r\n  dog: 'assets/images/avatars/dog.svg',\r\n  'fish-fill': 'assets/images/avatars/fish-fill.svg',\r\n  fish: 'assets/images/avatars/fish.svg',\r\n  'monkey-fill': 'assets/images/avatars/monkey-fill.svg',\r\n  monkey: 'assets/images/avatars/monkey.svg',\r\n  'parrot-fill': 'assets/images/avatars/parrot-fill.svg',\r\n  parrot: 'assets/images/avatars/parrot.svg',\r\n}"
-      }
     ],
-    "functions": [],
-    "typealiases": [
-      {
-        "name": "ForwardBtnStory",
-        "ctype": "miscellaneous",
-        "subtype": "typealias",
-        "rawtype": "Story<>",
-        "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
-        "description": "",
-        "kind": 161
-      }
-    ],
-    "enumerations": [],
-    "groupedVariables": {
-      "src/test.ts": [
+    "injectables": [
         {
-          "name": "context",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/test.ts",
-          "type": "",
-          "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            "name": "ChatMessageService",
+            "id": "injectable-ChatMessageService-21b28c1703b3521ea376e2abe6a1297e",
+            "file": "src/app/services/chat-message/chat-message.service.ts",
+            "properties": [],
+            "methods": [],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ChatMessageService {\n  constructor() {}\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 6
+            },
+            "type": "injectable"
         },
         {
-          "name": "require",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/test.ts",
-          "type": "literal type"
-        }
-      ],
-      "src/environments/environment.prod.ts": [
-        {
-          "name": "environment",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/environments/environment.prod.ts",
-          "type": "object",
-          "defaultValue": "{\n  production: true\n}"
-        }
-      ],
-      "src/environments/environment.ts": [
-        {
-          "name": "environment",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/environments/environment.ts",
-          "type": "object",
-          "defaultValue": "{\n  production: false\n}"
-        }
-      ],
-      "src/app/shared/components/forward-btn/forward-btn.stories.ts": [
-        {
-          "name": "normal",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
-          "type": "",
-          "defaultValue": "Template.bind({})"
-        },
-        {
-          "name": "Template",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
-          "type": "ForwardBtnStory",
-          "defaultValue": "args => ({\r\n  props: args,\r\n  template: `\r\n      <button app-forward-btn>${args.content}</button>\r\n    `,\r\n})"
-        }
-      ],
-      "src/app/shared/components/user-avatar/user-avatars.ts": [
-        {
-          "name": "UserAvatars",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/app/shared/components/user-avatar/user-avatars.ts",
-          "type": "literal type",
-          "defaultValue": "{\r\n  cat: 'assets/images/avatars/cat.svg',\r\n  dog: 'assets/images/avatars/dog.svg',\r\n  'fish-fill': 'assets/images/avatars/fish-fill.svg',\r\n  fish: 'assets/images/avatars/fish.svg',\r\n  'monkey-fill': 'assets/images/avatars/monkey-fill.svg',\r\n  monkey: 'assets/images/avatars/monkey.svg',\r\n  'parrot-fill': 'assets/images/avatars/parrot-fill.svg',\r\n  parrot: 'assets/images/avatars/parrot.svg',\r\n}"
-        }
-      ]
-    },
-    "groupedFunctions": {},
-    "groupedEnumerations": {},
-    "groupedTypeAliases": {
-      "src/app/shared/components/forward-btn/forward-btn.stories.ts": [
-        {
-          "name": "ForwardBtnStory",
-          "ctype": "miscellaneous",
-          "subtype": "typealias",
-          "rawtype": "Story<>",
-          "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
-          "description": "",
-          "kind": 161
-        }
-      ]
-    }
-  },
-  "routes": {
-    "name": "<root>",
-    "kind": "module",
-    "className": "AppModule",
-    "children": [
-      {
-        "name": "routes",
-        "filename": "src/app/app-routing.module.ts",
-        "module": "AppRoutingModule",
-        "children": [
-          {
-            "path": "login",
-            "loadChildren": "./modules/login/login.module#LoginModule",
-            "children": [
-              {
-                "kind": "module",
-                "children": [
-                  {
-                    "name": "routes",
-                    "filename": "src/app/modules/login/login-routing.module.ts",
-                    "module": "LoginRoutingModule",
-                    "children": [
-                      {
-                        "path": "",
-                        "component": "LoginComponent"
-                      }
+            "name": "UserInfoService",
+            "id": "injectable-UserInfoService-e31acd7b738c76ef3d2fd81f8fe6f2e5",
+            "file": "src/app/services/user-info/user-info.service.ts",
+            "properties": [
+                {
+                    "name": "get$",
+                    "defaultValue": "this.userInfo$.asObservable()",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "userInfo",
+                    "defaultValue": "{\n    name: '',\n    avatar: '',\n  }",
+                    "type": "UserInfo",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "userInfo$",
+                    "defaultValue": "new BehaviorSubject<UserInfo>(this.userInfo)",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "set",
+                    "args": [
+                        {
+                            "name": "info",
+                            "type": "UserInfo"
+                        }
                     ],
-                    "kind": "module"
-                  }
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "jsdoctags": [
+                        {
+                            "name": "info",
+                            "type": "UserInfo",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "update",
+                    "args": [
+                        {
+                            "name": "info",
+                            "type": "Partial<UserInfo>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "jsdoctags": [
+                        {
+                            "name": "info",
+                            "type": "Partial<UserInfo>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { BehaviorSubject } from 'rxjs';\n\ninterface UserInfo {\n  name: string;\n  avatar: string;\n}\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class UserInfoService {\n  private userInfo: UserInfo = {\n    name: '',\n    avatar: '',\n  };\n\n  private userInfo$ = new BehaviorSubject<UserInfo>(this.userInfo);\n\n  get$ = this.userInfo$.asObservable();\n\n  set(info: UserInfo): void {\n    this.userInfo = info;\n  }\n\n  update(info: Partial<UserInfo>): void {\n    this.userInfo = { ...(this.userInfo as UserInfo), ...info };\n  }\n}\n",
+            "type": "injectable"
+        }
+    ],
+    "classes": [
+        {
+            "name": "AppPage",
+            "id": "class-AppPage-ee2067dfb1c303f41003aea7d82d51e0",
+            "file": "e2e/src/app.po.ts",
+            "type": "class",
+            "sourceCode": "import { browser, by, element } from 'protractor';\n\nexport class AppPage {\n  async navigateTo(): Promise<unknown> {\n    return browser.get(browser.baseUrl);\n  }\n\n  async getTitleText(): Promise<string> {\n    return element(by.css('app-root .content span')).getText();\n  }\n}\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getTitleText",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<string>",
+                    "typeParameters": [],
+                    "line": 8,
+                    "modifierKind": [
+                        120
+                    ]
+                },
+                {
+                    "name": "navigateTo",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<unknown>",
+                    "typeParameters": [],
+                    "line": 4,
+                    "modifierKind": [
+                        120
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-6887cea8ceab537c1bd3667d4b717fe8",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { DomSanitizer } from '@angular/platform-browser';\nimport { MatIconRegistry } from '@angular/material/icon';\nimport { UserAvatars } from './core/user-avatars';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {\n  constructor(domSanitizer: DomSanitizer, icon: MatIconRegistry) {\n    for (const iconName in UserAvatars) {\n      if (Object.prototype.hasOwnProperty.call(UserAvatars, iconName)) {\n        const iconPath = UserAvatars[iconName];\n        icon.addSvgIconInNamespace('avatar', iconName, domSanitizer.bypassSecurityTrustResourceUrl(iconPath));\n      }\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "domSanitizer",
+                        "type": "DomSanitizer"
+                    },
+                    {
+                        "name": "icon",
+                        "type": "MatIconRegistry"
+                    }
                 ],
-                "module": "LoginModule"
-              }
+                "line": 11,
+                "jsdoctags": [
+                    {
+                        "name": "domSanitizer",
+                        "type": "DomSanitizer",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "icon",
+                        "type": "MatIconRegistry",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<router-outlet></router-outlet>\r\n"
+        },
+        {
+            "name": "ChatMsgComponent",
+            "id": "component-ChatMsgComponent-2c6adc04b5a9a0cacf7554ce4b51bd7a",
+            "file": "src/app/shared/components/chat-msg/chat-msg.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-chat-msg",
+            "styleUrls": [
+                "./chat-msg.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./chat-msg.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "direction",
+                    "defaultValue": "'ltr'",
+                    "line": 16,
+                    "type": "\"rtl\" | \"ltr\""
+                },
+                {
+                    "name": "discussionCount",
+                    "defaultValue": "0",
+                    "line": 18
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-chat-msg',\n  templateUrl: './chat-msg.component.html',\n  styleUrls: ['./chat-msg.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  encapsulation: ViewEncapsulation.None,\n  // tslint:disable-next-line: no-host-metadata-property\n  host: {\n    class: 'chat-msg',\n    '[class.chat-msg-rtl]': 'direction === \"rtl\"',\n  },\n})\nexport class ChatMsgComponent {\n  @Input() direction: 'rtl' | 'ltr' = 'ltr';\n\n  @Input() discussionCount = 0;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"theme\";\r\n\r\n.chat-msg {\r\n  display: inline-flex;\r\n  align-items: flex-start;\r\n\r\n  .divider {\r\n    margin: 4px 0;\r\n  }\r\n\r\n  &-rtl {\r\n    flex-direction: row-reverse;\r\n\r\n    .chat-msg-tips {\r\n      flex-direction: row-reverse;\r\n    }\r\n  }\r\n\r\n  &-content {\r\n    padding: 6px 10px;\r\n    flex: 1 1;\r\n    border: 1px solid mat-color($gray, 400);\r\n    border-radius: 6px;\r\n    word-wrap: break-word;\r\n  }\r\n\r\n  &-tips {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n  }\r\n\r\n  &-tip {\r\n    padding: 0;\r\n    border: none;\r\n    background-color: transparent;\r\n    font-size: 14px;\r\n\r\n    &-link {\r\n      color: #2177b9;\r\n      opacity: 0.7;\r\n      cursor: pointer;\r\n\r\n      &:hover,\r\n      &:focus {\r\n        opacity: 1;\r\n      }\r\n    }\r\n  }\r\n\r\n  &-menu-trigger {\r\n    padding: 6px;\r\n    display: inline-flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    border: none;\r\n    background-color: transparent;\r\n    font-size: 20px;\r\n    cursor: pointer;\r\n  }\r\n}\r\n",
+                    "styleUrl": "./chat-msg.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"chat-msg-content\">\n    <div>\n        <ng-content></ng-content>\n    </div>\n    <ng-container *ngIf=\"discussionCount > 0\">\n        <div class=\"divider\"></div>\n        <div class=\"chat-msg-tips\">\n            <button\n                class=\"chat-msg-tip chat-msg-tip-link\"\n                *ngIf=\"discussionCount > 0\"\n            >\n                discuss({{ discussionCount }})\n            </button>\n        </div>\n    </ng-container>\n</div>\n<mat-menu\n    #menu=\"matMenu\"\n    [xPosition]=\"direction === 'ltr' ? 'after' : 'before'\"\n>\n    <button mat-menu-item>\n        <span>留言</span>\n    </button>\n</mat-menu>\n<button\n    [matMenuTriggerFor]=\"menu\"\n    class=\"chat-msg-menu-trigger\"\n>\n    <mat-icon inline=\"true\">more_vert</mat-icon>\n</button>\n"
+        },
+        {
+            "name": "ChatRoomComponent",
+            "id": "component-ChatRoomComponent-fe7b67747d05631cec2424e4478ba9c5",
+            "file": "src/app/modules/chat-room/chat-room.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-chat-room",
+            "styleUrls": [
+                "./chat-room.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./chat-room.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 11
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-chat-room',\n  templateUrl: './chat-room.component.html',\n  styleUrls: ['./chat-room.component.scss'],\n})\nexport class ChatRoomComponent implements OnInit {\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"theme\";\r\n\r\n.grid-block {\r\n  padding: 5px;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.side-bar {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 0 10px;\r\n  height: 100%;\r\n  border: 1px solid mat-color($gray, 300);\r\n  border-radius: 6px;\r\n\r\n  &-content {\r\n    padding: 10px;\r\n    flex: 1 1;\r\n  }\r\n\r\n  &-footer {\r\n    margin-top: auto;\r\n  }\r\n\r\n  &-list {\r\n  }\r\n\r\n  &-item {\r\n  }\r\n}\r\n\r\n.msg-screen {\r\n  padding: 10px;\r\n  height: 100%;\r\n}\r\n\r\n.msg-wrapper {\r\n  max-width: 60%;\r\n  width: fit-content;\r\n\r\n  & + & {\r\n    margin-top: 12px;\r\n  }\r\n\r\n  &-right {\r\n    margin: 0 0 0 auto;\r\n  }\r\n}\r\n",
+                    "styleUrl": "./chat-room.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div\n    class=\"container\"\n    style=\"height: 100%;\"\n>\n    <mat-grid-list\n        cols=\"4\"\n        rowHeight=\"20%\"\n        gutterSize=\"0\"\n    >\n        <mat-grid-tile\n            colspan=\"1\"\n            rowspan=\"5\"\n        >\n            <div class=\"grid-block\">\n                <div class=\"side-bar\">\n                    <div class=\"side-bar-content\"></div>\n                    <div class=\"divider\"></div>\n                    <div class=\"side-bar-footer\">\n                        <app-user-info-card\n                            icon=\"fish\"\n                            name=\"user name\"\n                            description=\"user description\"\n                        ></app-user-info-card>\n                    </div>\n                </div>\n            </div>\n        </mat-grid-tile>\n        <mat-grid-tile\n            colspan=\"3\"\n            rowspan=\"3\"\n        >\n            <div class=\"grid-block\">\n                <mat-tab-group animationDuration=\"0ms\">\n                    <mat-tab label=\"All\">\n                        <div class=\"msg-screen\">\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum.', discussCount: 3};\"></div>\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum.', right: true, discussCount: 3};\"></div>\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};\"></div>\n                        </div>\n                    </mat-tab>\n                    <mat-tab label=\"Discussions\">\n                        <div class=\"msg-screen\">\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum.'};\"></div>\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum.', right: true};\"></div>\n                        </div>\n                    </mat-tab>\n                </mat-tab-group>\n            </div>\n        </mat-grid-tile>\n        <mat-grid-tile\n            colspan=\"3\"\n            rowspan=\"2\"\n        >\n            <div class=\"grid-block\">\n                <app-msg-input-box\n                    style=\"min-height: 150px;\"\n                    maxHeight=\"100%\"\n                ></app-msg-input-box>\n            </div>\n        </mat-grid-tile>\n    </mat-grid-list>\n</div>\n\n<ng-template\n    #chatMsg\n    let-content=\"content\"\n    let-right=\"right\"\n    let-discussCount=\"discussCount\"\n>\n    <div\n        class=\"msg-wrapper\"\n        [ngClass]=\"{'msg-wrapper-right': right}\"\n    >\n        <app-chat-msg\n            [discussionCount]=\"discussCount\"\n            [direction]=\"right ? 'rtl' : 'ltr'\"\n        >\n            {{ content }}\n        </app-chat-msg>\n    </div>\n</ng-template>\n"
+        },
+        {
+            "name": "ForwardBtnComponent",
+            "id": "component-ForwardBtnComponent-9df07c760a39f812756507ec4ae14830",
+            "file": "src/app/shared/components/forward-btn/forward-btn.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-forward-btn, [app-forward-btn]",
+            "styleUrls": [
+                "./forward-btn.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./forward-btn.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "line": 27
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {\r\n  Component,\r\n  ChangeDetectionStrategy,\r\n  ViewEncapsulation,\r\n  Input,\r\n  HostBinding,\r\n  Output,\r\n  EventEmitter,\r\n  HostListener,\r\n} from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-forward-btn, [app-forward-btn]',\r\n  templateUrl: './forward-btn.component.html',\r\n  styleUrls: ['./forward-btn.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  encapsulation: ViewEncapsulation.None,\r\n  // tslint:disable-next-line: no-host-metadata-property\r\n  host: {\r\n    class: 'forward-btn',\r\n  },\r\n})\r\nexport class ForwardBtnComponent {\r\n  @HostBinding('class.forward-btn-disabled')\r\n  @HostBinding('attr.disabled')\r\n  @Input()\r\n  disabled = false;\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"theme\";\r\n\r\n$font-size: 16px;\r\n\r\n.forward-btn {\r\n  position: relative;\r\n  display: inline-block;\r\n  padding: 6px 34px 6px 12px;\r\n  border: 1px solid mat-color($gray, 500);\r\n  border-radius: 7px 18px 18px 7px;\r\n  background-color: transparent;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  font-size: $font-size;\r\n  font-weight: bold;\r\n  color: mat-color($gray, 700);\r\n  transition: opacity 0.2s;\r\n  cursor: pointer;\r\n\r\n  &:focus {\r\n    outline: none;\r\n  }\r\n\r\n  &-arrow {\r\n    position: absolute;\r\n    top: 50%;\r\n    right: 12px;\r\n    height: 1em;\r\n    transform: translateY(-50%);\r\n  }\r\n\r\n  &-disabled {\r\n    opacity: 0.65;\r\n    cursor: default;\r\n  }\r\n\r\n  &:not(#{&}-disabled):hover {\r\n  }\r\n}\r\n",
+                    "styleUrl": "./forward-btn.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<span>\r\n    <ng-content></ng-content>\r\n</span>\r\n<div class=\"forward-btn-arrow\">\r\n    <mat-icon inline=\"true\">east</mat-icon>\r\n</div>\r\n"
+        },
+        {
+            "name": "LoginComponent",
+            "id": "component-LoginComponent-c1ca1542553f1c94808ace8437f27b6c",
+            "file": "src/app/modules/login/login.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-login",
+            "styleUrls": [
+                "./login.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./login.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "userAvatar",
+                    "defaultValue": "this.userAvatars[0]",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "userAvatars",
+                    "defaultValue": "Object.keys(UserAvatars)",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "userName",
+                    "defaultValue": "this.fb.control('')",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "selectAvatar",
+                    "args": [
+                        {
+                            "name": "avatar",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "jsdoctags": [
+                        {
+                            "name": "avatar",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormBuilder } from '@angular/forms';\nimport { UserAvatars } from 'src/app/core/user-avatars';\n\n@Component({\n  selector: 'app-login',\n  templateUrl: './login.component.html',\n  styleUrls: ['./login.component.scss'],\n})\nexport class LoginComponent {\n  userAvatars = Object.keys(UserAvatars);\n\n  userAvatar = this.userAvatars[0];\n\n  userName = this.fb.control('');\n\n  constructor(private fb: FormBuilder) {}\n\n  selectAvatar(avatar: string): void {\n    this.userAvatar = avatar;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"theme\";\r\n\r\n.login-container {\r\n  position: relative;\r\n  height: 100%;\r\n}\r\n\r\n.login-box {\r\n  max-width: 400px;\r\n  position: absolute;\r\n  top: 35%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.user-avatar-list {\r\n  display: grid;\r\n  grid-template-columns: repeat(4, 25%);\r\n\r\n  > * {\r\n    padding: 4px;\r\n  }\r\n}\r\n\r\n.user-info {\r\n  display: flex;\r\n  align-items: center;\r\n\r\n  &-avatar {\r\n    margin-right: 10px;\r\n  }\r\n\r\n  input {\r\n    width: 150px;\r\n    background-color: transparent;\r\n    border: none;\r\n    font-size: 24px;\r\n\r\n    &:focus {\r\n      outline: none;\r\n    }\r\n  }\r\n}\r\n\r\n.gap {\r\n  margin-bottom: 1rem;\r\n}\r\n",
+                    "styleUrl": "./login.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder"
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<div class=\"login-container\">\r\n    <div class=\"login-box\">\r\n        <div class=\"user-info gap\">\r\n            <div class=\"user-info-avatar\">\r\n                <app-user-avatar\r\n                    [icon]=\"userAvatar\"\r\n                    size=\"lg\"\r\n                ></app-user-avatar>\r\n            </div>\r\n            <input\r\n                type=\"text\"\r\n                placeholder=\"user name\"\r\n                [formControl]=\"userName\"\r\n            >\r\n        </div>\r\n        <a\r\n            app-forward-btn\r\n            class=\"gap\"\r\n            style=\"width: 100%;\"\r\n            routerLink=\"../chat-room\"\r\n            [disabled]=\"!userName.value\"\r\n        >\r\n            enter\r\n        </a>\r\n        <div class=\"user-avatar-list\">\r\n            <div *ngFor=\"let avatar of userAvatars\">\r\n                <app-user-avatar\r\n                    [icon]=\"avatar\"\r\n                    [select]=\"avatar === userAvatar\"\r\n                    (click)=\"selectAvatar(avatar)\"\r\n                ></app-user-avatar>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "MsgInputBoxComponent",
+            "id": "component-MsgInputBoxComponent-c5da2fa5419331771e76865806f7b209",
+            "file": "src/app/shared/components/msg-input-box/msg-input-box.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-msg-input-box",
+            "styleUrls": [
+                "./msg-input-box.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./msg-input-box.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "maxHeight",
+                    "defaultValue": "'none'",
+                    "line": 16,
+                    "type": "number | string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-msg-input-box',\n  templateUrl: './msg-input-box.component.html',\n  styleUrls: ['./msg-input-box.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  encapsulation: ViewEncapsulation.None,\n  // tslint:disable-next-line: no-host-metadata-property\n  host: {\n    class: 'msg-input-box',\n    '[style.max-height]': 'maxHeight',\n  },\n})\nexport class MsgInputBoxComponent {\n  @Input() maxHeight: number | string = 'none';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"theme\";\r\n\r\n.msg-input-box {\r\n  padding: 0 12px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  border: 1px solid mat-color($gray, 300);\r\n  border-radius: 6px;\r\n  overflow: hidden;\r\n\r\n  &-textarea {\r\n    padding: 10px 0;\r\n    width: 100%;\r\n    flex: 1 1;\r\n    border: none;\r\n    border-bottom: 1px solid mat-color($gray, 300);\r\n    background-color: transparent;\r\n    font-size: 16px;\r\n    line-height: 1.25;\r\n    overflow-y: auto;\r\n    resize: none;\r\n\r\n    &:focus {\r\n      outline: none;\r\n    }\r\n  }\r\n\r\n  &-tool-bar {\r\n    display: flex;\r\n    padding: 10px 0;\r\n    font-size: 16px;\r\n    line-height: 1;\r\n  }\r\n}\r\n\r\n.msg-tool-list {\r\n  display: flex;\r\n  margin: 0 -4px;\r\n}\r\n\r\n.msg-tool-item {\r\n  padding: 0 4px;\r\n}\r\n\r\n.msg-tool {\r\n  position: relative;\r\n  padding: 0;\r\n  display: block;\r\n  width: 22px;\r\n  height: 22px;\r\n  border: none;\r\n  background-color: transparent;\r\n  font-size: 22px;\r\n  cursor: pointer;\r\n  user-select: none;\r\n\r\n  input {\r\n    position: absolute;\r\n    visibility: hidden;\r\n  }\r\n}\r\n\r\n.msg-submit {\r\n  margin: 0 0 0 auto;\r\n}\r\n",
+                    "styleUrl": "./msg-input-box.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div\n    class=\"msg-input-box-textarea\"\n    contenteditable=\"true\"\n>\n</div>\n<div class=\"msg-input-box-tool-bar\">\n    <div class=\"msg-tool-list\">\n        <div class=\"msg-tool-item\">\n            <label class=\"msg-tool\">\n                <input\n                    type=\"file\"\n                    accept=\".gif, .jpg, .png\"\n                >\n                <mat-icon\n                    inline=\"true\"\n                    class=\"material-icons-outlined\"\n                >\n                    insert_photo\n                </mat-icon>\n            </label>\n        </div>\n        <div class=\"msg-tool-item\">\n            <label class=\"msg-tool\">\n                <input type=\"file\">\n                <mat-icon\n                    inline=\"true\"\n                    class=\"material-icons-outlined\"\n                >\n                    description\n                </mat-icon>\n            </label>\n        </div>\n        <div class=\"msg-tool-item\">\n            <button class=\"msg-tool\">\n                <mat-icon inline=\"true\">insert_emoticon</mat-icon>\n            </button>\n        </div>\n    </div>\n    <div class=\"msg-submit\">\n        <button class=\"msg-tool\">\n            <mat-icon inline=\"true\">north_east</mat-icon>\n        </button>\n    </div>\n</div>\n"
+        },
+        {
+            "name": "UserAvatarComponent",
+            "id": "component-UserAvatarComponent-f8d811b12b4f87539a5fee8e423843fc",
+            "file": "src/app/shared/components/user-avatar/user-avatar.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-user-avatar",
+            "styleUrls": [
+                "./user-avatar.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./user-avatar.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'currentColor'",
+                    "line": 23
+                },
+                {
+                    "name": "icon",
+                    "line": 21,
+                    "type": "string"
+                },
+                {
+                    "name": "select",
+                    "line": 26,
+                    "type": "any"
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'md'",
+                    "line": 19,
+                    "type": "\"md\" | \"lg\""
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_select",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, ChangeDetectionStrategy, Input, ViewEncapsulation } from '@angular/core';\r\nimport { coerceBooleanProperty } from '@angular/cdk/coercion';\r\n\r\n@Component({\r\n  selector: 'app-user-avatar',\r\n  templateUrl: './user-avatar.component.html',\r\n  styleUrls: ['./user-avatar.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  encapsulation: ViewEncapsulation.None,\r\n  // tslint:disable-next-line: no-host-metadata-property\r\n  host: {\r\n    class: 'user-avatar',\r\n    '[class.user-avatar-lg]': 'size === \"lg\"',\r\n    '[class.user-avatar-selected]': 'select',\r\n    '[style.color]': 'color',\r\n  },\r\n})\r\nexport class UserAvatarComponent {\r\n  @Input() size: 'md' | 'lg' = 'md';\r\n\r\n  @Input() icon?: string;\r\n\r\n  @Input() color = 'currentColor';\r\n\r\n  @Input()\r\n  get select(): any {\r\n    return this._select;\r\n  }\r\n\r\n  set select(v: any) {\r\n    this._select = coerceBooleanProperty(v);\r\n  }\r\n\r\n  // tslint:disable-next-line: variable-name\r\n  private _select = false;\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "$user-avatar-md: 48px;\r\n$user-avatar-padding-md: 6px;\r\n\r\n$user-avatar-lg: 64px;\r\n$user-avatar-padding-lg: 10px;\r\n\r\n@mixin user-avatar-sizing($size: $user-avatar-md, $padding: $user-avatar-padding-md) {\r\n  height: $size;\r\n  width: $size;\r\n  padding: $padding;\r\n}\r\n\r\n.user-avatar {\r\n  display: inline-block;\r\n  border: 2px solid transparent;\r\n  border-radius: 10px;\r\n  text-align: center;\r\n  cursor: pointer;\r\n  transition: border .2s;\r\n\r\n  &:hover {\r\n    border-color: #a89e99;\r\n  }\r\n\r\n  @include user-avatar-sizing();\r\n\r\n  &.user-avatar-lg {\r\n    @include user-avatar-sizing($user-avatar-lg, $user-avatar-padding-lg);\r\n  }\r\n\r\n  &.user-avatar-selected {\r\n    border-color: #706b68;\r\n    cursor: default;\r\n  }\r\n\r\n  > mat-icon {\r\n    width: 100%;\r\n    height: 100%;\r\n  }\r\n}\r\n",
+                    "styleUrl": "./user-avatar.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "select": {
+                    "name": "select",
+                    "setSignature": {
+                        "name": "select",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "v",
+                                "type": "any"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 30,
+                        "jsdoctags": [
+                            {
+                                "name": "v",
+                                "type": "any",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "<mat-icon svgIcon=\"avatar:{{ icon }}\"></mat-icon>\r\n"
+        },
+        {
+            "name": "UserInfoCardComponent",
+            "id": "component-UserInfoCardComponent-8ea8fcf67749c828b5d741b47a78eea7",
+            "file": "src/app/shared/components/user-info-card/user-info-card.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-user-info-card",
+            "styleUrls": [
+                "./user-info-card.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./user-info-card.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "description",
+                    "line": 19,
+                    "type": "string"
+                },
+                {
+                    "name": "icon",
+                    "line": 15,
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "line": 17,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-user-info-card',\n  templateUrl: './user-info-card.component.html',\n  styleUrls: ['./user-info-card.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  encapsulation: ViewEncapsulation.None,\n  // tslint:disable-next-line: no-host-metadata-property\n  host: {\n    class: 'user-info-card',\n  },\n})\nexport class UserInfoCardComponent {\n  @Input() icon?: string;\n\n  @Input() name?: string;\n\n  @Input() description?: string;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"theme\";\r\n\r\n.user-info-card {\r\n  display: flex;\r\n  padding: 16px 20px;\r\n  border-radius: 10px;\r\n\r\n  &-avatar {\r\n    margin-right: 16px;\r\n    width: 44px;\r\n    height: 44px;\r\n  }\r\n\r\n  &-title {\r\n    font-size: 20px;\r\n  }\r\n\r\n  &-desc {\r\n    margin-top: 6px;\r\n  }\r\n}\r\n",
+                    "styleUrl": "./user-info-card.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"user-info-card-avatar\">\n    <mat-icon\n        svgIcon=\"avatar:{{ icon }}\"\n        inline=\"true\"\n        style=\"display: block;\"\n    ></mat-icon>\n</div>\n<div>\n    <div class=\"user-info-card-title\">{{ name }}</div>\n    <div class=\"user-info-card-desc\">{{ description }}</div>\n</div>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
             ]
-          },
-          {
-            "path": "**",
-            "redirectTo": "login"
-          }
+        },
+        {
+            "name": "AppRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ChatRoomModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ChatRoomComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "ChatRoomRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ChatRoomRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "LoginModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "LoginComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "LoginRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "LoginRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SharedModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ChatMsgComponent"
+                        },
+                        {
+                            "name": "ForwardBtnComponent"
+                        },
+                        {
+                            "name": "MsgInputBoxComponent"
+                        },
+                        {
+                            "name": "UserAvatarComponent"
+                        },
+                        {
+                            "name": "UserInfoCardComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ChatMsgComponent"
+                        },
+                        {
+                            "name": "ForwardBtnComponent"
+                        },
+                        {
+                            "name": "MsgInputBoxComponent"
+                        },
+                        {
+                            "name": "UserAvatarComponent"
+                        },
+                        {
+                            "name": "UserInfoCardComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "ChannelMsgList",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/mock/channel-msg-list.mock.ts",
+                "type": "Message[]",
+                "defaultValue": "[\r\n  {\r\n    id: 'as4d4344sda4',\r\n    owner: 's464dsa64das6',\r\n    channel: 'asdad',\r\n    discussCount: 3,\r\n    content: 'my first msg',\r\n    createTime: '2084-00-99',\r\n  },\r\n  {\r\n    id: 'as4d4344sda4',\r\n    owner: 's464dsa64das6',\r\n    channel: 'asdad',\r\n    discussCount: 0,\r\n    content: 'my first msg',\r\n    createTime: '2084-00-99',\r\n  },\r\n]"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "DiscussList",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/mock/discuss-list.mock.ts",
+                "type": "Discussion[]",
+                "defaultValue": "[\r\n  {\r\n    id: 'as4d4344sda4',\r\n    owner: 's464dsa64das6',\r\n    messageId: 'my first message',\r\n    content: 'my first discuss',\r\n    createTime: '2084-00-99',\r\n  },\r\n  {\r\n    id: 'as4ewrw854',\r\n    owner: 'qwekyuk4684',\r\n    messageId: 'my first message',\r\n    content: 'my second discuss',\r\n    createTime: '2084-01-00',\r\n  },\r\n]"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "hasDiscuss",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "normal",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "normal",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "literal type"
+            },
+            {
+                "name": "rightToLeft",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                "type": "ChatMsgStory",
+                "defaultValue": "args => ({\r\n  props: args,\r\n  template: `\r\n      <app-chat-msg>${args.content}</app-chat-msg>\r\n    `,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                "type": "ForwardBtnStory",
+                "defaultValue": "args => ({\r\n  props: args,\r\n  template: `\r\n      <button app-forward-btn>${args.content}</button>\r\n    `,\r\n})"
+            },
+            {
+                "name": "UserAvatars",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/core/user-avatars.ts",
+                "type": "literal type",
+                "defaultValue": "{\r\n  cat: 'assets/images/avatars/cat.svg',\r\n  dog: 'assets/images/avatars/dog.svg',\r\n  'fish-fill': 'assets/images/avatars/fish-fill.svg',\r\n  fish: 'assets/images/avatars/fish.svg',\r\n  'monkey-fill': 'assets/images/avatars/monkey-fill.svg',\r\n  monkey: 'assets/images/avatars/monkey.svg',\r\n  'parrot-fill': 'assets/images/avatars/parrot-fill.svg',\r\n  parrot: 'assets/images/avatars/parrot.svg',\r\n}"
+            }
         ],
-        "kind": "module"
-      }
-    ]
-  },
-  "coverage": {
-    "count": 0,
-    "status": "low",
-    "files": [
-      {
-        "filePath": "e2e/src/app.po.ts",
-        "type": "class",
-        "linktype": "classe",
-        "name": "AppPage",
-        "coveragePercent": 0,
-        "coverageCount": "0/3",
-        "status": "low"
-      },
-      {
-        "filePath": "src/app/app.component.ts",
-        "type": "component",
-        "linktype": "component",
-        "name": "AppComponent",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "src/app/modules/login/login.component.ts",
-        "type": "component",
-        "linktype": "component",
-        "name": "LoginComponent",
-        "coveragePercent": 0,
-        "coverageCount": "0/6",
-        "status": "low"
-      },
-      {
-        "filePath": "src/app/services/user-info.service.ts",
-        "type": "injectable",
-        "linktype": "injectable",
-        "name": "UserInfoService",
-        "coveragePercent": 0,
-        "coverageCount": "0/6",
-        "status": "low"
-      },
-      {
-        "filePath": "src/app/services/user-info.service.ts",
-        "type": "interface",
-        "linktype": "interface",
-        "name": "UserInfo",
-        "coveragePercent": 0,
-        "coverageCount": "0/3",
-        "status": "low"
-      },
-      {
-        "filePath": "src/app/shared/components/forward-btn/forward-btn.component.ts",
-        "type": "component",
-        "linktype": "component",
-        "name": "ForwardBtnComponent",
-        "coveragePercent": 0,
-        "coverageCount": "0/2",
-        "status": "low"
-      },
-      {
-        "filePath": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
-        "type": "variable",
-        "linktype": "miscellaneous",
-        "linksubtype": "variable",
-        "name": "normal",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
-        "type": "variable",
-        "linktype": "miscellaneous",
-        "linksubtype": "variable",
-        "name": "Template",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "src/app/shared/components/user-avatar/user-avatar.component.ts",
-        "type": "component",
-        "linktype": "component",
-        "name": "UserAvatarComponent",
-        "coveragePercent": 0,
-        "coverageCount": "0/7",
-        "status": "low"
-      },
-      {
-        "filePath": "src/app/shared/components/user-avatar/user-avatars.ts",
-        "type": "variable",
-        "linktype": "miscellaneous",
-        "linksubtype": "variable",
-        "name": "UserAvatars",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "src/environments/environment.prod.ts",
-        "type": "variable",
-        "linktype": "miscellaneous",
-        "linksubtype": "variable",
-        "name": "environment",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "src/environments/environment.ts",
-        "type": "variable",
-        "linktype": "miscellaneous",
-        "linksubtype": "variable",
-        "name": "environment",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "src/test.ts",
-        "type": "variable",
-        "linktype": "miscellaneous",
-        "linksubtype": "variable",
-        "name": "context",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "src/test.ts",
-        "type": "variable",
-        "linktype": "miscellaneous",
-        "linksubtype": "variable",
-        "name": "require",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      }
-    ]
-  }
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "ChatMsgStory",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "Story<>",
+                "file": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                "description": "",
+                "kind": 161
+            },
+            {
+                "name": "ForwardBtnStory",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "Story<>",
+                "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                "description": "",
+                "kind": 161
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/app/core/mock/channel-msg-list.mock.ts": [
+                {
+                    "name": "ChannelMsgList",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/mock/channel-msg-list.mock.ts",
+                    "type": "Message[]",
+                    "defaultValue": "[\r\n  {\r\n    id: 'as4d4344sda4',\r\n    owner: 's464dsa64das6',\r\n    channel: 'asdad',\r\n    discussCount: 3,\r\n    content: 'my first msg',\r\n    createTime: '2084-00-99',\r\n  },\r\n  {\r\n    id: 'as4d4344sda4',\r\n    owner: 's464dsa64das6',\r\n    channel: 'asdad',\r\n    discussCount: 0,\r\n    content: 'my first msg',\r\n    createTime: '2084-00-99',\r\n  },\r\n]"
+                }
+            ],
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "literal type"
+                }
+            ],
+            "src/app/core/mock/discuss-list.mock.ts": [
+                {
+                    "name": "DiscussList",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/mock/discuss-list.mock.ts",
+                    "type": "Discussion[]",
+                    "defaultValue": "[\r\n  {\r\n    id: 'as4d4344sda4',\r\n    owner: 's464dsa64das6',\r\n    messageId: 'my first message',\r\n    content: 'my first discuss',\r\n    createTime: '2084-00-99',\r\n  },\r\n  {\r\n    id: 'as4ewrw854',\r\n    owner: 'qwekyuk4684',\r\n    messageId: 'my first message',\r\n    content: 'my second discuss',\r\n    createTime: '2084-01-00',\r\n  },\r\n]"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "src/app/shared/components/chat-msg/chat-msg.stories.ts": [
+                {
+                    "name": "hasDiscuss",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "normal",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "rightToLeft",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                    "type": "ChatMsgStory",
+                    "defaultValue": "args => ({\r\n  props: args,\r\n  template: `\r\n      <app-chat-msg>${args.content}</app-chat-msg>\r\n    `,\r\n})"
+                }
+            ],
+            "src/app/shared/components/forward-btn/forward-btn.stories.ts": [
+                {
+                    "name": "normal",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                    "type": "ForwardBtnStory",
+                    "defaultValue": "args => ({\r\n  props: args,\r\n  template: `\r\n      <button app-forward-btn>${args.content}</button>\r\n    `,\r\n})"
+                }
+            ],
+            "src/app/core/user-avatars.ts": [
+                {
+                    "name": "UserAvatars",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/core/user-avatars.ts",
+                    "type": "literal type",
+                    "defaultValue": "{\r\n  cat: 'assets/images/avatars/cat.svg',\r\n  dog: 'assets/images/avatars/dog.svg',\r\n  'fish-fill': 'assets/images/avatars/fish-fill.svg',\r\n  fish: 'assets/images/avatars/fish.svg',\r\n  'monkey-fill': 'assets/images/avatars/monkey-fill.svg',\r\n  monkey: 'assets/images/avatars/monkey.svg',\r\n  'parrot-fill': 'assets/images/avatars/parrot-fill.svg',\r\n  parrot: 'assets/images/avatars/parrot.svg',\r\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "src/app/shared/components/chat-msg/chat-msg.stories.ts": [
+                {
+                    "name": "ChatMsgStory",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "Story<>",
+                    "file": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                    "description": "",
+                    "kind": 161
+                }
+            ],
+            "src/app/shared/components/forward-btn/forward-btn.stories.ts": [
+                {
+                    "name": "ForwardBtnStory",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "Story<>",
+                    "file": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                    "description": "",
+                    "kind": 161
+                }
+            ]
+        }
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [
+                    {
+                        "path": "login",
+                        "loadChildren": "./modules/login/login.module#LoginModule",
+                        "children": [
+                            {
+                                "kind": "module",
+                                "children": [
+                                    {
+                                        "name": "routes",
+                                        "filename": "src/app/modules/login/login-routing.module.ts",
+                                        "module": "LoginRoutingModule",
+                                        "children": [
+                                            {
+                                                "path": "",
+                                                "component": "LoginComponent"
+                                            }
+                                        ],
+                                        "kind": "module"
+                                    }
+                                ],
+                                "module": "LoginModule"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "chat-room",
+                        "loadChildren": "./modules/chat-room/chat-room.module#ChatRoomModule",
+                        "children": [
+                            {
+                                "kind": "module",
+                                "children": [
+                                    {
+                                        "name": "routes",
+                                        "filename": "src/app/modules/chat-room/chat-room-routing.module.ts",
+                                        "module": "ChatRoomRoutingModule",
+                                        "children": [
+                                            {
+                                                "path": "",
+                                                "component": "ChatRoomComponent"
+                                            }
+                                        ],
+                                        "kind": "module"
+                                    }
+                                ],
+                                "module": "ChatRoomModule"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "**",
+                        "redirectTo": "login"
+                    }
+                ],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "e2e/src/app.po.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AppPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/entities/discussion.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Discussion",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/entities/message.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Message",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/mock/channel-msg-list.mock.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ChannelMsgList",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/mock/discuss-list.mock.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DiscussList",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/user-avatars.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "UserAvatars",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/chat-room/chat-room.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ChatRoomComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/login/login.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoginComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/chat-message/chat-message.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ChatMessageService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/user-info/user-info.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "UserInfoService",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/user-info/user-info.service.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "UserInfo",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/chat-msg/chat-msg.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ChatMsgComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "hasDiscuss",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "normal",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "rightToLeft",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/forward-btn/forward-btn.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ForwardBtnComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "normal",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/forward-btn/forward-btn.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/msg-input-box/msg-input-box.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MsgInputBoxComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/user-avatar/user-avatar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UserAvatarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/user-info-card/user-info-card.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UserInfoCardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
 }

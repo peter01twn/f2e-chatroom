@@ -12,6 +12,7 @@ import { UserAvatarComponent } from './components/user-avatar/user-avatar.compon
 import { UserInfoCardComponent } from './components/user-info-card/user-info-card.component';
 import { MsgInputBoxComponent } from './components/msg-input-box/msg-input-box.component';
 import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
     MatButtonModule,
     MatMenuModule,
     MatTabsModule,
+    BrowserAnimationsModule,
   ],
   exports: [
     FormsModule,
