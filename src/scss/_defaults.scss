@@ -16,3 +16,9 @@ button,
 textarea {
   font-family: $font-family;
 }
+
+.app {
+  min-height: 100vh;
+  height: 100%;
+  background-color: $body-bg;
+}

@@ -1,29 +1,11 @@
 @import "theme";
 
 .msg-input-box {
-  padding: 0 12px;
+  // padding: 0 12px;
   display: flex;
   flex-direction: column;
-  border: 1px solid mat-color($gray, 300);
   border-radius: 6px;
   overflow: hidden;
-
-  &-textarea {
-    padding: 10px 0;
-    width: 100%;
-    flex: 1 1;
-    border: none;
-    border-bottom: 1px solid mat-color($gray, 300);
-    background-color: transparent;
-    font-size: 16px;
-    line-height: 1.25;
-    overflow-y: auto;
-    resize: none;
-
-    &:focus {
-      outline: none;
-    }
-  }
 
   &-tool-bar {
     display: flex;
@@ -62,4 +44,53 @@
 
 .msg-submit {
   margin: 0 0 0 auto;
+}
+
+.ql-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.ql-container.ql-snow {
+  min-height: 120px;
+  font-size: 16px;
+  border: $border-common;
+  border-radius: 6px 6px 0 0;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .ql-editor {
+    padding: 10px 12px;
+  }
+}
+
+.ql-toolbar.ql-snow {
+  border: $border-common;
+  border-radius: 0 0 6px 6px;
+
+  & + .ql-container.ql-snow {
+    border-top: $border-common;
+    border-bottom: none;
+  }
+}
+
+.ql-toolbar.ql-snow .ql-formats {
+  margin-right: 0;
+}
+
+.ql-snow .ql-color-picker,
+.ql-snow .ql-icon-picker,
+.ql-snow.ql-toolbar button,
+.ql-snow .ql-toolbar button {
+  width: 32px;
+  height: 28px;
+}
+
+.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+  top: auto;
+  bottom: 100%;
+  border: $border-common;
+  background-color: $body-bg;
 }

@@ -16,6 +16,10 @@ $gray: (
   ),
 );
 
+$body-bg: mat-color($gray, 100);
+
+$border-common: 1px solid mat-color($gray, 300);
+
 $font-family: "Source Sans Pro", sans-serif;
 
 // Create the theme object. A theme consists of configurations for individual

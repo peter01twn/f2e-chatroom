@@ -7,6 +7,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+
+import { QuillModule } from 'ngx-quill';
+
 import { ForwardBtnComponent } from './components/forward-btn/forward-btn.component';
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { UserInfoCardComponent } from './components/user-info-card/user-info-card.component';
@@ -31,6 +34,7 @@ import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
     MatButtonModule,
     MatMenuModule,
     MatTabsModule,
+    QuillModule,
   ],
   exports: [
     FormsModule,

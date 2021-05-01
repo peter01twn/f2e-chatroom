@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-msg-input-box',
@@ -14,4 +15,8 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@a
 })
 export class MsgInputBoxComponent {
   @Input() maxHeight: number | string = 'none';
+
+  message = this.fb.control('');
+
+  constructor(private fb: FormBuilder) {}
 }
