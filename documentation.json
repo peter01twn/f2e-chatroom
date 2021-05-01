@@ -104,10 +104,10 @@
         },
         {
             "name": "UserInfo",
-            "id": "interface-UserInfo-e31acd7b738c76ef3d2fd81f8fe6f2e5",
+            "id": "interface-UserInfo-67913722598a120ccf0d0c589dee9ef1",
             "file": "src/app/services/user-info/user-info.service.ts",
             "type": "interface",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { BehaviorSubject } from 'rxjs';\n\ninterface UserInfo {\n  name: string;\n  avatar: string;\n}\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class UserInfoService {\n  private userInfo: UserInfo = {\n    name: '',\n    avatar: '',\n  };\n\n  private userInfo$ = new BehaviorSubject<UserInfo>(this.userInfo);\n\n  get$ = this.userInfo$.asObservable();\n\n  set(info: UserInfo): void {\n    this.userInfo = info;\n  }\n\n  update(info: Partial<UserInfo>): void {\n    this.userInfo = { ...(this.userInfo as UserInfo), ...info };\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\ninterface UserInfo {\r\n  name: string;\r\n  avatar: string;\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class UserInfoService {\r\n  private userInfo: UserInfo = {\r\n    name: '',\r\n    avatar: '',\r\n  };\r\n\r\n  private userInfo$ = new BehaviorSubject<UserInfo>(this.userInfo);\r\n\r\n  get$ = this.userInfo$.asObservable();\r\n\r\n  set(info: UserInfo): void {\r\n    this.userInfo = info;\r\n  }\r\n\r\n  update(info: Partial<UserInfo>): void {\r\n    this.userInfo = { ...(this.userInfo as UserInfo), ...info };\r\n  }\r\n}\r\n",
             "properties": [
                 {
                     "name": "avatar",
@@ -132,12 +132,12 @@
     "injectables": [
         {
             "name": "ChatMessageService",
-            "id": "injectable-ChatMessageService-21b28c1703b3521ea376e2abe6a1297e",
+            "id": "injectable-ChatMessageService-8b8a462015817f5ed3c53b1ff0d5f05d",
             "file": "src/app/services/chat-message/chat-message.service.ts",
             "properties": [],
             "methods": [],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ChatMessageService {\n  constructor() {}\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class ChatMessageService {\r\n  constructor() {}\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -148,7 +148,7 @@
         },
         {
             "name": "UserInfoService",
-            "id": "injectable-UserInfoService-e31acd7b738c76ef3d2fd81f8fe6f2e5",
+            "id": "injectable-UserInfoService-67913722598a120ccf0d0c589dee9ef1",
             "file": "src/app/services/user-info/user-info.service.ts",
             "properties": [
                 {
@@ -161,7 +161,7 @@
                 },
                 {
                     "name": "userInfo",
-                    "defaultValue": "{\n    name: '',\n    avatar: '',\n  }",
+                    "defaultValue": "{\r\n    name: '',\r\n    avatar: '',\r\n  }",
                     "type": "UserInfo",
                     "optional": false,
                     "description": "",
@@ -229,17 +229,17 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { BehaviorSubject } from 'rxjs';\n\ninterface UserInfo {\n  name: string;\n  avatar: string;\n}\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class UserInfoService {\n  private userInfo: UserInfo = {\n    name: '',\n    avatar: '',\n  };\n\n  private userInfo$ = new BehaviorSubject<UserInfo>(this.userInfo);\n\n  get$ = this.userInfo$.asObservable();\n\n  set(info: UserInfo): void {\n    this.userInfo = info;\n  }\n\n  update(info: Partial<UserInfo>): void {\n    this.userInfo = { ...(this.userInfo as UserInfo), ...info };\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\ninterface UserInfo {\r\n  name: string;\r\n  avatar: string;\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class UserInfoService {\r\n  private userInfo: UserInfo = {\r\n    name: '',\r\n    avatar: '',\r\n  };\r\n\r\n  private userInfo$ = new BehaviorSubject<UserInfo>(this.userInfo);\r\n\r\n  get$ = this.userInfo$.asObservable();\r\n\r\n  set(info: UserInfo): void {\r\n    this.userInfo = info;\r\n  }\r\n\r\n  update(info: Partial<UserInfo>): void {\r\n    this.userInfo = { ...(this.userInfo as UserInfo), ...info };\r\n  }\r\n}\r\n",
             "type": "injectable"
         }
     ],
     "classes": [
         {
             "name": "AppPage",
-            "id": "class-AppPage-ee2067dfb1c303f41003aea7d82d51e0",
+            "id": "class-AppPage-e3ea1f4631d62652a5623d3ab757b2fc",
             "file": "e2e/src/app.po.ts",
             "type": "class",
-            "sourceCode": "import { browser, by, element } from 'protractor';\n\nexport class AppPage {\n  async navigateTo(): Promise<unknown> {\n    return browser.get(browser.baseUrl);\n  }\n\n  async getTitleText(): Promise<string> {\n    return element(by.css('app-root .content span')).getText();\n  }\n}\n",
+            "sourceCode": "import { browser, by, element } from 'protractor';\r\n\r\nexport class AppPage {\r\n  async navigateTo(): Promise<unknown> {\r\n    return browser.get(browser.baseUrl);\r\n  }\r\n\r\n  async getTitleText(): Promise<string> {\r\n    return element(by.css('app-root .content span')).getText();\r\n  }\r\n}\r\n",
             "properties": [],
             "methods": [
                 {
@@ -276,7 +276,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-6887cea8ceab537c1bd3667d4b717fe8",
+            "id": "component-AppComponent-258711aee1aaab1e5e04e8d0817d04a8",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -301,7 +301,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { DomSanitizer } from '@angular/platform-browser';\nimport { MatIconRegistry } from '@angular/material/icon';\nimport { UserAvatars } from './core/user-avatars';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {\n  constructor(domSanitizer: DomSanitizer, icon: MatIconRegistry) {\n    for (const iconName in UserAvatars) {\n      if (Object.prototype.hasOwnProperty.call(UserAvatars, iconName)) {\n        const iconPath = UserAvatars[iconName];\n        icon.addSvgIconInNamespace('avatar', iconName, domSanitizer.bypassSecurityTrustResourceUrl(iconPath));\n      }\n    }\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { DomSanitizer } from '@angular/platform-browser';\r\nimport { MatIconRegistry } from '@angular/material/icon';\r\nimport { UserAvatars } from './core/user-avatars';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss'],\r\n})\r\nexport class AppComponent {\r\n  constructor(domSanitizer: DomSanitizer, icon: MatIconRegistry) {\r\n    for (const iconName in UserAvatars) {\r\n      if (Object.prototype.hasOwnProperty.call(UserAvatars, iconName)) {\r\n        const iconPath = UserAvatars[iconName];\r\n        icon.addSvgIconInNamespace('avatar', iconName, domSanitizer.bypassSecurityTrustResourceUrl(iconPath));\r\n      }\r\n    }\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -345,7 +345,7 @@
         },
         {
             "name": "ChatMsgComponent",
-            "id": "component-ChatMsgComponent-2c6adc04b5a9a0cacf7554ce4b51bd7a",
+            "id": "component-ChatMsgComponent-2b5f6345581d48fe7dc411134ed3cf74",
             "file": "src/app/shared/components/chat-msg/chat-msg.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [
@@ -386,7 +386,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-chat-msg',\n  templateUrl: './chat-msg.component.html',\n  styleUrls: ['./chat-msg.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  encapsulation: ViewEncapsulation.None,\n  // tslint:disable-next-line: no-host-metadata-property\n  host: {\n    class: 'chat-msg',\n    '[class.chat-msg-rtl]': 'direction === \"rtl\"',\n  },\n})\nexport class ChatMsgComponent {\n  @Input() direction: 'rtl' | 'ltr' = 'ltr';\n\n  @Input() discussionCount = 0;\n}\n",
+            "sourceCode": "import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-chat-msg',\r\n  templateUrl: './chat-msg.component.html',\r\n  styleUrls: ['./chat-msg.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  encapsulation: ViewEncapsulation.None,\r\n  // tslint:disable-next-line: no-host-metadata-property\r\n  host: {\r\n    class: 'chat-msg',\r\n    '[class.chat-msg-rtl]': 'direction === \"rtl\"',\r\n  },\r\n})\r\nexport class ChatMsgComponent {\r\n  @Input() direction: 'rtl' | 'ltr' = 'ltr';\r\n\r\n  @Input() discussionCount = 0;\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -395,11 +395,11 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<div class=\"chat-msg-content\">\n    <div>\n        <ng-content></ng-content>\n    </div>\n    <ng-container *ngIf=\"discussionCount > 0\">\n        <div class=\"divider\"></div>\n        <div class=\"chat-msg-tips\">\n            <button\n                class=\"chat-msg-tip chat-msg-tip-link\"\n                *ngIf=\"discussionCount > 0\"\n            >\n                discuss({{ discussionCount }})\n            </button>\n        </div>\n    </ng-container>\n</div>\n<mat-menu\n    #menu=\"matMenu\"\n    [xPosition]=\"direction === 'ltr' ? 'after' : 'before'\"\n>\n    <button mat-menu-item>\n        <span>留言</span>\n    </button>\n</mat-menu>\n<button\n    [matMenuTriggerFor]=\"menu\"\n    class=\"chat-msg-menu-trigger\"\n>\n    <mat-icon inline=\"true\">more_vert</mat-icon>\n</button>\n"
+            "templateData": "<div class=\"chat-msg-content\">\r\n    <div>\r\n        <ng-content></ng-content>\r\n    </div>\r\n    <ng-container *ngIf=\"discussionCount > 0\">\r\n        <div class=\"divider\"></div>\r\n        <div class=\"chat-msg-tips\">\r\n            <button\r\n                class=\"chat-msg-tip chat-msg-tip-link\"\r\n                *ngIf=\"discussionCount > 0\"\r\n            >\r\n                discuss({{ discussionCount }})\r\n            </button>\r\n        </div>\r\n    </ng-container>\r\n</div>\r\n<mat-menu\r\n    #menu=\"matMenu\"\r\n    [xPosition]=\"direction === 'ltr' ? 'after' : 'before'\"\r\n>\r\n    <button mat-menu-item>\r\n        <span>留言</span>\r\n    </button>\r\n</mat-menu>\r\n<button\r\n    [matMenuTriggerFor]=\"menu\"\r\n    class=\"chat-msg-menu-trigger\"\r\n>\r\n    <mat-icon inline=\"true\">more_vert</mat-icon>\r\n</button>\r\n"
         },
         {
             "name": "ChatRoomComponent",
-            "id": "component-ChatRoomComponent-fe7b67747d05631cec2424e4478ba9c5",
+            "id": "component-ChatRoomComponent-365b86d4beb15c89d06c086d032a2190",
             "file": "src/app/modules/chat-room/chat-room.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -433,7 +433,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-chat-room',\n  templateUrl: './chat-room.component.html',\n  styleUrls: ['./chat-room.component.scss'],\n})\nexport class ChatRoomComponent implements OnInit {\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-chat-room',\r\n  templateUrl: './chat-room.component.html',\r\n  styleUrls: ['./chat-room.component.scss'],\r\n})\r\nexport class ChatRoomComponent implements OnInit {\r\n  constructor() {}\r\n\r\n  ngOnInit(): void {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -451,7 +451,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div\n    class=\"container\"\n    style=\"height: 100%;\"\n>\n    <mat-grid-list\n        cols=\"4\"\n        rowHeight=\"20%\"\n        gutterSize=\"0\"\n    >\n        <mat-grid-tile\n            colspan=\"1\"\n            rowspan=\"5\"\n        >\n            <div class=\"grid-block\">\n                <div class=\"side-bar\">\n                    <div class=\"side-bar-content\"></div>\n                    <div class=\"divider\"></div>\n                    <div class=\"side-bar-footer\">\n                        <app-user-info-card\n                            icon=\"fish\"\n                            name=\"user name\"\n                            description=\"user description\"\n                        ></app-user-info-card>\n                    </div>\n                </div>\n            </div>\n        </mat-grid-tile>\n        <mat-grid-tile\n            colspan=\"3\"\n            rowspan=\"3\"\n        >\n            <div class=\"grid-block\">\n                <mat-tab-group animationDuration=\"0ms\">\n                    <mat-tab label=\"All\">\n                        <div class=\"msg-screen\">\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum.', discussCount: 3};\"></div>\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum.', right: true, discussCount: 3};\"></div>\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};\"></div>\n                        </div>\n                    </mat-tab>\n                    <mat-tab label=\"Discussions\">\n                        <div class=\"msg-screen\">\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum.'};\"></div>\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum.', right: true};\"></div>\n                        </div>\n                    </mat-tab>\n                </mat-tab-group>\n            </div>\n        </mat-grid-tile>\n        <mat-grid-tile\n            colspan=\"3\"\n            rowspan=\"2\"\n        >\n            <div class=\"grid-block\">\n                <app-msg-input-box\n                    style=\"min-height: 150px;\"\n                    maxHeight=\"100%\"\n                ></app-msg-input-box>\n            </div>\n        </mat-grid-tile>\n    </mat-grid-list>\n</div>\n\n<ng-template\n    #chatMsg\n    let-content=\"content\"\n    let-right=\"right\"\n    let-discussCount=\"discussCount\"\n>\n    <div\n        class=\"msg-wrapper\"\n        [ngClass]=\"{'msg-wrapper-right': right}\"\n    >\n        <app-chat-msg\n            [discussionCount]=\"discussCount\"\n            [direction]=\"right ? 'rtl' : 'ltr'\"\n        >\n            {{ content }}\n        </app-chat-msg>\n    </div>\n</ng-template>\n"
+            "templateData": "<div\r\n    class=\"container\"\r\n    style=\"height: 100%;\"\r\n>\r\n    <mat-grid-list\r\n        cols=\"4\"\r\n        rowHeight=\"20%\"\r\n        gutterSize=\"0\"\r\n    >\r\n        <mat-grid-tile\r\n            colspan=\"1\"\r\n            rowspan=\"5\"\r\n        >\r\n            <div class=\"grid-block\">\r\n                <div class=\"side-bar\">\r\n                    <div class=\"side-bar-content\"></div>\r\n                    <div class=\"divider\"></div>\r\n                    <div class=\"side-bar-footer\">\r\n                        <app-user-info-card\r\n                            icon=\"fish\"\r\n                            name=\"user name\"\r\n                            description=\"user description\"\r\n                        ></app-user-info-card>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </mat-grid-tile>\r\n        <mat-grid-tile\r\n            colspan=\"3\"\r\n            rowspan=\"3\"\r\n        >\r\n            <div class=\"grid-block\">\r\n                <mat-tab-group animationDuration=\"0ms\">\r\n                    <mat-tab label=\"All\">\r\n                        <div class=\"msg-screen\">\r\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum.', discussCount: 3};\"></div>\r\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum.', right: true, discussCount: 3};\"></div>\r\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};\"></div>\r\n                        </div>\r\n                    </mat-tab>\r\n                    <mat-tab label=\"Discussions\">\r\n                        <div class=\"msg-screen\">\r\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum.'};\"></div>\r\n                            <div *ngTemplateOutlet=\"chatMsg; context: {content: 'Lorem, ipsum.', right: true};\"></div>\r\n                        </div>\r\n                    </mat-tab>\r\n                </mat-tab-group>\r\n            </div>\r\n        </mat-grid-tile>\r\n        <mat-grid-tile\r\n            colspan=\"3\"\r\n            rowspan=\"2\"\r\n        >\r\n            <div class=\"grid-block\">\r\n                <app-msg-input-box\r\n                    style=\"min-height: 150px;\"\r\n                    maxHeight=\"100%\"\r\n                ></app-msg-input-box>\r\n            </div>\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n</div>\r\n\r\n<ng-template\r\n    #chatMsg\r\n    let-content=\"content\"\r\n    let-right=\"right\"\r\n    let-discussCount=\"discussCount\"\r\n>\r\n    <div\r\n        class=\"msg-wrapper\"\r\n        [ngClass]=\"{'msg-wrapper-right': right}\"\r\n    >\r\n        <app-chat-msg\r\n            [discussionCount]=\"discussCount\"\r\n            [direction]=\"right ? 'rtl' : 'ltr'\"\r\n        >\r\n            {{ content }}\r\n        </app-chat-msg>\r\n    </div>\r\n</ng-template>\r\n"
         },
         {
             "name": "ForwardBtnComponent",
@@ -503,7 +503,7 @@
         },
         {
             "name": "LoginComponent",
-            "id": "component-LoginComponent-c1ca1542553f1c94808ace8437f27b6c",
+            "id": "component-LoginComponent-259b486e22a38f6b11df1094893939d4",
             "file": "src/app/modules/login/login.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -576,7 +576,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormBuilder } from '@angular/forms';\nimport { UserAvatars } from 'src/app/core/user-avatars';\n\n@Component({\n  selector: 'app-login',\n  templateUrl: './login.component.html',\n  styleUrls: ['./login.component.scss'],\n})\nexport class LoginComponent {\n  userAvatars = Object.keys(UserAvatars);\n\n  userAvatar = this.userAvatars[0];\n\n  userName = this.fb.control('');\n\n  constructor(private fb: FormBuilder) {}\n\n  selectAvatar(avatar: string): void {\n    this.userAvatar = avatar;\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { FormBuilder } from '@angular/forms';\r\nimport { UserAvatars } from 'src/app/core/user-avatars';\r\n\r\n@Component({\r\n  selector: 'app-login',\r\n  templateUrl: './login.component.html',\r\n  styleUrls: ['./login.component.scss'],\r\n})\r\nexport class LoginComponent {\r\n  userAvatars = Object.keys(UserAvatars);\r\n\r\n  userAvatar = this.userAvatars[0];\r\n\r\n  userName = this.fb.control('');\r\n\r\n  constructor(private fb: FormBuilder) {}\r\n\r\n  selectAvatar(avatar: string): void {\r\n    this.userAvatar = avatar;\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -609,7 +609,7 @@
         },
         {
             "name": "MsgInputBoxComponent",
-            "id": "component-MsgInputBoxComponent-c5da2fa5419331771e76865806f7b209",
+            "id": "component-MsgInputBoxComponent-a3f0bd67888c95ddecbabfb61e6544fe",
             "file": "src/app/shared/components/msg-input-box/msg-input-box.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [
@@ -645,7 +645,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-msg-input-box',\n  templateUrl: './msg-input-box.component.html',\n  styleUrls: ['./msg-input-box.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  encapsulation: ViewEncapsulation.None,\n  // tslint:disable-next-line: no-host-metadata-property\n  host: {\n    class: 'msg-input-box',\n    '[style.max-height]': 'maxHeight',\n  },\n})\nexport class MsgInputBoxComponent {\n  @Input() maxHeight: number | string = 'none';\n}\n",
+            "sourceCode": "import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-msg-input-box',\r\n  templateUrl: './msg-input-box.component.html',\r\n  styleUrls: ['./msg-input-box.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  encapsulation: ViewEncapsulation.None,\r\n  // tslint:disable-next-line: no-host-metadata-property\r\n  host: {\r\n    class: 'msg-input-box',\r\n    '[style.max-height]': 'maxHeight',\r\n  },\r\n})\r\nexport class MsgInputBoxComponent {\r\n  @Input() maxHeight: number | string = 'none';\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -654,7 +654,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<div\n    class=\"msg-input-box-textarea\"\n    contenteditable=\"true\"\n>\n</div>\n<div class=\"msg-input-box-tool-bar\">\n    <div class=\"msg-tool-list\">\n        <div class=\"msg-tool-item\">\n            <label class=\"msg-tool\">\n                <input\n                    type=\"file\"\n                    accept=\".gif, .jpg, .png\"\n                >\n                <mat-icon\n                    inline=\"true\"\n                    class=\"material-icons-outlined\"\n                >\n                    insert_photo\n                </mat-icon>\n            </label>\n        </div>\n        <div class=\"msg-tool-item\">\n            <label class=\"msg-tool\">\n                <input type=\"file\">\n                <mat-icon\n                    inline=\"true\"\n                    class=\"material-icons-outlined\"\n                >\n                    description\n                </mat-icon>\n            </label>\n        </div>\n        <div class=\"msg-tool-item\">\n            <button class=\"msg-tool\">\n                <mat-icon inline=\"true\">insert_emoticon</mat-icon>\n            </button>\n        </div>\n    </div>\n    <div class=\"msg-submit\">\n        <button class=\"msg-tool\">\n            <mat-icon inline=\"true\">north_east</mat-icon>\n        </button>\n    </div>\n</div>\n"
+            "templateData": "<div\r\n    class=\"msg-input-box-textarea\"\r\n    contenteditable=\"true\"\r\n>\r\n</div>\r\n<div class=\"msg-input-box-tool-bar\">\r\n    <div class=\"msg-tool-list\">\r\n        <div class=\"msg-tool-item\">\r\n            <label class=\"msg-tool\">\r\n                <input\r\n                    type=\"file\"\r\n                    accept=\".gif, .jpg, .png\"\r\n                >\r\n                <mat-icon\r\n                    inline=\"true\"\r\n                    class=\"material-icons-outlined\"\r\n                >\r\n                    insert_photo\r\n                </mat-icon>\r\n            </label>\r\n        </div>\r\n        <div class=\"msg-tool-item\">\r\n            <label class=\"msg-tool\">\r\n                <input type=\"file\">\r\n                <mat-icon\r\n                    inline=\"true\"\r\n                    class=\"material-icons-outlined\"\r\n                >\r\n                    description\r\n                </mat-icon>\r\n            </label>\r\n        </div>\r\n        <div class=\"msg-tool-item\">\r\n            <button class=\"msg-tool\">\r\n                <mat-icon inline=\"true\">insert_emoticon</mat-icon>\r\n            </button>\r\n        </div>\r\n    </div>\r\n    <div class=\"msg-submit\">\r\n        <button class=\"msg-tool\">\r\n            <mat-icon inline=\"true\">north_east</mat-icon>\r\n        </button>\r\n    </div>\r\n</div>\r\n"
         },
         {
             "name": "UserAvatarComponent",
@@ -760,7 +760,7 @@
         },
         {
             "name": "UserInfoCardComponent",
-            "id": "component-UserInfoCardComponent-8ea8fcf67749c828b5d741b47a78eea7",
+            "id": "component-UserInfoCardComponent-b72635b661ae9765ba6c8ca1edb30275",
             "file": "src/app/shared/components/user-info-card/user-info-card.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [
@@ -805,7 +805,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-user-info-card',\n  templateUrl: './user-info-card.component.html',\n  styleUrls: ['./user-info-card.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  encapsulation: ViewEncapsulation.None,\n  // tslint:disable-next-line: no-host-metadata-property\n  host: {\n    class: 'user-info-card',\n  },\n})\nexport class UserInfoCardComponent {\n  @Input() icon?: string;\n\n  @Input() name?: string;\n\n  @Input() description?: string;\n}\n",
+            "sourceCode": "import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-user-info-card',\r\n  templateUrl: './user-info-card.component.html',\r\n  styleUrls: ['./user-info-card.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  encapsulation: ViewEncapsulation.None,\r\n  // tslint:disable-next-line: no-host-metadata-property\r\n  host: {\r\n    class: 'user-info-card',\r\n  },\r\n})\r\nexport class UserInfoCardComponent {\r\n  @Input() icon?: string;\r\n\r\n  @Input() name?: string;\r\n\r\n  @Input() description?: string;\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -814,7 +814,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<div class=\"user-info-card-avatar\">\n    <mat-icon\n        svgIcon=\"avatar:{{ icon }}\"\n        inline=\"true\"\n        style=\"display: block;\"\n    ></mat-icon>\n</div>\n<div>\n    <div class=\"user-info-card-title\">{{ name }}</div>\n    <div class=\"user-info-card-desc\">{{ description }}</div>\n</div>\n"
+            "templateData": "<div class=\"user-info-card-avatar\">\r\n    <mat-icon\r\n        svgIcon=\"avatar:{{ icon }}\"\r\n        inline=\"true\"\r\n        style=\"display: block;\"\r\n    ></mat-icon>\r\n</div>\r\n<div>\r\n    <div class=\"user-info-card-title\">{{ name }}</div>\r\n    <div class=\"user-info-card-desc\">{{ description }}</div>\r\n</div>\r\n"
         }
     ],
     "modules": [
@@ -1121,17 +1121,17 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.ts",
+                "file": "src/environments/environment.prod.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: false\n}"
+                "defaultValue": "{\r\n  production: true\r\n}"
             },
             {
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
+                "file": "src/environments/environment.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: true\n}"
+                "defaultValue": "{\r\n  production: false\r\n}"
             },
             {
                 "name": "hasDiscuss",
@@ -1178,7 +1178,7 @@
                 "subtype": "variable",
                 "file": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
                 "type": "ChatMsgStory",
-                "defaultValue": "args => ({\r\n  props: args,\r\n  template: `\r\n      <app-chat-msg>${args.content}</app-chat-msg>\r\n    `,\r\n})"
+                "defaultValue": "args => ({\r\n  props: args,\r\n  template: `\r\n      <app-chat-msg\r\n        [discussionCount]=\"${args.discussionCount}\"\r\n        direction=\"${args.direction}\"\r\n      >\r\n        ${args.content}\r\n      </app-chat-msg>\r\n    `,\r\n})"
             },
             {
                 "name": "Template",
@@ -1257,16 +1257,6 @@
                     "defaultValue": "[\r\n  {\r\n    id: 'as4d4344sda4',\r\n    owner: 's464dsa64das6',\r\n    messageId: 'my first message',\r\n    content: 'my first discuss',\r\n    createTime: '2084-00-99',\r\n  },\r\n  {\r\n    id: 'as4ewrw854',\r\n    owner: 'qwekyuk4684',\r\n    messageId: 'my first message',\r\n    content: 'my second discuss',\r\n    createTime: '2084-01-00',\r\n  },\r\n]"
                 }
             ],
-            "src/environments/environment.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.ts",
-                    "type": "object",
-                    "defaultValue": "{\n  production: false\n}"
-                }
-            ],
             "src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -1274,7 +1264,17 @@
                     "subtype": "variable",
                     "file": "src/environments/environment.prod.ts",
                     "type": "object",
-                    "defaultValue": "{\n  production: true\n}"
+                    "defaultValue": "{\r\n  production: true\r\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: false\r\n}"
                 }
             ],
             "src/app/shared/components/chat-msg/chat-msg.stories.ts": [
@@ -1308,7 +1308,7 @@
                     "subtype": "variable",
                     "file": "src/app/shared/components/chat-msg/chat-msg.stories.ts",
                     "type": "ChatMsgStory",
-                    "defaultValue": "args => ({\r\n  props: args,\r\n  template: `\r\n      <app-chat-msg>${args.content}</app-chat-msg>\r\n    `,\r\n})"
+                    "defaultValue": "args => ({\r\n  props: args,\r\n  template: `\r\n      <app-chat-msg\r\n        [discussionCount]=\"${args.discussionCount}\"\r\n        direction=\"${args.direction}\"\r\n      >\r\n        ${args.content}\r\n      </app-chat-msg>\r\n    `,\r\n})"
                 }
             ],
             "src/app/shared/components/forward-btn/forward-btn.stories.ts": [

@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { moduleMetadata } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import { SharedModule } from '../../shared.module';
@@ -6,11 +7,11 @@ import { ChatMsgComponent } from './chat-msg.component';
 type ChatMsgStory = Story<ChatMsgComponent & { content: any }>;
 
 export default {
-  title: 'Components/Chat Message',
+  title: 'Chat Message',
   component: ChatMsgComponent,
   decorators: [
     moduleMetadata({
-      imports: [SharedModule],
+      imports: [SharedModule, BrowserAnimationsModule],
     }),
   ],
   argTypes: {
