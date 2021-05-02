@@ -39,32 +39,44 @@
                         </div>
                     </mat-tab>
                     <mat-tab label="Discussions">
-                        <mat-drawer-container
-                            class="example-container"
-                            hasBackdrop="true"
-                        >
+                        <mat-drawer-container hasBackdrop="true">
                             <mat-drawer
                                 #discussDrawer
                                 mode="over"
                                 position="end"
                             >
-                                <div class="discuss-board">
-                                    <div class="discuss-board-header">
+                                <mat-expansion-panel
+                                    #discussPanel
+                                    hideToggle
+                                    expanded="true"
+                                >
+                                    <mat-expansion-panel-header [ngSwitch]="discussPanel.expanded">
+                                        <mat-icon *ngSwitchCase="true">arrow_drop_up</mat-icon>
+                                        <mat-icon *ngSwitchCase="false">arrow_drop_down</mat-icon>
+                                    </mat-expansion-panel-header>
+                                    <div
+                                        class="ql-container ql-snow"
+                                        style="border-width: 0;"
+                                    >
                                         <div
-                                            class="ql-container ql-snow"
-                                            style="border-width: 0;"
+                                            class="ql-editor"
+                                            [innerHTML]="'discuss post'"
                                         >
-                                            <div
-                                                class="ql-editor"
-                                                [innerHTML]="discuss"
-                                            >
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="msg-screen">
-                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
-                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
-                                    </div>
+                                </mat-expansion-panel>
+                                <div class="discuss-board msg-screen">
+                                    <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                    <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
+                                    <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
+                                    <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                    <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                    <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                    <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                    <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
+                                    <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                    <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                    <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
                                 </div>
                             </mat-drawer>
                             <mat-drawer-content>

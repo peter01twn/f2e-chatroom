@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { QuillModule } from 'ngx-quill';
 
@@ -37,6 +38,7 @@ import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
     MatTabsModule,
     MatSidenavModule,
     QuillModule,
+    MatExpansionModule,
   ],
   exports: [
     FormsModule,
@@ -49,6 +51,9 @@ import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
     MatMenuModule,
     MatTabsModule,
     MatSidenavModule,
+    MatExpansionModule,
+
+    // component
     ForwardBtnComponent,
     UserAvatarComponent,
     UserInfoCardComponent,

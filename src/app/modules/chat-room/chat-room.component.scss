@@ -26,7 +26,6 @@
 
 .msg-screen {
   padding: 10px;
-  height: 100%;
 
   * + * {
     margin-top: 12px;
@@ -43,7 +42,7 @@
 }
 
 .mat-drawer {
-  width: 65%;
+  width: 75%;
 }
 
 .mat-drawer-container {
@@ -54,16 +53,61 @@
   padding: 10px;
 }
 
-.discuss-board {
-  .ql-editor {
+:host ::ng-deep .mat-expansion-panel {
+  display: flex;
+  flex-direction: column-reverse;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+
+  .mat-expansion-panel-header {
+    height: auto;
     padding: 0;
+    color: mat-color($gray, 500);
+
+    .mat-content {
+      height: 24px;
+      justify-content: center;
+      background-color: mat-color($gray, 200);
+      transition: background-color 0.25s ease-out, height 0.25s ease-out;
+      user-select: none;
+
+      &:hover {
+        background-color: mat-color($gray, 300);
+      }
+    }
+
+    &.mat-expanded {
+      .mat-content {
+        height: 20px;
+
+        .mat-icon {
+          width: 20px;
+          height: 20px;
+          font-size: 20px;
+        }
+      }
+    }
   }
 
-  &-header {
-    padding: 10px;
-    border-bottom: $border-common;
-    background-color: $body-bg;
+  .mat-expansion-panel-content {
+    overflow: hidden;
   }
+
+  .mat-expansion-panel-body {
+    padding: 0;
+  }
+}
+
+// discuss board container
+:host ::ng-deep .mat-drawer-inner-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.discuss-board {
+  flex: 1 1;
+  overflow: auto;
 }
 
 .discuss {
