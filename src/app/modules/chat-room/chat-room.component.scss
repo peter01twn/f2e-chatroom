@@ -22,28 +22,56 @@
   &-footer {
     margin-top: auto;
   }
-
-  &-list {
-  }
-
-  &-item {
-  }
 }
 
 .msg-screen {
   padding: 10px;
   height: 100%;
+
+  * + * {
+    margin-top: 12px;
+  }
 }
 
 .msg-wrapper {
   max-width: 60%;
   width: fit-content;
 
-  & + & {
-    margin-top: 12px;
-  }
-
   &-right {
     margin: 0 0 0 auto;
+  }
+}
+
+.mat-drawer {
+  width: 65%;
+}
+
+.mat-drawer-container {
+  height: 100%;
+}
+
+.mat-drawer-content {
+  padding: 10px;
+}
+
+.discuss-board {
+  .ql-editor {
+    padding: 0;
+  }
+
+  &-header {
+    padding: 10px;
+    border-bottom: $border-common;
+    background-color: $body-bg;
+  }
+}
+
+.discuss {
+  border: 1px solid mat-color($gray, 400);
+  border-radius: 6px;
+  word-wrap: break-word;
+
+  .ql-editor {
+    padding: 6px 10px;
   }
 }

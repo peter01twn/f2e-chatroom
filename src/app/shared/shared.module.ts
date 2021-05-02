@@ -7,6 +7,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { QuillModule } from 'ngx-quill';
 
@@ -34,6 +35,7 @@ import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
     MatButtonModule,
     MatMenuModule,
     MatTabsModule,
+    MatSidenavModule,
     QuillModule,
   ],
   exports: [
@@ -42,13 +44,15 @@ import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
     ReactiveFormsModule,
     MatIconModule,
     MatGridListModule,
+    QuillModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatTabsModule,
+    MatSidenavModule,
     ForwardBtnComponent,
     UserAvatarComponent,
     UserInfoCardComponent,
-    MatButtonModule,
     MsgInputBoxComponent,
-    MatMenuModule,
-    MatTabsModule,
     ChatMsgComponent,
   ],
 })

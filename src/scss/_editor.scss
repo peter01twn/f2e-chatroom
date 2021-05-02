@@ -1,0 +1,46 @@
+// ql content
+.ql-container.ql-snow {
+  font-size: 16px;
+  border: $border-common;
+  border-radius: 6px 6px 0 0;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .ql-editor {
+    padding: 10px 12px;
+  }
+}
+
+// ql toolbar
+.ql-toolbar.ql-snow {
+  border: $border-common;
+  border-radius: 0 0 6px 6px;
+
+  & + .ql-container.ql-snow {
+    border-top: $border-common;
+    border-bottom: none;
+  }
+}
+
+.ql-toolbar.ql-snow .ql-formats {
+  margin-right: 0;
+}
+
+// ql tool btn
+.ql-snow .ql-color-picker,
+.ql-snow .ql-icon-picker,
+.ql-snow.ql-toolbar button,
+.ql-snow .ql-toolbar button {
+  width: 32px;
+  height: 28px;
+}
+
+// ql tool select
+.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+  top: auto;
+  bottom: 100%;
+  border: $border-common;
+  background-color: $body-bg;
+}

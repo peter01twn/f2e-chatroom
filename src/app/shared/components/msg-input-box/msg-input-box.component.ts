@@ -6,7 +6,7 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './msg-input-box.component.html',
   styleUrls: ['./msg-input-box.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
   // tslint:disable-next-line: no-host-metadata-property
   host: {
     class: 'msg-input-box',

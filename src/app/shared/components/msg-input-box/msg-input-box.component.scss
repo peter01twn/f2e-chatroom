@@ -1,96 +1,10 @@
 @import "theme";
 
-.msg-input-box {
-  // padding: 0 12px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 6px;
-  overflow: hidden;
-
-  &-tool-bar {
-    display: flex;
-    padding: 10px 0;
-    font-size: 16px;
-    line-height: 1;
-  }
-}
-
-.msg-tool-list {
-  display: flex;
-  margin: 0 -4px;
-}
-
-.msg-tool-item {
-  padding: 0 4px;
-}
-
-.msg-tool {
-  position: relative;
-  padding: 0;
-  display: block;
-  width: 22px;
-  height: 22px;
-  border: none;
-  background-color: transparent;
-  font-size: 22px;
-  cursor: pointer;
-  user-select: none;
-
-  input {
-    position: absolute;
-    visibility: hidden;
-  }
-}
-
-.msg-submit {
-  margin: 0 0 0 auto;
-}
-
-.ql-wrapper {
+:host ::ng-deep .ql-wrapper {
   display: flex;
   flex-direction: column-reverse;
 }
 
-.ql-container.ql-snow {
+:host ::ng-deep .ql-container.ql-snow {
   min-height: 120px;
-  font-size: 16px;
-  border: $border-common;
-  border-radius: 6px 6px 0 0;
-
-  p {
-    margin-bottom: 0;
-  }
-
-  .ql-editor {
-    padding: 10px 12px;
-  }
-}
-
-.ql-toolbar.ql-snow {
-  border: $border-common;
-  border-radius: 0 0 6px 6px;
-
-  & + .ql-container.ql-snow {
-    border-top: $border-common;
-    border-bottom: none;
-  }
-}
-
-.ql-toolbar.ql-snow .ql-formats {
-  margin-right: 0;
-}
-
-.ql-snow .ql-color-picker,
-.ql-snow .ql-icon-picker,
-.ql-snow.ql-toolbar button,
-.ql-snow .ql-toolbar button {
-  width: 32px;
-  height: 28px;
-}
-
-.ql-snow .ql-picker.ql-expanded .ql-picker-options {
-  top: auto;
-  bottom: 100%;
-  border: $border-common;
-  background-color: $body-bg;
 }

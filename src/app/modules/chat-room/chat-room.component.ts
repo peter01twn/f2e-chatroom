@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat-room.component.scss'],
 })
 export class ChatRoomComponent implements OnInit {
+  discuss = '<p class="ql-align-center">asd<strong>as</strong>dasd</p>';
+
   constructor() {}
 
   ngOnInit(): void {}

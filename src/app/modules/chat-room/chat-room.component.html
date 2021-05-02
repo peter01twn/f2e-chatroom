@@ -39,16 +39,38 @@
                         </div>
                     </mat-tab>
                     <mat-tab label="Discussions">
-                        <div class="msg-screen">
-                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.'};"></div>
-                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true};"></div>
-                        </div>
-                    </mat-tab>
-                    <mat-tab label="qdqwdf asdad">
-                        <div class="msg-screen">
-                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.'};"></div>
-                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true};"></div>
-                        </div>
+                        <mat-drawer-container
+                            class="example-container"
+                            hasBackdrop="true"
+                        >
+                            <mat-drawer
+                                #discussDrawer
+                                mode="over"
+                                position="end"
+                            >
+                                <div class="discuss-board">
+                                    <div class="discuss-board-header">
+                                        <div
+                                            class="ql-container ql-snow"
+                                            style="border-width: 0;"
+                                        >
+                                            <div
+                                                class="ql-editor"
+                                                [innerHTML]="discuss"
+                                            >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="msg-screen">
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
+                                    </div>
+                                </div>
+                            </mat-drawer>
+                            <mat-drawer-content>
+                                <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', openPanel: true};"></div>
+                            </mat-drawer-content>
+                        </mat-drawer-container>
                     </mat-tab>
                 </mat-tab-group>
             </div>
@@ -66,17 +88,17 @@
         </mat-grid-tile>
     </mat-grid-list>
 </div>
-
-
 <ng-template
     #chatMsg
     let-content="content"
     let-right="right"
     let-discussCount="discussCount"
+    let-openPanel="openPanel"
 >
     <div
         class="msg-wrapper"
         [ngClass]="{'msg-wrapper-right': right}"
+        (click)="openPanel ? discussDrawer.toggle() : ''"
     >
         <app-chat-msg
             [discussionCount]="discussCount"
@@ -84,5 +106,28 @@
         >
             {{ content }}
         </app-chat-msg>
+    </div>
+</ng-template>
+<ng-template
+    #discussMsg
+    let-content="content"
+    let-right="right"
+>
+    <div
+        class="msg-wrapper"
+        [ngClass]="{'msg-wrapper-right': right}"
+    >
+        <div class="discuss">
+            <div
+                class="ql-container ql-snow"
+                style="border-width: 0;"
+            >
+                <div
+                    class="ql-editor"
+                    [innerHTML]="content"
+                >
+                </div>
+            </div>
+        </div>
     </div>
 </ng-template>
