@@ -11,7 +11,7 @@ export class ChatMessageService {
   private wsSubject: Subject<unknown>;
 
   constructor(websocket: WebsocketService) {
-    this.wsSubject = websocket.connect('ws://localhost:3000');
+    this.wsSubject = websocket.connect('ws://localhost:3000/echo');
     this.recive$ = this.wsSubject.asObservable();
   }
 

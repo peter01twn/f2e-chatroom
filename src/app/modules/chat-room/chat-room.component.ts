@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ChatMessageService } from 'src/app/services/chat-message/chat-message.service';
 
 @Component({
   selector: 'app-chat-room',
   templateUrl: './chat-room.component.html',
   styleUrls: ['./chat-room.component.scss'],
 })
-export class ChatRoomComponent implements OnInit {
-  discuss = '<p class="ql-align-center">asd<strong>as</strong>dasd</p>';
-
-  constructor() {}
-
-  ngOnInit(): void {}
+export class ChatRoomComponent {
+  constructor(private msgService: ChatMessageService) {
+    msgService.recive$.subscribe(msgObj => {
+      console.log(msgObj);
+    });
+  }
 }
