@@ -93,8 +93,8 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
     }
   }
 
-  boundNum(number: number, min = 0, max = Infinity): number {
-    return Math.min(Math.max(number, min), max);
+  boundNum(num: number, min = 0, max = Infinity): number {
+    return Math.min(Math.max(num, min), max);
   }
 
   @HostListener('mousemove', ['$event'])

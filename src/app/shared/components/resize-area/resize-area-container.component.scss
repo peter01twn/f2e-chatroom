@@ -2,6 +2,7 @@
 
 .resize-area-container {
   display: flex;
+  align-items: stretch;
 
   &-vertical {
     flex-direction: column;

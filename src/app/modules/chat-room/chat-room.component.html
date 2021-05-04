@@ -3,7 +3,10 @@
     style="height: 100%;"
 >
     <app-resize-area-container style="height: 100%; padding: 5px;">
-        <app-resize-area>
+        <app-resize-area
+            width="250px"
+            [grow]="false"
+        >
             <div class="side-bar">
                 <div class="side-bar-content"></div>
                 <div class="divider"></div>
@@ -16,7 +19,7 @@
                 </div>
             </div>
         </app-resize-area>
-        <app-resize-area style="flex: 1 1; height: 100%;">
+        <app-resize-area>
             <app-resize-area-container
                 direction="vertical"
                 style="height: 100%;"

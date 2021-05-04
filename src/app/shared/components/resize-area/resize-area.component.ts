@@ -1,11 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  Input,
-  ViewEncapsulation,
-  ViewContainerRef,
-  ElementRef,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ViewEncapsulation, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-resize-area',
@@ -16,6 +9,7 @@ import {
   // tslint:disable-next-line: no-host-metadata-property
   host: {
     class: 'resize-area',
+    '[class.resize-area-grow]': 'grow',
     '[style.height]': 'height',
     '[style.width]': 'width',
   },
@@ -25,9 +19,11 @@ export class ResizeAreaComponent {
 
   @Input() width = 'auto';
 
+  @Input() grow = true;
+
   @Input() minSize?: number | 'fit-content' = 'fit-content';
 
   @Input() maxSize = Infinity;
 
-  constructor(public vref: ViewContainerRef, private el: ElementRef) {}
+  constructor(public vref: ViewContainerRef) {}
 }
