@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { UserAvatars } from 'src/app/core/user-avatars';
+import { UserInfoService } from 'src/app/services/user-info/user-info.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,9 @@ export class LoginComponent {
 
   userName = this.fb.control('');
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private user: UserInfoService) {
+    user.update({ id: 'test' });
+  }
 
   selectAvatar(avatar: string): void {
     this.userAvatar = avatar;

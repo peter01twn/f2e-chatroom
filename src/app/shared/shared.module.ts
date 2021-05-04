@@ -15,16 +15,18 @@ import { QuillModule } from 'ngx-quill';
 import { ForwardBtnComponent } from './components/forward-btn/forward-btn.component';
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { UserInfoCardComponent } from './components/user-info-card/user-info-card.component';
-import { MsgInputBoxComponent } from './components/msg-input-box/msg-input-box.component';
 import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
+import { ResizeAreaComponent } from './components/resize-area/resize-area.component';
+import { ResizeAreaContainerComponent } from './components/resize-area/resize-area-container.component';
 
 @NgModule({
   declarations: [
     ForwardBtnComponent,
     UserAvatarComponent,
     UserInfoCardComponent,
-    MsgInputBoxComponent,
     ChatMsgComponent,
+    ResizeAreaComponent,
+    ResizeAreaContainerComponent,
   ],
   imports: [
     CommonModule,
@@ -57,8 +59,9 @@ import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
     ForwardBtnComponent,
     UserAvatarComponent,
     UserInfoCardComponent,
-    MsgInputBoxComponent,
     ChatMsgComponent,
+    ResizeAreaComponent,
+    ResizeAreaContainerComponent,
   ],
 })
 export class SharedModule {}

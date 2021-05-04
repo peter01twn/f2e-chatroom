@@ -7,9 +7,10 @@
 }
 
 .side-bar {
+  padding: 0 10px;
   display: flex;
   flex-direction: column;
-  padding: 0 10px;
+  width: 250px;
   height: 100%;
   border: 1px solid mat-color($gray, 300);
   border-radius: 6px;
@@ -117,5 +118,72 @@
 
   .ql-editor {
     padding: 6px 10px;
+  }
+}
+
+:host ::ng-deep .msg-input {
+  .ql-container.ql-snow {
+    max-height: calc(100% - 46px);
+    height: auto;
+    border-bottom: none;
+  }
+
+  .ql-toolbar.ql-snow {
+    display: flex;
+    .mat-icon {
+      height: 100%;
+
+      &.submit {
+        vertical-align: -11px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.resize-line {
+  position: relative;
+  margin: 8px 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: mat-color($gray, 400);
+  opacity: 0.2;
+  transition: opacity 0.15s ease;
+  cursor: pointer;
+
+  &::after {
+    display: block;
+    content: "drag_indicator";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    background-color: $body-bg;
+    font-family: "Material Icons";
+    font-size: 20px;
+    color: mat-color($gray, 700);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  &:hover,
+  &:focus,
+  &.hold {
+    opacity: 1;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &-vertical {
+    margin: 0 8px;
+    width: 4px;
+    height: 100%;
+
+    &::after {
+      transform: translate(-50%, -50%);
+    }
   }
 }

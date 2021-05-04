@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-interface UserInfo {
+export interface UserInfo {
+  id: string;
   name: string;
   avatar: string;
 }
@@ -11,6 +12,7 @@ interface UserInfo {
 })
 export class UserInfoService {
   private userInfo: UserInfo = {
+    id: '',
     name: '',
     avatar: '',
   };

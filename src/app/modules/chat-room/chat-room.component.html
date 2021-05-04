@@ -2,6 +2,116 @@
     class="container"
     style="height: 100%;"
 >
+    <app-resize-area-container style="height: 100%; padding: 5px;">
+        <app-resize-area>
+            <div class="side-bar">
+                <div class="side-bar-content"></div>
+                <div class="divider"></div>
+                <div class="side-bar-footer">
+                    <app-user-info-card
+                        icon="fish"
+                        name="user name"
+                        description="user description"
+                    ></app-user-info-card>
+                </div>
+            </div>
+        </app-resize-area>
+        <app-resize-area style="flex: 1 1; height: 100%;">
+            <app-resize-area-container
+                direction="vertical"
+                style="height: 100%;"
+            >
+                <app-resize-area height="70%">
+                    <mat-tab-group animationDuration="0ms">
+                        <mat-tab label="All">
+                            <div class="msg-screen">
+                                <ng-container *ngFor="let msgObj of messageList">
+                                    <div *ngTemplateOutlet="chatMsg; context: {content: msgObj.msg, right: msgObj.owner === uId};"></div>
+                                </ng-container>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Discussions">
+                            <mat-drawer-container hasBackdrop="true">
+                                <mat-drawer
+                                    #discussDrawer
+                                    mode="over"
+                                    position="end"
+                                >
+                                    <mat-expansion-panel
+                                        #discussPanel
+                                        hideToggle
+                                        expanded="true"
+                                    >
+                                        <mat-expansion-panel-header [ngSwitch]="discussPanel.expanded">
+                                            <mat-icon *ngSwitchCase="true">arrow_drop_up</mat-icon>
+                                            <mat-icon *ngSwitchCase="false">arrow_drop_down</mat-icon>
+                                        </mat-expansion-panel-header>
+                                        <div
+                                            class="ql-container ql-snow"
+                                            style="border-width: 0;"
+                                        >
+                                            <div
+                                                class="ql-editor"
+                                                [innerHTML]="'discuss post'"
+                                            >
+                                            </div>
+                                        </div>
+                                    </mat-expansion-panel>
+                                    <div class="discuss-board msg-screen">
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                    </div>
+                                </mat-drawer>
+                                <mat-drawer-content>
+                                    <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', openPanel: true};"></div>
+                                </mat-drawer-content>
+                            </mat-drawer-container>
+                        </mat-tab>
+                    </mat-tab-group>
+                </app-resize-area>
+                <app-resize-area>
+                    <quill-editor
+                        #editor
+                        class="ql-wrapper msg-input"
+                        [formControl]="newMessage"
+                        customToolbarPosition="bottom"
+                    >
+                        <div quill-editor-toolbar>
+                            <span class="ql-formats">
+                                <button
+                                    class="ql-bold"
+                                    [title]="'Bold'"
+                                ></button>
+                            </span>
+                            <div class="flex-stuffing"></div>
+                            <span class="ql-formats">
+                                <mat-icon
+                                    class="submit"
+                                    (click)="sendMsg()"
+                                >
+                                    send
+                                </mat-icon>
+                            </span>
+                        </div>
+                    </quill-editor>
+                </app-resize-area>
+            </app-resize-area-container>
+        </app-resize-area>
+    </app-resize-area-container>
+</div>
+<!-- <div
+    class="container"
+    style="height: 100%;"
+>
     <mat-grid-list
         cols="5"
         rowHeight="20%"
@@ -27,15 +137,15 @@
         </mat-grid-tile>
         <mat-grid-tile
             colspan="4"
-            rowspan="3"
+            rowspan="4"
         >
             <div class="grid-block">
                 <mat-tab-group animationDuration="0ms">
                     <mat-tab label="All">
                         <div class="msg-screen">
-                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', discussCount: 3};"></div>
-                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum.', right: true, discussCount: 3};"></div>
-                            <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
+                            <ng-container *ngFor="let msgObj of messageList">
+                                <div *ngTemplateOutlet="chatMsg; context: {content: msgObj.msg, right: msgObj.owner === uId};"></div>
+                            </ng-container>
                         </div>
                     </mat-tab>
                     <mat-tab label="Discussions">
@@ -89,17 +199,37 @@
         </mat-grid-tile>
         <mat-grid-tile
             colspan="4"
-            rowspan="2"
+            rowspan="1"
         >
             <div class="grid-block">
-                <app-msg-input-box
-                    style="min-height: 150px;"
-                    maxHeight="100%"
-                ></app-msg-input-box>
+                <quill-editor
+                    #editor
+                    class="ql-wrapper msg-input"
+                    [formControl]="newMessage"
+                    customToolbarPosition="bottom"
+                >
+                    <div quill-editor-toolbar>
+                        <span class="ql-formats">
+                            <button
+                                class="ql-bold"
+                                [title]="'Bold'"
+                            ></button>
+                        </span>
+                        <div class="flex-stuffing"></div>
+                        <span class="ql-formats">
+                            <mat-icon
+                                class="submit"
+                                (click)="sendMsg()"
+                            >
+                                send
+                            </mat-icon>
+                        </span>
+                    </div>
+                </quill-editor>
             </div>
         </mat-grid-tile>
     </mat-grid-list>
-</div>
+</div> -->
 <ng-template
     #chatMsg
     let-content="content"
@@ -113,6 +243,7 @@
         (click)="openPanel ? discussDrawer.toggle() : ''"
     >
         <app-chat-msg
+            [content]="content"
             [discussionCount]="discussCount"
             [direction]="right ? 'rtl' : 'ltr'"
         >
@@ -142,4 +273,13 @@
             </div>
         </div>
     </div>
+</ng-template>
+<ng-template
+    #resizeLine
+    let-direction="direction"
+>
+    <div
+        class="resize-line"
+        [ngClass]="{'resize-line-vertical': direction === 'vertical'}"
+    ></div>
 </ng-template>

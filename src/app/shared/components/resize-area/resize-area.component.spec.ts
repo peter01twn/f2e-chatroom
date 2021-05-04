@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MsgInputBoxComponent } from './msg-input-box.component';
+import { ResizeAreaComponent } from './resize-area.component';
 
-describe('MsgInputBoxComponent', () => {
-  let component: MsgInputBoxComponent;
-  let fixture: ComponentFixture<MsgInputBoxComponent>;
+describe('ResizeAreaComponent', () => {
+  let component: ResizeAreaComponent;
+  let fixture: ComponentFixture<ResizeAreaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MsgInputBoxComponent ]
+      declarations: [ ResizeAreaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MsgInputBoxComponent);
+    fixture = TestBed.createComponent(ResizeAreaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

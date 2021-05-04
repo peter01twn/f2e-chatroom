@@ -13,6 +13,8 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@a
   },
 })
 export class ChatMsgComponent {
+  @Input() content = '';
+
   @Input() direction: 'rtl' | 'ltr' = 'ltr';
 
   @Input() discussionCount = 0;

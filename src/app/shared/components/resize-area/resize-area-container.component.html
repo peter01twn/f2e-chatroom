@@ -1,0 +1,12 @@
+<ng-content></ng-content>
+<ng-template
+    #resizeLine
+    let-index="index"
+    let-direction="direction"
+>
+    <div
+        class="resize-line"
+        [ngClass]="{'resize-line-vertical': direction === 'horizontal'}"
+        (mousedown)="dragStart.next([$event, index])"
+    ></div>
+</ng-template>
