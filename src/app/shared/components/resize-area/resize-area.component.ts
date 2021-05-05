@@ -1,4 +1,12 @@
-import { Component, ChangeDetectionStrategy, Input, ViewEncapsulation, ViewContainerRef } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  ViewEncapsulation,
+  ViewContainerRef,
+  ElementRef,
+  ChangeDetectorRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-resize-area',
@@ -9,21 +17,88 @@ import { Component, ChangeDetectionStrategy, Input, ViewEncapsulation, ViewConta
   // tslint:disable-next-line: no-host-metadata-property
   host: {
     class: 'resize-area',
-    '[class.resize-area-grow]': 'grow',
-    '[style.height]': 'height',
-    '[style.width]': 'width',
+    '[style.flex-grow]': 'size === "auto" && !controled ? 1 : 0',
   },
 })
 export class ResizeAreaComponent {
-  @Input() height = 'auto';
+  @Input() solid = false;
 
-  @Input() width = 'auto';
+  @Input() size = 'auto';
 
-  @Input() grow = true;
-
-  @Input() minSize?: number | 'fit-content' = 'fit-content';
+  @Input() minSize = 0;
 
   @Input() maxSize = Infinity;
 
-  constructor(public vref: ViewContainerRef) {}
+  get el(): HTMLElement {
+    return this.elRef.nativeElement;
+  }
+
+  direction: 'vertical' | 'horizontal' = 'horizontal';
+
+  controled = false;
+
+  private pendingSize = 0;
+
+  private pending = false;
+
+  constructor(public vref: ViewContainerRef, public cd: ChangeDetectorRef, private elRef: ElementRef) {}
+
+  checkMaxStretchSpace(): { grow: number; shrink: number } {
+    if (this.solid) {
+      return {
+        shrink: 0,
+        grow: 0,
+      };
+    }
+
+    let size: number;
+
+    if (this.pending) {
+      size = this.pendingSize;
+    } else {
+      const { axisWidth } = this.getDOMRect();
+      size = axisWidth;
+    }
+
+    return {
+      shrink: size - this.minSize,
+      grow: this.maxSize - size,
+    };
+  }
+
+  strech(length: number): void {
+    if (this.solid) {
+      return;
+    }
+
+    if (this.pending) {
+      this.pendingSize = this.pendingSize + length;
+    } else {
+      const { axisStyle, axisWidth } = this.getDOMRect();
+      this.pending = true;
+      this.pendingSize = axisWidth + length;
+
+      requestAnimationFrame(() => {
+        this.el.style[axisStyle] = `${this.pendingSize}px`;
+        this.pending = false;
+        this.controled = true;
+        this.cd.markForCheck();
+      });
+    }
+  }
+
+  setSize(): void {
+    const { axisStyle } = this.getDOMRect();
+    this.el.style[axisStyle] = this.size;
+  }
+
+  getDOMRect(): { axisStyle: 'width' | 'height'; axisWidth: number; start: number; end: number } {
+    const { width, height, left, right, top, bottom } = this.el.getBoundingClientRect();
+    return {
+      axisStyle: this.direction === 'horizontal' ? 'width' : 'height',
+      axisWidth: this.direction === 'horizontal' ? width : height,
+      start: this.direction === 'horizontal' ? left : top,
+      end: this.direction === 'horizontal' ? right : bottom,
+    };
+  }
 }

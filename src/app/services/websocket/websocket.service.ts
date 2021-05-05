@@ -1,40 +1,59 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { fromEvent, Observable, Subject } from 'rxjs';
+import { io, ManagerOptions, Socket, SocketOptions } from 'socket.io-client';
+
+export class SocketWrapper {
+  private socket: Socket;
+
+  connect$: Observable<undefined>;
+
+  disconnnect$: Observable<undefined>;
+
+  error$: Observable<Error>;
+
+  constructor(uri: string, opts?: Partial<ManagerOptions & SocketOptions>) {
+    this.socket = io(uri, opts);
+
+    this.error$ = fromEvent(this.socket as any, 'connect_error');
+
+    const connectSubject = new Subject<undefined>();
+    const disconnnectSubject = new Subject<undefined>();
+    this.connect$ = connectSubject.asObservable();
+    this.disconnnect$ = connectSubject.asObservable();
+    this.socket.on('connnect', () => connectSubject.next());
+    this.socket.on('disconnnect', () => disconnnectSubject.next());
+  }
+
+  on<T>(e: string): Observable<T> {
+    return fromEvent(this.socket as any, e);
+  }
+
+  send(...args: any[]): this {
+    this.socket.send(...args);
+    return this;
+  }
+
+  emit(e: string, ...args: any[]): this {
+    this.socket.emit(e, ...args);
+    return this;
+  }
+
+  disconnect(): void {
+    this.socket.disconnect();
+  }
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class WebsocketService {
-  private connectionPool = new Map();
-
-  connect(url: string): Subject<unknown> {
-    let connection = this.connectionPool.get(url);
-
-    if (!connection) {
-      connection = this.createWs(url);
-      this.connectionPool.set(url, connection);
-    }
-
-    return connection;
+  connect(url: string): SocketWrapper {
+    return this.createWs(url);
   }
 
-  private createWs(url: string): Subject<unknown> {
-    const ws = new WebSocket(url);
+  private createWs(url: string): SocketWrapper {
+    const wrapper = new SocketWrapper(url);
 
-    const observable = new Observable(subscriber => {
-      ws.onmessage = res => subscriber.next(JSON.parse(res.data));
-      ws.onclose = () => subscriber.complete();
-      ws.onerror = err => subscriber.error(err);
-    });
-
-    const observer = {
-      next: (data: unknown) => {
-        if (ws.readyState === WebSocket.OPEN) {
-          ws.send(JSON.stringify(data));
-        }
-      },
-    };
-
-    return Subject.create(observer, observable);
+    return wrapper;
   }
 }

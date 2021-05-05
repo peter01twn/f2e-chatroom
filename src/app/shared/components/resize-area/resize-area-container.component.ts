@@ -57,7 +57,11 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
     )
   );
 
-  constructor() {
+  get el(): HTMLElement {
+    return this.elRef.nativeElement;
+  }
+
+  constructor(private elRef: ElementRef) {
     this.resizeLineDrag$.subscribe(([e, i]) => {
       this.resizeArea(this.direction === 'vertical' ? e.movementY : e.movementX, i);
     });
@@ -66,6 +70,10 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.resizeAreaList?.forEach((comp, i, list) => {
+        // 初始化元素大小
+        comp.direction = this.direction;
+        comp.setSize();
+
         if (i !== list.length - 1) {
           comp.vref.createEmbeddedView(this.resizeLineTmpl as TemplateRef<ResizeLineTmpl>, {
             index: i,
@@ -76,25 +84,81 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
     }, 0);
   }
 
-  resizeArea(movement: number, i: number): void {
-    const prevArea = this.resizeAreaList?.get(i);
-    const nextArea = this.resizeAreaList?.get(i + 1);
-    const prevEl = prevArea?.vref.element.nativeElement as HTMLElement;
-    const nextEl = nextArea?.vref.element.nativeElement as HTMLElement;
-    const { width: prevW, height: prevH } = prevEl.getBoundingClientRect();
-    const { width: nextW, height: nextH } = nextEl.getBoundingClientRect();
-
-    if (this.direction === 'vertical') {
-      prevEl.style.height = `${this.boundNum(prevH + movement)}px`;
-      nextEl.style.height = `${nextH - movement}px`;
-    } else {
-      prevEl.style.width = `${prevW + movement}px`;
-      nextEl.style.width = `${nextW - movement}px`;
+  resizeArea(movement: number, lineIndex: number): void {
+    if (!this.resizeAreaList) {
+      return;
     }
+
+    const prevArea = this.findResizableArea(lineIndex, false);
+    const nextArea = this.findResizableArea(lineIndex + 1);
+
+    // no area can resize
+    if (!(prevArea || nextArea)) {
+      return;
+    }
+
+    const prevStretchSpace = prevArea?.checkMaxStretchSpace();
+    const nextStretchSpace = nextArea?.checkMaxStretchSpace();
+
+    if (movement > 0) {
+      const prevStretch = prevStretchSpace?.grow ?? Infinity;
+      let nextStretch = nextStretchSpace?.shrink ?? Infinity;
+
+      if (!nextArea) {
+        const { end } = this.resizeAreaList.first.getDOMRect();
+        const { end: containerEnd } = this.getDOMRect();
+        nextStretch = containerEnd - end;
+      }
+
+      movement = Math.min(movement, prevStretch, nextStretch);
+    } else {
+      let prevStretch = prevStretchSpace?.shrink ?? Infinity;
+      const nextStretch = nextStretchSpace?.grow ?? Infinity;
+
+      if (!prevArea) {
+        const { start } = this.resizeAreaList.first.getDOMRect();
+        const { start: containerStart } = this.getDOMRect();
+        prevStretch = start - containerStart;
+      }
+
+      movement = -Math.min(Math.abs(movement), prevStretch, nextStretch);
+    }
+
+    prevArea?.strech(movement);
+    nextArea?.strech(-movement);
   }
 
-  boundNum(num: number, min = 0, max = Infinity): number {
-    return Math.min(Math.max(num, min), max);
+  private findResizableArea(beginIndex: number, order = true): ResizeAreaComponent | null {
+    if (!this.resizeAreaList) {
+      return null;
+    }
+
+    let areaList = this.resizeAreaList.toArray();
+
+    if (order) {
+      areaList = areaList.slice(beginIndex);
+    } else {
+      areaList = areaList.slice(0, beginIndex + 1);
+      areaList.reverse();
+    }
+
+    for (const area of areaList) {
+      if (!area.solid) {
+        return area;
+      }
+    }
+
+    return null;
+  }
+
+  private getDOMRect(): { axisStyle: 'width' | 'height'; axisWidth: number; start: number; end: number } {
+    const { width, height, left, right, top, bottom } = this.el.getBoundingClientRect();
+    return {
+      axisStyle: this.direction === 'horizontal' ? 'width' : 'height',
+      axisWidth: this.direction === 'horizontal' ? width : height,
+      start: this.direction === 'horizontal' ? left : top,
+      end: this.direction === 'horizontal' ? right : bottom,
+    };
   }
 
   @HostListener('mousemove', ['$event'])

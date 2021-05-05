@@ -1,12 +1,9 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { mergeMap, takeUntil } from 'rxjs/operators';
 import { ChatMessageService } from 'src/app/services/chat-message/chat-message.service';
 import { UserInfoService } from 'src/app/services/user-info/user-info.service';
 
 interface MsgDto {
-  action: string;
   owner: string;
   msg: string;
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { UserInfoService, UserInfo } from '../user-info/user-info.service';
-import { WebsocketService } from '../websocket/websocket.service';
+import { WebsocketService, SocketWrapper } from '../websocket/websocket.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,16 +9,17 @@ import { WebsocketService } from '../websocket/websocket.service';
 export class ChatMessageService {
   recive$: Observable<unknown>;
 
-  private wsSubject: Subject<unknown>;
+  private socket: SocketWrapper;
   private userInfo?: UserInfo = { id: '', avatar: '', name: '' };
 
-  constructor(websocket: WebsocketService, private user: UserInfoService) {
-    this.wsSubject = websocket.connect('ws://localhost:3000/echo');
-    this.recive$ = this.wsSubject.asObservable();
+  constructor(websocket: WebsocketService, user: UserInfoService) {
     user.get$.subscribe(info => (this.userInfo = info));
+    this.socket = websocket.connect('http://localhost:3000/echo');
+    this.socket.error$.subscribe(err => this.socket.disconnect());
+    this.recive$ = this.socket.on<any>('message');
   }
 
   send(msg: string): void {
-    this.wsSubject.next({ action: 'new', owner: this.userInfo?.id, msg });
+    this.socket.send({ owner: this.userInfo?.id, msg });
   }
 }
