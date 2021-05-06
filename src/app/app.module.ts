@@ -10,7 +10,7 @@ import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, SharedModule, QuillModule.forRoot()],
+  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), BrowserAnimationsModule, AppRoutingModule, SharedModule, QuillModule.forRoot()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
