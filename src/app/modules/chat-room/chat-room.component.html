@@ -1,9 +1,12 @@
 <div
     class="container"
-    style="height: 100%;"
+    style="height: 100%; padding: 5px;"
 >
-    <app-resize-area-container style="height: 100%; padding: 5px;">
-        <app-resize-area size="250px">
+    <app-resize-area-container style="height: 100%;">
+        <app-resize-area
+            size="250px"
+            [minSize]="250"
+        >
             <div class="side-bar">
                 <div class="side-bar-content"></div>
                 <div class="divider"></div>
@@ -16,12 +19,15 @@
                 </div>
             </div>
         </app-resize-area>
-        <app-resize-area>
+        <app-resize-area [minSize]="400">
             <app-resize-area-container
                 direction="vertical"
                 style="height: 100%;"
             >
-                <app-resize-area size="70%">
+                <app-resize-area
+                    size="70%"
+                    [minSize]="250"
+                >
                     <mat-tab-group animationDuration="0ms">
                         <mat-tab label="All">
                             <div class="msg-screen">
@@ -77,32 +83,6 @@
                             </mat-drawer-container>
                         </mat-tab>
                     </mat-tab-group>
-                </app-resize-area>
-                <app-resize-area [minSize]="90">
-                    <quill-editor
-                        #editor
-                        class="ql-wrapper msg-input"
-                        [formControl]="newMessage"
-                        customToolbarPosition="bottom"
-                    >
-                        <div quill-editor-toolbar>
-                            <span class="ql-formats">
-                                <button
-                                    class="ql-bold"
-                                    [title]="'Bold'"
-                                ></button>
-                            </span>
-                            <div class="flex-stuffing"></div>
-                            <span class="ql-formats">
-                                <mat-icon
-                                    class="submit"
-                                    (click)="sendMsg()"
-                                >
-                                    send
-                                </mat-icon>
-                            </span>
-                        </div>
-                    </quill-editor>
                 </app-resize-area>
                 <app-resize-area [minSize]="90">
                     <quill-editor

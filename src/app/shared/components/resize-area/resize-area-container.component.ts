@@ -44,14 +44,14 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
 
   @ContentChildren(ResizeAreaComponent) resizeAreaList?: QueryList<ResizeAreaComponent>;
 
-  dragStart = new Subject<[MouseEvent, number]>();
-  dragCancel = new Subject();
-  mouseMove = new Subject<MouseEvent>();
+  dragStart$ = new Subject<[MouseEvent, number]>();
+  dragCancel$ = new Subject();
+  mouseMove$ = new Subject<MouseEvent>();
 
-  resizeLineDrag$ = this.dragStart.asObservable().pipe(
+  resizeLineDrag$ = this.dragStart$.asObservable().pipe(
     mergeMap(([, index]) =>
-      this.mouseMove.asObservable().pipe(
-        takeUntil(this.dragCancel),
+      this.mouseMove$.asObservable().pipe(
+        takeUntil(this.dragCancel$),
         map(e => [e, index] as [MouseEvent, number])
       )
     )
@@ -61,9 +61,24 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
     return this.elRef.nativeElement;
   }
 
+  private currentDragLine?: HTMLElement;
+
   constructor(private elRef: ElementRef) {
-    this.resizeLineDrag$.subscribe(([e, i]) => {
-      this.resizeArea(this.direction === 'vertical' ? e.movementY : e.movementX, i);
+    this.dragStart$.subscribe(([e]) => {
+      this.currentDragLine = e.target as HTMLElement;
+      this.currentDragLine.classList.add('resize-line-hold');
+    });
+
+    this.resizeLineDrag$.subscribe({
+      next: ([e, i]) => {
+        e.preventDefault();
+        this.resizeArea(this.direction === 'vertical' ? e.movementY : e.movementX, i);
+      },
+    });
+
+    this.dragCancel$.subscribe(() => {
+      this.currentDragLine?.classList.remove('resize-line-hold');
+      this.currentDragLine = undefined;
     });
   }
 
@@ -72,7 +87,7 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
       this.resizeAreaList?.forEach((comp, i, list) => {
         // 初始化元素大小
         comp.direction = this.direction;
-        comp.setSize();
+        comp.setOriginSize();
 
         if (i !== list.length - 1) {
           comp.vref.createEmbeddedView(this.resizeLineTmpl as TemplateRef<ResizeLineTmpl>, {
@@ -89,48 +104,39 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
       return;
     }
 
-    const prevArea = this.findResizableArea(lineIndex, false);
-    const nextArea = this.findResizableArea(lineIndex + 1);
-
-    // no area can resize
-    if (!(prevArea || nextArea)) {
-      return;
-    }
-
-    const prevStretchSpace = prevArea?.checkMaxStretchSpace();
-    const nextStretchSpace = nextArea?.checkMaxStretchSpace();
+    let prevArea: ResizeAreaComponent | null;
+    let nextArea: ResizeAreaComponent | null;
 
     if (movement > 0) {
-      const prevStretch = prevStretchSpace?.grow ?? Infinity;
-      let nextStretch = nextStretchSpace?.shrink ?? Infinity;
+      const [prevStretchLength, prevComp] = this.getResizeTarget('grow', lineIndex, false);
+      const [nextStretchLength, nextComp] = this.getResizeTarget('shrink', lineIndex + 1);
 
-      if (!nextArea) {
-        const { end } = this.resizeAreaList.first.getDOMRect();
-        const { end: containerEnd } = this.getDOMRect();
-        nextStretch = containerEnd - end;
-      }
-
-      movement = Math.min(movement, prevStretch, nextStretch);
+      prevArea = prevComp;
+      nextArea = nextComp;
+      movement = Math.min(movement, prevStretchLength, nextStretchLength);
     } else {
-      let prevStretch = prevStretchSpace?.shrink ?? Infinity;
-      const nextStretch = nextStretchSpace?.grow ?? Infinity;
+      const [prevStretchLength, prevComp] = this.getResizeTarget('shrink', lineIndex, false);
+      const [nextStretchLength, nextComp] = this.getResizeTarget('grow', lineIndex + 1);
 
-      if (!prevArea) {
-        const { start } = this.resizeAreaList.first.getDOMRect();
-        const { start: containerStart } = this.getDOMRect();
-        prevStretch = start - containerStart;
-      }
-
-      movement = -Math.min(Math.abs(movement), prevStretch, nextStretch);
+      prevArea = prevComp;
+      nextArea = nextComp;
+      movement = -Math.min(Math.abs(movement), prevStretchLength, nextStretchLength);
     }
 
-    prevArea?.strech(movement);
-    nextArea?.strech(-movement);
+    const containerRect = this.el.getBoundingClientRect();
+    const containerSize = this.direction === 'horizontal' ? containerRect.width : containerRect.height;
+
+    prevArea?.strech(movement, containerSize);
+    nextArea?.strech(-movement, containerSize);
   }
 
-  private findResizableArea(beginIndex: number, order = true): ResizeAreaComponent | null {
+  private getResizeTarget(
+    direction: 'grow' | 'shrink',
+    beginIndex: number,
+    order = true
+  ): [number, ResizeAreaComponent | null] {
     if (!this.resizeAreaList) {
-      return null;
+      return [0, null];
     }
 
     let areaList = this.resizeAreaList.toArray();
@@ -143,36 +149,27 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
     }
 
     for (const area of areaList) {
-      if (!area.solid) {
-        return area;
+      const stretchLength = area.checkMaxStretchSpace()[direction];
+      if (stretchLength > 0) {
+        return [stretchLength, area];
       }
     }
 
-    return null;
-  }
-
-  private getDOMRect(): { axisStyle: 'width' | 'height'; axisWidth: number; start: number; end: number } {
-    const { width, height, left, right, top, bottom } = this.el.getBoundingClientRect();
-    return {
-      axisStyle: this.direction === 'horizontal' ? 'width' : 'height',
-      axisWidth: this.direction === 'horizontal' ? width : height,
-      start: this.direction === 'horizontal' ? left : top,
-      end: this.direction === 'horizontal' ? right : bottom,
-    };
+    return [0, null];
   }
 
   @HostListener('mousemove', ['$event'])
   onMousemove(e: MouseEvent): void {
-    this.mouseMove.next(e);
+    this.mouseMove$.next(e);
   }
 
   @HostListener('mouseup', ['$event'])
   onMouseup(e: MouseEvent): void {
-    this.dragCancel.next(e);
+    this.dragCancel$.next(e);
   }
 
   @HostListener('mouseleave', ['$event'])
   onMouseleave(e: MouseEvent): void {
-    this.dragCancel.next(e);
+    this.dragCancel$.next(e);
   }
 }

@@ -35,11 +35,17 @@ export class ResizeAreaComponent {
 
   direction: 'vertical' | 'horizontal' = 'horizontal';
 
+  public get axis(): 'width' | 'height' {
+    return this.direction === 'horizontal' ? 'width' : 'height';
+  }
+
   controled = false;
 
   private pendingSize = 0;
 
   private pending = false;
+
+  private containerSize?: number;
 
   constructor(public vref: ViewContainerRef, public cd: ChangeDetectorRef, private elRef: ElementRef) {}
 
@@ -51,14 +57,7 @@ export class ResizeAreaComponent {
       };
     }
 
-    let size: number;
-
-    if (this.pending) {
-      size = this.pendingSize;
-    } else {
-      const { axisWidth } = this.getDOMRect();
-      size = axisWidth;
-    }
+    const size = this.getElSize();
 
     return {
       shrink: size - this.minSize,
@@ -66,39 +65,45 @@ export class ResizeAreaComponent {
     };
   }
 
-  strech(length: number): void {
+  strech(length: number, containerSize: number): void {
+    if (this.solid || length === 0) {
+      return;
+    }
+
+    const size = this.getElSize();
+
+    this.updateSize(size + length, containerSize);
+  }
+
+  setOriginSize(): void {
+    this.el.style[this.axis] = this.size;
+    this.controled = false;
+  }
+
+  updateSize(size: number, containerSize: number): void {
     if (this.solid) {
       return;
     }
 
-    if (this.pending) {
-      this.pendingSize = this.pendingSize + length;
-    } else {
-      const { axisStyle, axisWidth } = this.getDOMRect();
+    this.containerSize = containerSize;
+    this.pendingSize = size;
+
+    if (!this.pending) {
       this.pending = true;
-      this.pendingSize = axisWidth + length;
 
       requestAnimationFrame(() => {
-        this.el.style[axisStyle] = `${this.pendingSize}px`;
+        this.el.style[this.axis] = `${(this.pendingSize / (this.containerSize as number)) * 100}%`;
         this.pending = false;
         this.controled = true;
-        this.cd.markForCheck();
       });
     }
   }
 
-  setSize(): void {
-    const { axisStyle } = this.getDOMRect();
-    this.el.style[axisStyle] = this.size;
-  }
-
-  getDOMRect(): { axisStyle: 'width' | 'height'; axisWidth: number; start: number; end: number } {
-    const { width, height, left, right, top, bottom } = this.el.getBoundingClientRect();
-    return {
-      axisStyle: this.direction === 'horizontal' ? 'width' : 'height',
-      axisWidth: this.direction === 'horizontal' ? width : height,
-      start: this.direction === 'horizontal' ? left : top,
-      end: this.direction === 'horizontal' ? right : bottom,
-    };
+  getElSize(): number {
+    if (this.pending) {
+      return this.pendingSize;
+    } else {
+      return this.el.getBoundingClientRect()[this.axis];
+    }
   }
 }

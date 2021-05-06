@@ -7,6 +7,6 @@
     <div
         class="resize-line"
         [ngClass]="{'resize-line-vertical': direction === 'horizontal'}"
-        (mousedown)="dragStart.next([$event, index])"
+        (mousedown)="dragStart$.next([$event, index])"
     ></div>
 </ng-template>
