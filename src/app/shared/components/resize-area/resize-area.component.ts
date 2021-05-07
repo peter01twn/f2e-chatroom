@@ -29,17 +29,17 @@ export class ResizeAreaComponent {
 
   @Input() maxSize = Infinity;
 
-  get el(): HTMLElement {
-    return this.elRef.nativeElement;
-  }
-
   direction: 'vertical' | 'horizontal' = 'horizontal';
 
-  public get axis(): 'width' | 'height' {
+  controled = false;
+
+  get axis(): 'width' | 'height' {
     return this.direction === 'horizontal' ? 'width' : 'height';
   }
 
-  controled = false;
+  get el(): HTMLElement {
+    return this.elRef.nativeElement;
+  }
 
   private pendingSize = 0;
 

@@ -15,23 +15,19 @@ interface MsgDto {
 })
 export class ChatRoomComponent {
   newMessage = this.fb.control('');
-
   messageList: MsgDto[] = [];
-
   uId = '';
 
-  constructor(private fb: FormBuilder, private msgService: ChatMessageService, private user: UserInfoService) {
-    msgService.recive$.subscribe(msgObj => {
+  constructor(private fb: FormBuilder, private msgService: ChatMessageService, user: UserInfoService) {
+    msgService.recive('broadcast').subscribe(msgObj => {
+      console.log(msgObj);
       this.messageList.push(msgObj as MsgDto);
     });
-
     user.get$.subscribe(({ id }) => (this.uId = id));
   }
 
   sendMsg(): void {
-    this.msgService.send(this.newMessage.value);
+    this.msgService.broadcast(this.newMessage.value);
     this.newMessage.setValue('');
   }
-
-  resizeBlock(e: MouseEvent): void {}
 }

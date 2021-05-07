@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
@@ -30,7 +29,6 @@ import { ResizeAreaContainerComponent } from './components/resize-area/resize-ar
   ],
   imports: [
     CommonModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
@@ -44,7 +42,6 @@ import { ResizeAreaContainerComponent } from './components/resize-area/resize-ar
   ],
   exports: [
     FormsModule,
-    HttpClientModule,
     ReactiveFormsModule,
     MatIconModule,
     MatGridListModule,
