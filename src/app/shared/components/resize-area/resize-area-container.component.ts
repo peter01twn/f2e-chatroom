@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map, mergeMap, takeUntil } from 'rxjs/operators';
+import { Axis, ResizeAreaContainerBase } from './resize-area-base';
 import { ResizeAreaComponent } from './resize-area.component';
 
 interface ResizeLineTmpl {
@@ -33,7 +34,7 @@ interface ResizeLineTmpl {
     '[class.resize-area-container-vertical]': 'direction === "vertical"',
   },
 })
-export class ResizeAreaContainerComponent implements AfterViewInit {
+export class ResizeAreaContainerComponent implements ResizeAreaContainerBase, AfterViewInit {
   @Input() direction: 'vertical' | 'horizontal' = 'horizontal';
 
   @Input() height = 'auto';
@@ -56,6 +57,10 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
       )
     )
   );
+
+  get axis(): Axis {
+    return this.direction === 'horizontal' ? 'width' : 'height';
+  }
 
   get el(): HTMLElement {
     return this.elRef.nativeElement;
@@ -108,15 +113,13 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
     let nextArea: ResizeAreaComponent | null;
 
     if (movement > 0) {
-      const [prevStretchLength, prevComp] = this.getResizeTarget('grow', lineIndex, false);
-      const [nextStretchLength, nextComp] = this.getResizeTarget('shrink', lineIndex + 1);
+      prevArea = this.getResizableArea('max', lineIndex, false);
+      nextArea = this.getResizableArea('min', lineIndex + 1);
 
-      prevArea = prevComp;
-      nextArea = nextComp;
-      movement = Math.min(movement, prevStretchLength, nextStretchLength);
+      movement = Math.min(movement, prevArea?.maxSize, nextArea?.minSize);
     } else {
-      const [prevStretchLength, prevComp] = this.getResizeTarget('shrink', lineIndex, false);
-      const [nextStretchLength, nextComp] = this.getResizeTarget('grow', lineIndex + 1);
+      const [prevStretchLength, prevComp] = this.getResizableArea('min', lineIndex, false);
+      const [nextStretchLength, nextComp] = this.getResizableArea('max', lineIndex + 1);
 
       prevArea = prevComp;
       nextArea = nextComp;
@@ -130,13 +133,13 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
     nextArea?.strech(-movement, containerSize);
   }
 
-  private getResizeTarget(
-    direction: 'grow' | 'shrink',
+  private getResizableArea(
+    stretch: 'min' | 'max',
     beginIndex: number,
-    order = true
-  ): [number, ResizeAreaComponent | null] {
+    order = true // true: find inc index, false: find dec index
+  ): ResizeAreaComponent | null {
     if (!this.resizeAreaList) {
-      return [0, null];
+      return null;
     }
 
     let areaList = this.resizeAreaList.toArray();
@@ -149,13 +152,25 @@ export class ResizeAreaContainerComponent implements AfterViewInit {
     }
 
     for (const area of areaList) {
-      const stretchLength = area.checkMaxStretchSpace()[direction];
-      if (stretchLength > 0) {
-        return [stretchLength, area];
+      const [min, max] = this.checkAreaLimitSize(area);
+      const limitSize = stretch === 'max' ? max : min;
+
+      if (limitSize > 0) {
+        return area;
       }
     }
 
-    return [0, null];
+    return null;
+  }
+
+  private checkAreaLimitSize(area: ResizeAreaComponent): [number, number] {
+    if (area.solid) {
+      return [0, 0];
+    }
+
+    const size = area.getElSize(this.axis);
+
+    return [Math.max(0, size - area.minSize), Math.max(0, area.maxSize - size)];
   }
 
   @HostListener('mousemove', ['$event'])

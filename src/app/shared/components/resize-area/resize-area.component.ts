@@ -5,8 +5,9 @@ import {
   ViewEncapsulation,
   ViewContainerRef,
   ElementRef,
-  ChangeDetectorRef,
+  Inject,
 } from '@angular/core';
+import { Axis, ResizeAreaContainerBase, RESIZE_AREA_CONTAINER } from './resize-area-base';
 
 @Component({
   selector: 'app-resize-area',
@@ -23,87 +24,77 @@ import {
 export class ResizeAreaComponent {
   @Input() solid = false;
 
+  // size lies on axis that provided by user
+  // it's a CSS value for Height or width rule to use
   @Input() size = 'auto';
 
   @Input() minSize = 0;
 
   @Input() maxSize = Infinity;
 
-  direction: 'vertical' | 'horizontal' = 'horizontal';
-
-  controled = false;
-
-  get axis(): 'width' | 'height' {
-    return this.direction === 'horizontal' ? 'width' : 'height';
-  }
-
   get el(): HTMLElement {
     return this.elRef.nativeElement;
   }
 
-  private pendingSize = 0;
+  get axis(): Axis {
+    return this.container.axis;
+  }
+
+  get containerSize(): number {
+    return this.container.size;
+  }
 
   private pending = false;
+  private pendingStyle?: { width: number; height: number };
 
-  private containerSize?: number;
+  constructor(
+    public vref: ViewContainerRef,
+    @Inject(RESIZE_AREA_CONTAINER) private container: ResizeAreaContainerBase,
+    private elRef: ElementRef<HTMLElement>
+  ) {}
 
-  constructor(public vref: ViewContainerRef, public cd: ChangeDetectorRef, private elRef: ElementRef) {}
-
-  checkMaxStretchSpace(): { grow: number; shrink: number } {
+  checkMaxStretchSpace(): [number, number] {
     if (this.solid) {
-      return {
-        shrink: 0,
-        grow: 0,
-      };
+      return [0, 0];
     }
 
-    const size = this.getElSize();
+    const { width, height } = this.getElSize();
+    const size = this.axis === 'width' ? width : height;
 
-    return {
-      shrink: size - this.minSize,
-      grow: this.maxSize - size,
-    };
+    return [Math.max(0, size - this.minSize), Math.max(0, this.maxSize - size)];
   }
 
-  strech(length: number, containerSize: number): void {
-    if (this.solid || length === 0) {
-      return;
-    }
-
-    const size = this.getElSize();
-
-    this.updateSize(size + length, containerSize);
-  }
-
-  setOriginSize(): void {
-    this.el.style[this.axis] = this.size;
-    this.controled = false;
-  }
-
-  updateSize(size: number, containerSize: number): void {
+  updateSize(size: number): void {
     if (this.solid) {
       return;
     }
 
-    this.containerSize = containerSize;
-    this.pendingSize = size;
+    this.pendingStyle = this.getElSize();
+    this.pendingStyle[this.axis] = size;
 
     if (!this.pending) {
       this.pending = true;
 
       requestAnimationFrame(() => {
-        this.el.style[this.axis] = `${(this.pendingSize / (this.containerSize as number)) * 100}%`;
+        const pendingSize = (this.pendingStyle as { width: number; height: number })[this.axis];
+        this.el.style[this.axis] = `${(pendingSize / this.containerSize) * 100}%`;
         this.pending = false;
-        this.controled = true;
       });
     }
   }
 
-  getElSize(): number {
-    if (this.pending) {
-      return this.pendingSize;
+  getElSize(): { width: number; height: number } {
+    if (this.pending && this.pendingStyle) {
+      return this.pendingStyle;
     } else {
-      return this.el.getBoundingClientRect()[this.axis];
+      const { width, height } = this.el.getBoundingClientRect();
+      return { width, height };
+    }
+  }
+
+  setStyle(style: [string, string | null] | null): void {
+    if (style) {
+      (this.el.style as any)[style[0]] = style[1];
     }
   }
 }
