@@ -17,6 +17,7 @@ import { UserInfoCardComponent } from './components/user-info-card/user-info-car
 import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
 import { ResizeAreaComponent } from './components/resize-area/resize-area.component';
 import { ResizeAreaContainerComponent } from './components/resize-area/resize-area-container.component';
+import { ResizeDraggerComponent } from './components/resize-area/resize-dragger.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ResizeAreaContainerComponent } from './components/resize-area/resize-ar
     ChatMsgComponent,
     ResizeAreaComponent,
     ResizeAreaContainerComponent,
+    ResizeDraggerComponent,
   ],
   imports: [
     CommonModule,
@@ -59,6 +61,7 @@ import { ResizeAreaContainerComponent } from './components/resize-area/resize-ar
     ChatMsgComponent,
     ResizeAreaComponent,
     ResizeAreaContainerComponent,
+    ResizeDraggerComponent,
   ],
 })
 export class SharedModule {}

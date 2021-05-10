@@ -11,16 +11,19 @@ import {
   ViewChild,
   TemplateRef,
   ViewEncapsulation,
+  forwardRef,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map, mergeMap, takeUntil } from 'rxjs/operators';
-import { Axis, ResizeAreaContainerBase } from './resize-area-base';
+import { Axis, ResizeAreaContainerBase, RESIZE_AREA_CONTAINER } from './resize-area-base';
 import { ResizeAreaComponent } from './resize-area.component';
 
 interface ResizeLineTmpl {
   index: number;
   direction?: 'vertical' | 'horizontal';
 }
+
+const draggerWidth = 20;
 
 @Component({
   selector: 'app-resize-area-container',
@@ -33,13 +36,10 @@ interface ResizeLineTmpl {
     class: 'resize-area-container',
     '[class.resize-area-container-vertical]': 'direction === "vertical"',
   },
+  providers: [{ provide: RESIZE_AREA_CONTAINER, useExisting: forwardRef(() => ResizeAreaContainerComponent) }],
 })
 export class ResizeAreaContainerComponent implements ResizeAreaContainerBase, AfterViewInit {
   @Input() direction: 'vertical' | 'horizontal' = 'horizontal';
-
-  @Input() height = 'auto';
-
-  @Input() width = 'auto';
 
   @ViewChild('resizeLine') resizeLineTmpl?: TemplateRef<ResizeLineTmpl>;
 
@@ -66,6 +66,10 @@ export class ResizeAreaContainerComponent implements ResizeAreaContainerBase, Af
     return this.elRef.nativeElement;
   }
 
+  get size(): number {
+    return this.el.getBoundingClientRect()[this.axis];
+  }
+
   private currentDragLine?: HTMLElement;
 
   constructor(private elRef: ElementRef) {
@@ -89,16 +93,23 @@ export class ResizeAreaContainerComponent implements ResizeAreaContainerBase, Af
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.resizeAreaList?.forEach((comp, i, list) => {
-        // 初始化元素大小
-        comp.direction = this.direction;
-        comp.setOriginSize();
+      const draggerAmount = (this.resizeAreaList?.length ?? 0) - 1;
+      const spaceForDragger = (draggerAmount * draggerWidth) / (this.resizeAreaList?.length ?? 1);
 
+      this.resizeAreaList?.forEach((comp, i, list) => {
         if (i !== list.length - 1) {
           comp.vref.createEmbeddedView(this.resizeLineTmpl as TemplateRef<ResizeLineTmpl>, {
             index: i,
             direction: this.direction,
           });
+        }
+
+        const size = comp.size;
+
+        if (size === 'auto') {
+          comp.setStyle(['flex-grow', '1']);
+        } else {
+          comp.setStyle([this.axis, `calc(${size} - ${spaceForDragger}px)`]);
         }
       });
     }, 0);
@@ -113,33 +124,34 @@ export class ResizeAreaContainerComponent implements ResizeAreaContainerBase, Af
     let nextArea: ResizeAreaComponent | null;
 
     if (movement > 0) {
-      prevArea = this.getResizableArea('max', lineIndex, false);
-      nextArea = this.getResizableArea('min', lineIndex + 1);
-
-      movement = Math.min(movement, prevArea?.maxSize, nextArea?.minSize);
-    } else {
-      const [prevStretchLength, prevComp] = this.getResizableArea('min', lineIndex, false);
-      const [nextStretchLength, nextComp] = this.getResizableArea('max', lineIndex + 1);
+      const [prevComp, prevLimit] = this.getResizableArea('max', lineIndex, false);
+      const [nextComp, nextLimit] = this.getResizableArea('min', lineIndex + 1);
 
       prevArea = prevComp;
       nextArea = nextComp;
-      movement = -Math.min(Math.abs(movement), prevStretchLength, nextStretchLength);
+      movement = Math.min(movement, prevLimit, nextLimit);
+    } else {
+      const [prevComp, prevLimit] = this.getResizableArea('min', lineIndex, false);
+      const [nextComp, nextLimit] = this.getResizableArea('max', lineIndex + 1);
+
+      prevArea = prevComp;
+      nextArea = nextComp;
+      movement = -Math.min(Math.abs(movement), prevLimit, nextLimit);
     }
 
-    const containerRect = this.el.getBoundingClientRect();
-    const containerSize = this.direction === 'horizontal' ? containerRect.width : containerRect.height;
-
-    prevArea?.strech(movement, containerSize);
-    nextArea?.strech(-movement, containerSize);
+    prevArea?.updateSize(prevArea.getElSize(this.axis) + movement);
+    nextArea?.updateSize(nextArea.getElSize(this.axis) - movement);
+    prevArea?.setStyle(['flex=grow', '0']);
+    nextArea?.setStyle(['flex=grow', '0']);
   }
 
   private getResizableArea(
     stretch: 'min' | 'max',
     beginIndex: number,
     order = true // true: find inc index, false: find dec index
-  ): ResizeAreaComponent | null {
+  ): [ResizeAreaComponent | null, number] {
     if (!this.resizeAreaList) {
-      return null;
+      return [null, 0];
     }
 
     let areaList = this.resizeAreaList.toArray();
@@ -156,21 +168,15 @@ export class ResizeAreaContainerComponent implements ResizeAreaContainerBase, Af
       const limitSize = stretch === 'max' ? max : min;
 
       if (limitSize > 0) {
-        return area;
+        return [area, limitSize];
       }
     }
 
-    return null;
+    return [null, 0];
   }
 
   private checkAreaLimitSize(area: ResizeAreaComponent): [number, number] {
-    if (area.solid) {
-      return [0, 0];
-    }
-
-    const size = area.getElSize(this.axis);
-
-    return [Math.max(0, size - area.minSize), Math.max(0, area.maxSize - size)];
+    return area.checkMaxStretchSpace();
   }
 
   @HostListener('mousemove', ['$event'])

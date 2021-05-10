@@ -18,7 +18,6 @@ import { Axis, ResizeAreaContainerBase, RESIZE_AREA_CONTAINER } from './resize-a
   // tslint:disable-next-line: no-host-metadata-property
   host: {
     class: 'resize-area',
-    '[style.flex-grow]': 'size === "auto" && !controled ? 1 : 0',
   },
 })
 export class ResizeAreaComponent {
@@ -45,7 +44,7 @@ export class ResizeAreaComponent {
   }
 
   private pending = false;
-  private pendingStyle?: { width: number; height: number };
+  private pendingSize: { width?: number; height?: number } = {};
 
   constructor(
     public vref: ViewContainerRef,
@@ -58,8 +57,7 @@ export class ResizeAreaComponent {
       return [0, 0];
     }
 
-    const { width, height } = this.getElSize();
-    const size = this.axis === 'width' ? width : height;
+    const size = this.getElSize(this.axis);
 
     return [Math.max(0, size - this.minSize), Math.max(0, this.maxSize - size)];
   }
@@ -69,26 +67,26 @@ export class ResizeAreaComponent {
       return;
     }
 
-    this.pendingStyle = this.getElSize();
-    this.pendingStyle[this.axis] = size;
+    this.pendingSize[this.axis] = size;
 
     if (!this.pending) {
       this.pending = true;
 
       requestAnimationFrame(() => {
-        const pendingSize = (this.pendingStyle as { width: number; height: number })[this.axis];
+        const pendingSize = (this.pendingSize as { width: number; height: number })[this.axis];
+        console.log(pendingSize, this.containerSize);
         this.el.style[this.axis] = `${(pendingSize / this.containerSize) * 100}%`;
         this.pending = false;
+        this.pendingSize = {};
       });
     }
   }
 
-  getElSize(): { width: number; height: number } {
-    if (this.pending && this.pendingStyle) {
-      return this.pendingStyle;
+  getElSize(axis: Axis): number {
+    if (this.pending && this.pendingSize[axis]) {
+      return this.pendingSize[axis] as number;
     } else {
-      const { width, height } = this.el.getBoundingClientRect();
-      return { width, height };
+      return this.el.getBoundingClientRect()[axis];
     }
   }
 
