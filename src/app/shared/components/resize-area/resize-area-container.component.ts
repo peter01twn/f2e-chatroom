@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map, mergeMap, takeUntil } from 'rxjs/operators';
-import { Axis, ResizeAreaContainerBase, RESIZE_AREA_CONTAINER } from './resize-area-base';
+import { Dimension, ResizeAreaContainerBase, RESIZE_AREA_CONTAINER } from './resize-area-base';
 import { ResizeAreaComponent } from './resize-area.component';
 
 interface ResizeLineTmpl {
@@ -58,7 +58,7 @@ export class ResizeAreaContainerComponent implements ResizeAreaContainerBase, Af
     )
   );
 
-  get axis(): Axis {
+  get dimension(): Dimension {
     return this.direction === 'horizontal' ? 'width' : 'height';
   }
 
@@ -67,8 +67,10 @@ export class ResizeAreaContainerComponent implements ResizeAreaContainerBase, Af
   }
 
   get size(): number {
-    return this.el.getBoundingClientRect()[this.axis];
+    return this.el.getBoundingClientRect()[this.dimension];
   }
+
+  readonly draggerWidth = 20;
 
   private currentDragLine?: HTMLElement;
 
@@ -109,7 +111,7 @@ export class ResizeAreaContainerComponent implements ResizeAreaContainerBase, Af
         if (size === 'auto') {
           comp.setStyle(['flex-grow', '1']);
         } else {
-          comp.setStyle([this.axis, `calc(${size} - ${spaceForDragger}px)`]);
+          comp.setStyle([this.dimension, `calc(${size} - ${spaceForDragger}px)`]);
         }
       });
     }, 0);
@@ -139,8 +141,8 @@ export class ResizeAreaContainerComponent implements ResizeAreaContainerBase, Af
       movement = -Math.min(Math.abs(movement), prevLimit, nextLimit);
     }
 
-    prevArea?.updateSize(prevArea.getElSize(this.axis) + movement);
-    nextArea?.updateSize(nextArea.getElSize(this.axis) - movement);
+    prevArea?.updateSize(prevArea.getElSize(this.dimension) + movement);
+    nextArea?.updateSize(nextArea.getElSize(this.dimension) - movement);
     prevArea?.setStyle(['flex=grow', '0']);
     nextArea?.setStyle(['flex=grow', '0']);
   }

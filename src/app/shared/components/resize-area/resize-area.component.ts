@@ -7,7 +7,7 @@ import {
   ElementRef,
   Inject,
 } from '@angular/core';
-import { Axis, ResizeAreaContainerBase, RESIZE_AREA_CONTAINER } from './resize-area-base';
+import { Dimension, ResizeAreaContainerBase, RESIZE_AREA_CONTAINER } from './resize-area-base';
 import { ResizeAreaStylerService } from './resize-area-styler.service';
 
 @Component({
@@ -25,7 +25,7 @@ import { ResizeAreaStylerService } from './resize-area-styler.service';
 export class ResizeAreaComponent {
   @Input() solid = false;
 
-  // size lies on axis that provided by user
+  // size lies on Dimension that provided by user
   // it's a CSS value for Height or width rule to use
   @Input() size = 'auto';
 
@@ -37,8 +37,8 @@ export class ResizeAreaComponent {
     return this.elRef.nativeElement;
   }
 
-  get axis(): Axis {
-    return this.container.axis;
+  get dimension(): Dimension {
+    return this.container.dimension;
   }
 
   get containerSize(): number {
@@ -59,7 +59,7 @@ export class ResizeAreaComponent {
       return [0, 0];
     }
 
-    const size = this.getElSize(this.axis);
+    const size = this.getElSize(this.dimension);
 
     return [Math.max(0, size - this.minSize), Math.max(0, this.maxSize - size)];
   }
@@ -69,25 +69,25 @@ export class ResizeAreaComponent {
       return;
     }
 
-    this.pendingSize[this.axis] = size;
+    this.pendingSize[this.dimension] = size;
 
     if (!this.pending) {
       this.pending = true;
 
       requestAnimationFrame(() => {
-        const pendingSize = (this.pendingSize as { width: number; height: number })[this.axis];
-        this.el.style[this.axis] = `${(pendingSize / this.containerSize) * 100}%`;
+        const pendingSize = (this.pendingSize as { width: number; height: number })[this.dimension];
+        this.el.style[this.dimension] = `${(pendingSize / this.containerSize) * 100}%`;
         this.pending = false;
         this.pendingSize = {};
       });
     }
   }
 
-  getElSize(axis: Axis): number {
-    if (this.pending && this.pendingSize[axis]) {
-      return this.pendingSize[axis] as number;
+  getElSize(dimension: Dimension): number {
+    if (this.pending && this.pendingSize[dimension]) {
+      return this.pendingSize[dimension] as number;
     } else {
-      return this.el.getBoundingClientRect()[axis];
+      return this.el.getBoundingClientRect()[dimension];
     }
   }
 
