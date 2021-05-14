@@ -8,24 +8,18 @@ import { SocketObserver, WebsocketService } from '../websocket/websocket.service
 export class ChatRoomService {
   private socket: SocketObserver;
 
-  getRooms$: Observable<string[]>;
-
-  enter$: Observable<string>;
-
-  leave$: Observable<string>;
-
   constructor(private websocket: WebsocketService) {
-    this.socket = this.websocket.connect('ws://localhost:3000/chat-room', {
+    this.socket = this.websocket.connect('http://localhost:3000/user-room', {
       reconnection: true,
       reconnectionDelay: 2500,
       reconnectionAttempts: 2,
     });
+    this.socket.on('connect_error').subscribe(err => console.log(err));
+  }
 
-    this.getRooms$ = this.socket.on('getRooms');
-
-    this.enter$ = this.socket.on('enter');
-
-    this.leave$ = this.socket.on('leave');
+  watch$(): Observable<string[]> {
+    this.socket.emit('watch');
+    return this.socket.on<string[]>('watch');
   }
 
   enter(channel: string): void {

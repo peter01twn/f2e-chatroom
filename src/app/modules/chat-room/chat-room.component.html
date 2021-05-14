@@ -8,6 +8,23 @@
             [minSize]="250"
         >
             <div class="side-bar">
+                <div class="side-bar-content">
+                    <input
+                        type="text"
+                        [formControl]="room"
+                    >
+                    <button (click)="enterRoom()">enter</button>
+                    <ng-container *ngFor="let room of roomList | async; let last=last">
+                        <div class="chat-room-card">
+                            {{ room }}
+                            <span (click)="leaveRoom(room)">X</span>
+                        </div>
+                        <div
+                            *ngIf="!last"
+                            class="divider"
+                        ></div>
+                    </ng-container>
+                </div>
                 <div class="divider"></div>
                 <div class="side-bar-footer">
                     <app-user-info-card

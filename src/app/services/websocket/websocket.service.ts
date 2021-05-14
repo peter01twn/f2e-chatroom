@@ -3,6 +3,10 @@ import { fromEvent, Observable } from 'rxjs';
 import { io, ManagerOptions, Socket, SocketOptions } from 'socket.io-client';
 
 export class SocketObserver {
+  get id(): string {
+    return this.socket.id;
+  }
+
   private socket: Socket;
 
   constructor(uri: string, opts?: Partial<ManagerOptions & SocketOptions>) {
