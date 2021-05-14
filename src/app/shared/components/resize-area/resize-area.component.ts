@@ -8,6 +8,7 @@ import {
   Inject,
 } from '@angular/core';
 import { Axis, ResizeAreaContainerBase, RESIZE_AREA_CONTAINER } from './resize-area-base';
+import { ResizeAreaStylerService } from './resize-area-styler.service';
 
 @Component({
   selector: 'app-resize-area',
@@ -15,6 +16,7 @@ import { Axis, ResizeAreaContainerBase, RESIZE_AREA_CONTAINER } from './resize-a
   styleUrls: ['./resize-area.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  providers: [ResizeAreaStylerService],
   // tslint:disable-next-line: no-host-metadata-property
   host: {
     class: 'resize-area',
@@ -74,7 +76,6 @@ export class ResizeAreaComponent {
 
       requestAnimationFrame(() => {
         const pendingSize = (this.pendingSize as { width: number; height: number })[this.axis];
-        console.log(pendingSize, this.containerSize);
         this.el.style[this.axis] = `${(pendingSize / this.containerSize) * 100}%`;
         this.pending = false;
         this.pendingSize = {};
