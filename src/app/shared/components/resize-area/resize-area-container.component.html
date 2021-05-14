@@ -5,8 +5,8 @@
     let-direction="direction"
 >
     <div
-        class="resize-line"
-        [ngClass]="{'resize-line-vertical': direction === 'horizontal'}"
+        class="resize-dragger"
+        [ngClass]="{'resize-dragger-vertical': direction === 'horizontal'}"
         (mousedown)="dragStart$.next([$event, index])"
     ></div>
 </ng-template>
