@@ -13,15 +13,15 @@
                 [formControl]="userName"
             >
         </div>
-        <a
+        <button
             app-forward-btn
             class="gap"
             style="width: 100%;"
-            routerLink="../chat-room"
             [disabled]="!userName.value"
+            (click)="enter()"
         >
             enter
-        </a>
+        </button>
         <div class="user-avatar-list">
             <div *ngFor="let avatar of userAvatars">
                 <app-user-avatar

@@ -18,11 +18,11 @@ import {
   // tslint:disable-next-line: no-host-metadata-property
   host: {
     class: 'forward-btn',
+    '[attr.disabled]': 'disabled || null',
   },
 })
 export class ForwardBtnComponent {
   @HostBinding('class.forward-btn-disabled')
-  @HostBinding('attr.disabled')
   @Input()
   disabled = false;
 }

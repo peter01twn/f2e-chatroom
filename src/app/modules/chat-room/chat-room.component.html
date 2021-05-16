@@ -9,16 +9,12 @@
         >
             <div class="side-bar">
                 <div class="side-bar-content">
-                    <input
-                        type="text"
-                        [formControl]="room"
-                    >
-                    <button (click)="enterRoom()">enter</button>
-                    <ng-container *ngFor="let room of roomList | async; let last=last">
-                        <div class="chat-room-card">
-                            {{ room }}
-                            <span (click)="leaveRoom(room)">X</span>
-                        </div>
+                    <ng-container *ngFor="let user of userList; let last=last">
+                        <app-user-info-card
+                            [icon]="user.avatar"
+                            [name]="user.name"
+                            description="user description"
+                        ></app-user-info-card>
                         <div
                             *ngIf="!last"
                             class="divider"
@@ -28,8 +24,8 @@
                 <div class="divider"></div>
                 <div class="side-bar-footer">
                     <app-user-info-card
-                        icon="fish"
-                        name="user name"
+                        [icon]="userInfo.avatar"
+                        [name]="userInfo.name"
                         description="user description"
                     ></app-user-info-card>
                 </div>
@@ -47,8 +43,8 @@
                     <mat-tab-group animationDuration="0ms">
                         <mat-tab label="All">
                             <div class="msg-screen">
-                                <ng-container *ngFor="let msgObj of messageList">
-                                    <div *ngTemplateOutlet="chatMsg; context: {content: msgObj.msg, right: msgObj.owner === uId};"></div>
+                                <ng-container *ngFor="let profileMsg of messageList">
+                                    <div *ngTemplateOutlet="chatMsg; context: {icon: profileMsg.icon, name: profileMsg.name, content: profileMsg.msg, right: profileMsg.owner === userInfo.id};"></div>
                                 </ng-container>
                             </div>
                         </mat-tab>
@@ -80,21 +76,15 @@
                                         </div>
                                     </mat-expansion-panel>
                                     <div class="discuss-board msg-screen">
-                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                        <!-- <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
                                         <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
                                         <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
                                         <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
-                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
-                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
-                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
-                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', right: true};"></div>
-                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
-                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
-                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div>
+                                        <div *ngTemplateOutlet="discussMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.'};"></div> -->
                                     </div>
                                 </mat-drawer>
                                 <mat-drawer-content>
-                                    <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', openPanel: true};"></div>
+                                    <!-- <div *ngTemplateOutlet="chatMsg; context: {content: 'Lorem, ipsum. Lorem, ipsum.', openPanel: true};"></div> -->
                                 </mat-drawer-content>
                             </mat-drawer-container>
                         </mat-tab>
@@ -132,6 +122,8 @@
 </div>
 <ng-template
     #chatMsg
+    let-icon="icon"
+    let-name="name"
     let-content="content"
     let-right="right"
     let-discussCount="discussCount"
@@ -143,6 +135,8 @@
         (click)="openPanel ? discussDrawer.toggle() : ''"
     >
         <app-chat-msg
+            [icon]="icon"
+            [name]="name"
             [content]="content"
             [discussionCount]="discussCount"
             [direction]="right ? 'rtl' : 'ltr'"

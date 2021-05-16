@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { UserAvatars } from './core/user-avatars';
 import { isPlatformServer } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',

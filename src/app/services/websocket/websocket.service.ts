@@ -11,20 +11,19 @@ export class SocketObserver {
 
   constructor(uri: string, opts?: Partial<ManagerOptions & SocketOptions>) {
     this.socket = io(uri, opts);
+    this.socket.on('connect_error', error => console.log(error));
   }
 
   on<T>(e: string): Observable<T> {
     return fromEvent(this.socket as any, e);
   }
 
-  send(...args: any[]): this {
+  send(...args: any[]): void {
     this.socket.send(...args);
-    return this;
   }
 
-  emit(e: string, ...args: any[]): this {
+  emit(e: string, ...args: any[]): void {
     this.socket.emit(e, ...args);
-    return this;
   }
 
   disconnect(): void {

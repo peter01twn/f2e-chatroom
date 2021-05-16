@@ -1,13 +1,12 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { ChatMessageService } from 'src/app/services/chat-message/chat-message.service';
-import { ChatRoomService } from 'src/app/services/chat-room/chat-room.service';
-import { UserInfoService } from 'src/app/services/user-info/user-info.service';
+import { map } from 'rxjs/operators';
+import { ChatService, Message } from 'src/app/services/chat/chat.service';
+import { UserInfo, UserInfoService } from 'src/app/services/user-info/user-info.service';
 
-interface MsgDto {
-  owner: string;
-  msg: string;
+interface ProfileMessage extends Message {
+  icon: string;
+  name: string;
 }
 
 @Component({
@@ -19,36 +18,45 @@ export class ChatRoomComponent {
   newMessage = this.fb.control('');
   room = this.fb.control('');
 
-  messageList: MsgDto[] = [];
-  roomList: Observable<string[]>;
-  uId = '';
+  messageList: ProfileMessage[] = [];
+  userList: UserInfo[] = [];
+
+  userInfo: UserInfo = {
+    id: '',
+    name: '',
+    avatar: '',
+  };
 
   constructor(
     private fb: FormBuilder,
-    private msgService: ChatMessageService,
-    private roomService: ChatRoomService,
-    user: UserInfoService,
-    cd: ChangeDetectorRef
+    private msgService: ChatService,
+    private cd: ChangeDetectorRef,
+    userInfoService: UserInfoService
   ) {
-    // msgService.recive('broadcast').subscribe(msgObj => {
-    //   this.messageList.push(msgObj as MsgDto);
-    // });
-    user.get$.subscribe(({ id }) => (this.uId = id));
+    userInfoService.get$.subscribe(userInfo => (this.userInfo = userInfo));
 
-    this.roomList = roomService.watch$();
+    msgService.message$
+      .pipe(
+        map(msg => {
+          const user = this.userList.find(({ id }) => id === msg.owner) ?? this.userInfo;
+          return { ...msg, icon: user.avatar, name: user.name };
+        })
+      )
+      .subscribe(profileMsg => {
+        this.messageList.push(profileMsg);
+        cd.detectChanges();
+      });
+
+    msgService.userList$.subscribe(userList => {
+      this.userList = userList;
+      setTimeout(() => {
+        cd.detectChanges();
+      }, 0);
+    });
   }
 
   sendMsg(): void {
-    this.msgService.broadcast(this.newMessage.value);
+    this.msgService.send(this.newMessage.value);
     this.newMessage.setValue('');
-  }
-
-  enterRoom(): void {
-    this.roomService.enter(this.room.value);
-    this.room.reset();
-  }
-
-  leaveRoom(roomId: any): void {
-    this.roomService.leave(roomId);
   }
 }

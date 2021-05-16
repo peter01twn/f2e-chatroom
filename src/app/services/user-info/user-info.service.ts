@@ -26,6 +26,7 @@ export class UserInfoService {
   }
 
   update(info: Partial<UserInfo>): void {
-    this.userInfo = { ...(this.userInfo as UserInfo), ...info };
+    this.userInfo = { ...this.userInfo, ...info };
+    this.userInfo$.next(this.userInfo);
   }
 }
