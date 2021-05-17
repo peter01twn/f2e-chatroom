@@ -1,6 +1,6 @@
-import { Message } from '../entities/message';
+import { ChatMessage } from '../entities/message';
 
-export const ChannelMsgList: Message[] = [
+export const ChannelMsgList: ChatMessage[] = [
   {
     id: 'as4d4344sda4',
     owner: 's464dsa64das6',

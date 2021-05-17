@@ -9,7 +9,7 @@
         >
             <div class="side-bar">
                 <div class="side-bar-content">
-                    <ng-container *ngFor="let user of userList; let last=last">
+                    <ng-container *ngFor="let user of sidebarUsers; let last=last">
                         <app-user-info-card
                             [icon]="user.avatar"
                             [name]="user.name"
@@ -42,9 +42,12 @@
                 >
                     <mat-tab-group animationDuration="0ms">
                         <mat-tab label="All">
-                            <div class="msg-screen">
-                                <ng-container *ngFor="let profileMsg of messageList">
-                                    <div *ngTemplateOutlet="chatMsg; context: {icon: profileMsg.icon, name: profileMsg.name, content: profileMsg.msg, right: profileMsg.owner === userInfo.id};"></div>
+                            <div
+                                #chatScreen
+                                class="msg-screen"
+                            >
+                                <ng-container *ngFor="let msg of messageList">
+                                    <div *ngTemplateOutlet="chatMsg; context: {icon: msg.avatar, name: msg.name, content: msg.content, right: msg.owner === connectId};"></div>
                                 </ng-container>
                             </div>
                         </mat-tab>

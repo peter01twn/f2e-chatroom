@@ -1,8 +1,8 @@
-export interface Message {
-  id: string;
+export interface ChatMessage {
+  id: number;
   owner: string;
-  channel: string;
-  discussCount: number;
+  name: string;
+  avatar: string;
   content: string;
   createTime: string;
 }

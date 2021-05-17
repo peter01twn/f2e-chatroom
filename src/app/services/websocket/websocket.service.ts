@@ -7,7 +7,7 @@ export class SocketObserver {
     return this.socket.id;
   }
 
-  private socket: Socket;
+  readonly socket: Socket;
 
   constructor(uri: string, opts?: Partial<ManagerOptions & SocketOptions>) {
     this.socket = io(uri, opts);
@@ -24,6 +24,10 @@ export class SocketObserver {
 
   emit(e: string, ...args: any[]): void {
     this.socket.emit(e, ...args);
+  }
+
+  connect(): void {
+    this.socket.connect();
   }
 
   disconnect(): void {

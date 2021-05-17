@@ -3,7 +3,7 @@
         <div class="user-info gap">
             <div class="user-info-avatar">
                 <app-user-avatar
-                    [icon]="userAvatar"
+                    [icon]="userAvatar.value"
                     size="lg"
                 ></app-user-avatar>
             </div>
@@ -23,11 +23,11 @@
             enter
         </button>
         <div class="user-avatar-list">
-            <div *ngFor="let avatar of userAvatars">
+            <div *ngFor="let avatar of avatarList">
                 <app-user-avatar
                     [icon]="avatar"
-                    [select]="avatar === userAvatar"
-                    (click)="selectAvatar(avatar)"
+                    [select]="avatar === userAvatar.value"
+                    (click)="userAvatar.setValue(avatar)"
                 ></app-user-avatar>
             </div>
         </div>

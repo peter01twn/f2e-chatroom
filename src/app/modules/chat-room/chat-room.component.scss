@@ -28,6 +28,8 @@
 
 .msg-screen {
   padding: 10px;
+  height: 100%;
+  overflow-y: auto;
 
   * + * {
     margin-top: 12px;

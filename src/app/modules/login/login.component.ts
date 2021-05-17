@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, NgZone } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, NgZone } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserAvatars } from 'src/app/core/user-avatars';
 import { ChatService } from 'src/app/services/chat/chat.service';
@@ -11,11 +11,11 @@ import { UserInfoService } from 'src/app/services/user-info/user-info.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  userAvatars = Object.keys(UserAvatars);
+  avatarList = Object.keys(UserAvatars);
 
-  userAvatar = this.userAvatars[0];
+  userAvatar = this.fb.control(this.avatarList[0], [Validators.required]);
 
-  userName = this.fb.control('');
+  userName = this.fb.control('', [Validators.required]);
 
   constructor(
     private fb: FormBuilder,
@@ -26,12 +26,8 @@ export class LoginComponent {
     private zone: NgZone
   ) {}
 
-  selectAvatar(avatar: string): void {
-    this.userAvatar = avatar;
-  }
-
   enter(): void {
-    this.user.update({ name: this.userName.value, avatar: this.userAvatar });
+    this.user.update({ name: this.userName.value, avatar: this.userAvatar.value });
     this.chat.join$().subscribe(success => {
       if (success) {
         this.zone.run(() => {
