@@ -8,6 +8,7 @@ import { QuillModule } from 'ngx-quill';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { httpInterceptorProviders } from './core/http-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     QuillModule.forRoot(),
   ],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
