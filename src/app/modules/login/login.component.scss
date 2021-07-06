@@ -11,6 +11,20 @@
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  &-header {
+    margin-bottom: 40px;
+    font-size: 14px;
+  }
+
+  &-footer {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .back-link {
+    color: mat-color($gray, 500);
+  }
 }
 
 .user-avatar-list {

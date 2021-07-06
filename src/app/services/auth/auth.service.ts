@@ -22,6 +22,6 @@ export class AuthService {
   }
 
   getAuthorizationToken(): string | null | undefined {
-    return this.localStorage?.getItem('StoreTokenKey');
+    return this.localStorage?.getItem(StoreTokenKey);
   }
 }

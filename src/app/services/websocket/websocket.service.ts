@@ -1,6 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { fromEvent, Observable } from 'rxjs';
 import { io, ManagerOptions, Socket, SocketOptions } from 'socket.io-client';
+import { AuthService } from '../auth/auth.service';
 
 export class SocketObserver {
   get id(): string {
@@ -39,7 +40,7 @@ export class SocketObserver {
   providedIn: 'root',
 })
 export class WebsocketService {
-  constructor(private zone: NgZone) {}
+  constructor(private zone: NgZone, private auth: AuthService) {}
 
   connect(url: string, opts?: Partial<ManagerOptions & SocketOptions>): SocketObserver {
     return this.createWs(url, opts);
@@ -49,7 +50,12 @@ export class WebsocketService {
     let wrapper: SocketObserver = {} as SocketObserver;
 
     this.zone.runOutsideAngular(() => {
-      wrapper = new SocketObserver(url, opts);
+      wrapper = new SocketObserver(url, {
+        auth: (cb: Function) => {
+          cb({ token: this.auth.getAuthorizationToken() });
+        },
+        ...opts,
+      });
     });
 
     return wrapper;

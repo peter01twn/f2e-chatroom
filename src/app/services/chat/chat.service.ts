@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ChatMessage } from 'src/app/core/entities/message';
-import { UserInfoService, UserInfo } from '../user-info/user-info.service';
+import { UserService, UserInfo } from '../user/user.service';
 import { WebsocketService, SocketObserver } from '../websocket/websocket.service';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class ChatService {
 
   userList$ = this._userList$.asObservable();
 
-  constructor(websocket: WebsocketService, private user: UserInfoService) {
+  constructor(websocket: WebsocketService, private user: UserService) {
     this.socket = websocket.connect('http://localhost:3000/chat', {
       reconnection: true,
       reconnectionDelay: 2500,

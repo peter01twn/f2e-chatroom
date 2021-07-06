@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/co
 import { FormBuilder } from '@angular/forms';
 import { ChatMessage } from 'src/app/core/entities/message';
 import { ChatService } from 'src/app/services/chat/chat.service';
-import { UserInfo, UserInfoService } from 'src/app/services/user-info/user-info.service';
+import { UserInfo, UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-chat-room',
@@ -36,7 +36,7 @@ export class ChatRoomComponent {
     private fb: FormBuilder,
     private chatService: ChatService,
     private cd: ChangeDetectorRef,
-    userInfoService: UserInfoService
+    userInfoService: UserService
   ) {
     userInfoService.get$.subscribe(userInfo => (this.userInfo = userInfo));
 

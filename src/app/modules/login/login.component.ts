@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserAvatars } from 'src/app/core/user-avatars';
 import { ChatService } from 'src/app/services/chat/chat.service';
-import { UserInfoService } from 'src/app/services/user-info/user-info.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private user: UserInfoService,
+    private user: UserService,
     private chat: ChatService,
     private router: Router,
     private route: ActivatedRoute,
@@ -28,12 +28,24 @@ export class LoginComponent {
 
   enter(): void {
     this.user.update({ name: this.userName.value, avatar: this.userAvatar.value });
-    this.chat.join$().subscribe(success => {
-      if (success) {
-        this.zone.run(() => {
-          this.router.navigate(['../chat-room'], { relativeTo: this.route });
-        });
-      }
-    });
+    this.user
+      .login({
+        account: 'test',
+        password: 'test',
+      })
+      .subscribe(
+        res => {
+          this.chat.join$().subscribe(success => {
+            if (success) {
+              this.zone.run(() => {
+                this.router.navigate(['../chat-room'], { relativeTo: this.route });
+              });
+            }
+          });
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
 }
