@@ -18,6 +18,7 @@ import { ChatMsgComponent } from './components/chat-msg/chat-msg.component';
 import { ResizeAreaComponent } from './components/resize-area/resize-area.component';
 import { ResizeAreaContainerComponent } from './components/resize-area/resize-area-container.component';
 import { ResizeDraggerDirective } from './components/resize-area/resize-dragger.directive';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ResizeDraggerDirective } from './components/resize-area/resize-dragger.
   ],
   imports: [
     CommonModule,
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
@@ -43,6 +45,7 @@ import { ResizeDraggerDirective } from './components/resize-area/resize-dragger.
     MatExpansionModule,
   ],
   exports: [
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,

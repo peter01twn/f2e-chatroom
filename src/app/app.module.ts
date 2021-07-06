@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { httpInterceptorProviders } from './core/http-interceptor';
+import { LoginModule } from './modules/login/login.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { httpInterceptorProviders } from './core/http-interceptor';
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
+    LoginModule,
     QuillModule.forRoot(),
   ],
   providers: [httpInterceptorProviders],
