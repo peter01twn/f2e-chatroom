@@ -2,40 +2,46 @@
     <div class="login-box">
         <a
             class="link"
-            routerLink="../register"
+            [routerLink]="isRegister ? '../login' : '../register'"
+            style="display: block; margin-bottom: 1rem;"
         >
-            No account? register
+            {{ isRegister ? 'or Login' : 'No account? register' }}
         </a>
-        <div class="user-info gap">
-            <div class="user-info-avatar">
-                <mat-icon
-                    inline="true"
-                    [svgIcon]="'avatar:' + userAvatar.value"
-                ></mat-icon>
+        <ng-container *ngIf="isRegister; else loginTemplate">
+            <app-register-form (submit)="register()"></app-register-form>
+        </ng-container>
+        <ng-template #loginTemplate>
+            <div class="user-info">
+                <div class="user-info-avatar">
+                    <mat-icon
+                        inline="true"
+                        [svgIcon]="'avatar:' + userAvatar.value"
+                    ></mat-icon>
+                </div>
+                <input
+                    type="text"
+                    placeholder="user name"
+                    [formControl]="userName"
+                >
             </div>
-            <input
-                type="text"
-                placeholder="user name"
-                [formControl]="userName"
+            <button
+                class="submit-btn"
+                app-forward-btn
+                style="width: 100%;"
+                [disabled]="!userName.value"
+                (click)="enter()"
             >
-        </div>
-        <button
-            app-forward-btn
-            class="gap"
-            style="width: 100%;"
-            [disabled]="!userName.value"
-            (click)="enter()"
-        >
-            enter
-        </button>
-        <div class="user-avatar-list">
-            <div *ngFor="let avatar of avatarList">
-                <app-user-avatar
-                    [icon]="avatar"
-                    [select]="avatar === userAvatar.value"
-                    (click)="userAvatar.setValue(avatar)"
-                ></app-user-avatar>
+                login
+            </button>
+            <div class="user-avatar-list">
+                <div *ngFor="let avatar of avatarList">
+                    <app-user-avatar
+                        [icon]="avatar"
+                        [select]="avatar === userAvatar.value"
+                        (click)="userAvatar.setValue(avatar)"
+                    ></app-user-avatar>
+                </div>
             </div>
-        </div>
+        </ng-template>
     </div>
 </div>

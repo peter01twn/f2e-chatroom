@@ -40,13 +40,16 @@ export class ChatService {
   }
 
   join$(): Observable<boolean> {
-    this.socket.connect();
+    // this.socket.connect();
 
     const res = new Subject<boolean>();
     const { avatar, name } = this.userInfo;
-    this.socket.emit('join', { avatar, name }, ({ success }: { success: boolean }) => {
-      res.next(success);
-    });
+    // this.socket.emit('join', { avatar, name }, ({ success }: { success: boolean }) => {
+    //   res.next(success);
+    // });
+    setTimeout(() => {
+      res.next(true);
+    }, 100);
 
     return res.asObservable();
   }

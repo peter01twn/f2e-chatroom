@@ -1,21 +1,5 @@
-@import "theme";
-
-.login-container {
-  position: relative;
-  height: 100%;
-}
-
-.login-box {
-  width: 240px;
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 .user-info {
   display: flex;
-  align-items: center;
 
   &-avatar {
     margin-right: 20px;
@@ -24,7 +8,7 @@
   }
 
   input {
-    width: 150px;
+    display: block;
     background-color: transparent;
     border: none;
     font-size: 24px;

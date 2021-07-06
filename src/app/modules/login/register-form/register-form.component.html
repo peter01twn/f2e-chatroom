@@ -1,0 +1,42 @@
+<div
+    class="user-info"
+    [formGroup]="form"
+>
+    <div class="user-info-avatar">
+        <mat-icon
+            inline="true"
+            [svgIcon]="'avatar:' + avatarControl.value"
+        ></mat-icon>
+    </div>
+    <div>
+        <input
+            type="text"
+            name="account"
+            placeholder="Account"
+            formControlName="account"
+        >
+        <input
+            type="text"
+            name="password"
+            placeholder="Password"
+            formControlName="password"
+        >
+    </div>
+</div>
+<button
+    class="submit-btn"
+    app-forward-btn
+    style="width: 100%;"
+    (click)="_submit()"
+>
+    register
+</button>
+<div class="user-avatar-list">
+    <div *ngFor="let avatar of avatarList">
+        <app-user-avatar
+            [icon]="avatar"
+            [select]="avatar === avatarControl.value"
+            (click)="avatarControl.setValue(avatar)"
+        ></app-user-avatar>
+    </div>
+</div>
