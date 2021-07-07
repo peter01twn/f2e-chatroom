@@ -11,37 +11,29 @@
             <app-register-form (submit)="register()"></app-register-form>
         </ng-container>
         <ng-template #loginTemplate>
-            <div class="user-info">
-                <div class="user-info-avatar">
-                    <mat-icon
-                        inline="true"
-                        [svgIcon]="'avatar:' + userAvatar.value"
-                    ></mat-icon>
-                </div>
+            <form
+                class="login-form"
+                [formGroup]="loginForm"
+            >
                 <input
                     type="text"
                     placeholder="user name"
-                    [formControl]="userName"
+                    formControlName="account"
                 >
-            </div>
-            <button
-                class="submit-btn"
-                app-forward-btn
-                style="width: 100%;"
-                [disabled]="!userName.value"
-                (click)="enter()"
-            >
-                login
-            </button>
-            <div class="user-avatar-list">
-                <div *ngFor="let avatar of avatarList">
-                    <app-user-avatar
-                        [icon]="avatar"
-                        [select]="avatar === userAvatar.value"
-                        (click)="userAvatar.setValue(avatar)"
-                    ></app-user-avatar>
-                </div>
-            </div>
+                <input
+                    type="password"
+                    placeholder="password"
+                    formControlName="password"
+                >
+                <button
+                    class="submit-btn"
+                    app-forward-btn
+                    style="width: 100%;"
+                    (click)="login()"
+                >
+                    login
+                </button>
+            </form>
         </ng-template>
     </div>
 </div>

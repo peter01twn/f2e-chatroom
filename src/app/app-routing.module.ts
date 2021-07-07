@@ -6,7 +6,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: LoginComponent },
   { path: 'chat-room', loadChildren: () => import('./modules/chat-room/chat-room.module').then(m => m.ChatRoomModule) },
-  { path: '**', redirectTo: 'register' },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({

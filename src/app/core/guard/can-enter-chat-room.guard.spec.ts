@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CanEnterChatRoomGuard } from './can-enter-chat-room.guard';
+import { CanEnterChatRoomGuard } from './login.guard';
 
 describe('CanEnterChatRoomGuard', () => {
   let guard: CanEnterChatRoomGuard;

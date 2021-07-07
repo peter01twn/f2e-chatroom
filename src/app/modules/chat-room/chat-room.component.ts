@@ -36,9 +36,11 @@ export class ChatRoomComponent {
     private fb: FormBuilder,
     private chatService: ChatService,
     private cd: ChangeDetectorRef,
-    userInfoService: UserService
+    userService: UserService
   ) {
-    userInfoService.get$.subscribe(userInfo => (this.userInfo = userInfo));
+    userService.get$.subscribe(userInfo => {
+      this.userInfo = userInfo;
+    });
 
     chatService.message$.subscribe(msg => {
       this.messageList.push(msg);

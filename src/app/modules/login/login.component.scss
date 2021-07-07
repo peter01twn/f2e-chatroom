@@ -13,16 +13,7 @@
   transform: translateX(-50%);
 }
 
-.user-info {
-  display: flex;
-  align-items: center;
-
-  &-avatar {
-    margin-right: 20px;
-    width: 40px;
-    height: 40px;
-  }
-
+.login-form {
   input {
     width: 150px;
     background-color: transparent;

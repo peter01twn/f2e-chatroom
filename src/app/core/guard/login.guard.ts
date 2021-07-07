@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ChatService } from 'src/app/services/chat/chat.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Injectable({ providedIn: 'root' })
 export class CanEnterChatRoomGuard implements CanActivate {
@@ -9,12 +9,12 @@ export class CanEnterChatRoomGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.chat.isLogin) {
+    if (this.user.isLogin) {
       return true;
     } else {
       return this.router.createUrlTree(['login']);
     }
   }
 
-  constructor(private chat: ChatService, private router: Router) {}
+  constructor(private user: UserService, private router: Router) {}
 }

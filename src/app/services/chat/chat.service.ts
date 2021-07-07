@@ -9,8 +9,6 @@ import { WebsocketService, SocketObserver } from '../websocket/websocket.service
   providedIn: 'root',
 })
 export class ChatService {
-  isLogin = false;
-
   readonly socket: SocketObserver;
   private userInfo: UserInfo = { id: '', avatar: '', name: '' };
 
@@ -64,11 +62,7 @@ export class ChatService {
     return subject.asObservable().pipe(take(1));
   }
 
-  private connected(): void {
-    this.isLogin = true;
-  }
+  private connected(): void {}
 
-  private disconnect(): void {
-    this.isLogin = false;
-  }
+  private disconnect(): void {}
 }

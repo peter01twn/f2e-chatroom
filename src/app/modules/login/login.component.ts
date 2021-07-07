@@ -14,9 +14,13 @@ import { UserService } from 'src/app/services/user/user.service';
 export class LoginComponent {
   avatarList = Object.keys(UserAvatars);
 
-  userAvatar = this.fb.control(this.avatarList[0], [Validators.required]);
-
-  userName = this.fb.control('', [Validators.required]);
+  loginForm = this.fb.group(
+    {
+      account: '',
+      password: '',
+    },
+    { validators: Validators.required }
+  );
 
   isRegister = false;
 
@@ -33,27 +37,21 @@ export class LoginComponent {
     });
   }
 
-  enter(): void {
-    this.user.update({ name: this.userName.value, avatar: this.userAvatar.value });
-    this.user
-      .login({
-        account: 'test',
-        password: 'test',
-      })
-      .subscribe(
-        res => {
-          this.chat.join$().subscribe(success => {
-            if (success) {
-              this.zone.run(() => {
-                this.router.navigate(['../chat-room'], { relativeTo: this.route });
-              });
-            }
-          });
-        },
-        err => {
-          console.log(err);
-        }
-      );
+  login(): void {
+    this.user.login(this.loginForm.getRawValue()).subscribe(
+      res => {
+        this.chat.join$().subscribe(success => {
+          if (success) {
+            this.zone.run(() => {
+              this.router.navigate(['../chat-room'], { relativeTo: this.route });
+            });
+          }
+        });
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   register(): void {

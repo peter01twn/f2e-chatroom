@@ -15,6 +15,8 @@ export interface UserInfo {
   providedIn: 'root',
 })
 export class UserService {
+  isLogin = false;
+
   private userInfo: UserInfo = {
     id: '',
     name: '',
@@ -28,19 +30,25 @@ export class UserService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
   login(loginInfo: { account: string; password: string }): Observable<boolean> {
+    this.update({
+      id: '124',
+      name: 'test',
+      avatar: 'cat',
+    });
+
+    this.isLogin = true;
+
+    return of(true);
     return this.http.post<{ token: string }>('http://localhost:3000/api/user/login', loginInfo).pipe(
       map((res: { token: string }) => {
         this.auth.setAuthorizationToken(res.token);
+        this.isLogin = true;
         return true;
       }),
       catchError((err: any) => {
         return throwError(err.error.message);
       })
     );
-  }
-
-  set(info: UserInfo): void {
-    this.userInfo = info;
   }
 
   update(info: Partial<UserInfo>): void {
