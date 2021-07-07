@@ -9,12 +9,31 @@
         >
             <div class="side-bar">
                 <div class="side-bar-content">
-                    <ng-container *ngFor="let user of sidebarUsers; let last=last">
-                        <app-user-info-card
-                            [icon]="user.avatar"
-                            [name]="user.name"
-                            description="user description"
-                        ></app-user-info-card>
+                    <div class="conversation-card">
+                        <div class="conversation-card-icon">
+                            <mat-icon
+                                class="conversation-card-icon"
+                                fontSet="material-icons-outlined"
+                            >
+                                home
+                            </mat-icon>
+                        </div>
+                        <div class="conversation-card-title">Home</div>
+                    </div>
+                    <ng-container *ngFor="let user of sidebarUsers; let last=last; let first=first">
+                        <div
+                            *ngIf="first"
+                            class="divider"
+                        ></div>
+                        <div class="conversation-card">
+                            <div class="conversation-card-icon">
+                                <mat-icon
+                                    inline="true"
+                                    svgIcon="avatar:{{ user.avatar }}"
+                                ></mat-icon>
+                            </div>
+                            <div class="conversation-card-title">{{ user.name }}</div>
+                        </div>
                         <div
                             *ngIf="!last"
                             class="divider"
@@ -42,6 +61,34 @@
                 >
                     <mat-tab-group animationDuration="0ms">
                         <mat-tab label="All">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             <div
                                 #chatScreen
                                 class="msg-screen"

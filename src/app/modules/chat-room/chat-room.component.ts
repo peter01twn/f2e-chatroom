@@ -16,7 +16,23 @@ export class ChatRoomComponent {
   room = this.fb.control('');
 
   messageList: ChatMessage[] = [];
-  userList: UserInfo[] = [];
+  userList: UserInfo[] = [
+    {
+      id: '124',
+      name: 'test',
+      avatar: 'cat',
+    },
+    {
+      id: '124',
+      name: 'test',
+      avatar: 'cat',
+    },
+    {
+      id: '124',
+      name: 'test',
+      avatar: 'cat',
+    },
+  ];
 
   userInfo: UserInfo = {
     id: '',
@@ -47,12 +63,12 @@ export class ChatRoomComponent {
       cd.detectChanges();
     });
 
-    chatService.userList$.subscribe(userList => {
-      this.userList = userList;
-      setTimeout(() => {
-        cd.detectChanges();
-      }, 0);
-    });
+    // chatService.userList$.subscribe(userList => {
+    //   this.userList = userList;
+    //   setTimeout(() => {
+    //     cd.detectChanges();
+    //   }, 0);
+    // });
 
     chatService.getRecords().subscribe(records => {
       this.messageList.push(...records);

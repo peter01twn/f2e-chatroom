@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: ChatRoomComponent,
-    canActivate: [CanEnterChatRoomGuard],
+    // canActivate: [CanEnterChatRoomGuard],
   },
 ];
 

@@ -23,7 +23,23 @@
   }
 }
 
-.chat-room-card {
+.conversation-card {
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  height: 60px;
+  cursor: pointer;
+
+  &-icon {
+    margin-right: 1rem;
+    width: 36px;
+    height: 36px;
+    font-size: 36px;
+  }
+  &-title {
+    line-height: 60px;
+    font-size: 24px;
+  }
 }
 
 .msg-screen {
