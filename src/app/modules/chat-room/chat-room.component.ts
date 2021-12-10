@@ -18,17 +18,17 @@ export class ChatRoomComponent {
   messageList: ChatMessage[] = [];
   userList: UserInfo[] = [
     {
-      id: '124',
+      id: '1241',
       name: 'test',
       avatar: 'cat',
     },
     {
-      id: '124',
+      id: '1242',
       name: 'test',
       avatar: 'cat',
     },
     {
-      id: '124',
+      id: '1243',
       name: 'test',
       avatar: 'cat',
     },

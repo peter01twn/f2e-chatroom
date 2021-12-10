@@ -18,9 +18,9 @@ export class UserService {
   isLogin = false;
 
   private userInfo: UserInfo = {
-    id: '',
-    name: '',
-    avatar: '',
+    id: '124',
+    name: 'test',
+    avatar: 'cat',
   };
 
   private userInfo$ = new BehaviorSubject<UserInfo>(this.userInfo);
